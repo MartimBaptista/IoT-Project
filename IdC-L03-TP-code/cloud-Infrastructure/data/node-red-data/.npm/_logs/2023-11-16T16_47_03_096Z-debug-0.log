@@ -1,0 +1,222 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@8.19.4
+2 info using node@v16.20.2
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 3ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 3ms
+6 timing config:load:builtin Completed in 4ms
+7 warn config production Use `--omit=dev` instead.
+8 timing config:load:cli Completed in 10ms
+9 timing config:load:env Completed in 1ms
+10 timing config:load:file:/data/.npmrc Completed in 1ms
+11 timing config:load:project Completed in 13ms
+12 timing config:load:file:/usr/src/node-red/.npmrc Completed in 0ms
+13 timing config:load:user Completed in 1ms
+14 timing config:load:file:/usr/local/etc/npmrc Completed in 3ms
+15 timing config:load:global Completed in 3ms
+16 timing config:load:validate Completed in 1ms
+17 timing config:load:credentials Completed in 2ms
+18 timing config:load:setEnvs Completed in 1ms
+19 timing config:load Completed in 40ms
+20 timing npm:load:configload Completed in 41ms
+21 timing npm:load:mkdirpcache Completed in 3ms
+22 timing npm:load:mkdirplogs Completed in 2ms
+23 verbose title npm install node-red-contrib-postgresql@0.14.0
+24 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--production" "--engine-strict" "node-red-contrib-postgresql@0.14.0"
+25 timing npm:load:setTitle Completed in 3ms
+26 timing config:load:flatten Completed in 6ms
+27 timing npm:load:display Completed in 9ms
+28 verbose logfile logs-max:10 dir:/data/.npm/_logs
+29 verbose logfile /data/.npm/_logs/2023-11-16T16_47_03_096Z-debug-0.log
+30 timing npm:load:logFile Completed in 26ms
+31 timing npm:load:timers Completed in 1ms
+32 timing npm:load:configScope Completed in 0ms
+33 timing npm:load Completed in 90ms
+34 timing arborist:ctor Completed in 1ms
+35 silly logfile start cleaning logs, removing 11 files
+36 timing idealTree:init Completed in 144ms
+37 timing idealTree:userRequests Completed in 5ms
+38 silly idealTree buildDeps
+39 silly fetch manifest node-red-contrib-postgresql@0.14.0
+40 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+41 silly logfile done cleaning log files
+42 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-postgresql 1443ms (cache miss)
+43 silly placeDep ROOT node-red-contrib-postgresql@0.14.0 OK for: node-red-project@0.0.1 want: 0.14.0
+44 silly fetch manifest mustache@^4.2.0
+45 silly fetch manifest pg@^8.11.3
+46 silly fetch manifest pg-cursor@^2.10.3
+47 http fetch GET 200 https://registry.npmjs.org/mustache 132ms (cache miss)
+48 http fetch GET 200 https://registry.npmjs.org/pg-cursor 1033ms (cache miss)
+49 http fetch GET 200 https://registry.npmjs.org/pg 1064ms (cache miss)
+50 timing idealTree:#root Completed in 2543ms
+51 silly fetch manifest pg-native@>=3.0.1
+52 http fetch GET 200 https://registry.npmjs.org/pg-native 987ms (cache miss)
+53 silly placeDep ROOT mustache@4.2.0 OK for: node-red-contrib-postgresql@0.14.0 want: ^4.2.0
+54 silly placeDep ROOT pg@8.11.3 OK for: node-red-contrib-postgresql@0.14.0 want: ^8.11.3
+55 silly placeDep ROOT pg-cursor@2.10.3 OK for: node-red-contrib-postgresql@0.14.0 want: ^2.10.3
+56 silly fetch manifest buffer-writer@2.0.0
+57 silly fetch manifest packet-reader@1.0.0
+58 silly fetch manifest pg-connection-string@^2.6.2
+59 silly fetch manifest pg-pool@^3.6.1
+60 silly fetch manifest pg-protocol@^1.6.0
+61 silly fetch manifest pg-types@^2.1.0
+62 silly fetch manifest pgpass@1.x
+63 silly fetch manifest pg-cloudflare@^1.1.1
+64 http fetch GET 200 https://registry.npmjs.org/packet-reader 98ms (cache miss)
+65 http fetch GET 200 https://registry.npmjs.org/buffer-writer 106ms (cache miss)
+66 http fetch GET 200 https://registry.npmjs.org/pg-connection-string 105ms (cache miss)
+67 http fetch GET 200 https://registry.npmjs.org/pg-cloudflare 177ms (cache miss)
+68 http fetch GET 200 https://registry.npmjs.org/pgpass 185ms (cache miss)
+69 http fetch GET 200 https://registry.npmjs.org/pg-protocol 199ms (cache miss)
+70 http fetch GET 200 https://registry.npmjs.org/pg-pool 207ms (cache miss)
+71 http fetch GET 200 https://registry.npmjs.org/pg-types 207ms (cache miss)
+72 timing idealTree:node_modules/node-red-contrib-postgresql Completed in 1241ms
+73 timing idealTree:node_modules/mustache Completed in 0ms
+74 silly fetch manifest pg@>=8.0
+75 silly placeDep ROOT buffer-writer@2.0.0 OK for: pg@8.11.3 want: 2.0.0
+76 silly placeDep ROOT packet-reader@1.0.0 OK for: pg@8.11.3 want: 1.0.0
+77 silly placeDep ROOT pg-cloudflare@1.1.1 OK for: pg@8.11.3 want: ^1.1.1
+78 silly placeDep ROOT pg-connection-string@2.6.2 OK for: pg@8.11.3 want: ^2.6.2
+79 silly placeDep ROOT pg-pool@3.6.1 OK for: pg@8.11.3 want: ^3.6.1
+80 silly placeDep ROOT pg-protocol@1.6.0 OK for: pg@8.11.3 want: ^1.6.0
+81 silly placeDep ROOT pg-types@2.2.0 OK for: pg@8.11.3 want: ^2.1.0
+82 silly placeDep ROOT pgpass@1.0.5 OK for: pg@8.11.3 want: 1.x
+83 silly fetch manifest pg-int8@1.0.1
+84 silly fetch manifest postgres-array@~2.0.0
+85 silly fetch manifest postgres-bytea@~1.0.0
+86 silly fetch manifest postgres-date@~1.0.4
+87 silly fetch manifest postgres-interval@^1.1.0
+88 silly fetch manifest split2@^4.1.0
+89 http fetch GET 200 https://registry.npmjs.org/pg-int8 133ms (cache miss)
+90 http fetch GET 200 https://registry.npmjs.org/postgres-bytea 132ms (cache miss)
+91 http fetch GET 200 https://registry.npmjs.org/postgres-date 131ms (cache miss)
+92 http fetch GET 200 https://registry.npmjs.org/postgres-interval 128ms (cache miss)
+93 http fetch GET 200 https://registry.npmjs.org/postgres-array 143ms (cache miss)
+94 http fetch GET 200 https://registry.npmjs.org/split2 180ms (cache miss)
+95 timing idealTree:node_modules/pg Completed in 250ms
+96 timing idealTree:node_modules/buffer-writer Completed in 0ms
+97 timing idealTree:node_modules/packet-reader Completed in 0ms
+98 timing idealTree:node_modules/pg-cloudflare Completed in 0ms
+99 timing idealTree:node_modules/pg-connection-string Completed in 0ms
+100 timing idealTree:node_modules/pg-cursor Completed in 0ms
+101 timing idealTree:node_modules/pg-pool Completed in 0ms
+102 timing idealTree:node_modules/pg-protocol Completed in 2ms
+103 silly placeDep ROOT pg-int8@1.0.1 OK for: pg-types@2.2.0 want: 1.0.1
+104 silly placeDep ROOT postgres-array@2.0.0 OK for: pg-types@2.2.0 want: ~2.0.0
+105 silly placeDep ROOT postgres-bytea@1.0.0 OK for: pg-types@2.2.0 want: ~1.0.0
+106 silly placeDep ROOT postgres-date@1.0.7 OK for: pg-types@2.2.0 want: ~1.0.4
+107 silly placeDep ROOT postgres-interval@1.2.0 OK for: pg-types@2.2.0 want: ^1.1.0
+108 silly fetch manifest xtend@^4.0.0
+109 http fetch GET 200 https://registry.npmjs.org/xtend 165ms (cache miss)
+110 timing idealTree:node_modules/pg-types Completed in 191ms
+111 timing idealTree:node_modules/pg-int8 Completed in 0ms
+112 silly placeDep ROOT split2@4.2.0 OK for: pgpass@1.0.5 want: ^4.1.0
+113 timing idealTree:node_modules/pgpass Completed in 2ms
+114 timing idealTree:node_modules/postgres-array Completed in 0ms
+115 timing idealTree:node_modules/postgres-bytea Completed in 0ms
+116 timing idealTree:node_modules/postgres-date Completed in 0ms
+117 silly placeDep ROOT xtend@4.0.2 OK for: postgres-interval@1.2.0 want: ^4.0.0
+118 timing idealTree:node_modules/postgres-interval Completed in 4ms
+119 timing idealTree:node_modules/split2 Completed in 0ms
+120 timing idealTree:node_modules/xtend Completed in 0ms
+121 timing idealTree:buildDeps Completed in 4255ms
+122 timing idealTree:fixDepFlags Completed in 4ms
+123 timing idealTree Completed in 4419ms
+124 timing reify:loadTrees Completed in 4422ms
+125 timing reify:diffTrees Completed in 12ms
+126 silly reify moves {}
+127 timing reify:retireShallow Completed in 3ms
+128 timing reify:createSparse Completed in 14ms
+129 timing reify:trashOmits Completed in 0ms
+130 timing reify:loadBundles Completed in 0ms
+131 silly tarball no local data for split2@https://registry.npmjs.org/split2/-/split2-4.2.0.tgz. Extracting by manifest.
+132 silly tarball no local data for postgres-bytea@https://registry.npmjs.org/postgres-bytea/-/postgres-bytea-1.0.0.tgz. Extracting by manifest.
+133 silly tarball no local data for postgres-array@https://registry.npmjs.org/postgres-array/-/postgres-array-2.0.0.tgz. Extracting by manifest.
+134 silly tarball no local data for postgres-date@https://registry.npmjs.org/postgres-date/-/postgres-date-1.0.7.tgz. Extracting by manifest.
+135 silly tarball no local data for pg-int8@https://registry.npmjs.org/pg-int8/-/pg-int8-1.0.1.tgz. Extracting by manifest.
+136 silly tarball no local data for pg-types@https://registry.npmjs.org/pg-types/-/pg-types-2.2.0.tgz. Extracting by manifest.
+137 silly tarball no local data for pg-protocol@https://registry.npmjs.org/pg-protocol/-/pg-protocol-1.6.0.tgz. Extracting by manifest.
+138 silly tarball no local data for pg-pool@https://registry.npmjs.org/pg-pool/-/pg-pool-3.6.1.tgz. Extracting by manifest.
+139 silly tarball no local data for postgres-interval@https://registry.npmjs.org/postgres-interval/-/postgres-interval-1.2.0.tgz. Extracting by manifest.
+140 silly tarball no local data for xtend@https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz. Extracting by manifest.
+141 silly tarball no local data for packet-reader@https://registry.npmjs.org/packet-reader/-/packet-reader-1.0.0.tgz. Extracting by manifest.
+142 silly tarball no local data for buffer-writer@https://registry.npmjs.org/buffer-writer/-/buffer-writer-2.0.0.tgz. Extracting by manifest.
+143 silly tarball no local data for pg-cursor@https://registry.npmjs.org/pg-cursor/-/pg-cursor-2.10.3.tgz. Extracting by manifest.
+144 silly tarball no local data for mustache@https://registry.npmjs.org/mustache/-/mustache-4.2.0.tgz. Extracting by manifest.
+145 silly tarball no local data for pg@https://registry.npmjs.org/pg/-/pg-8.11.3.tgz. Extracting by manifest.
+146 silly tarball no local data for pgpass@https://registry.npmjs.org/pgpass/-/pgpass-1.0.5.tgz. Extracting by manifest.
+147 silly tarball no local data for pg-connection-string@https://registry.npmjs.org/pg-connection-string/-/pg-connection-string-2.6.2.tgz. Extracting by manifest.
+148 silly tarball no local data for pg-cloudflare@https://registry.npmjs.org/pg-cloudflare/-/pg-cloudflare-1.1.1.tgz. Extracting by manifest.
+149 silly tarball no local data for node-red-contrib-postgresql@https://registry.npmjs.org/node-red-contrib-postgresql/-/node-red-contrib-postgresql-0.14.0.tgz. Extracting by manifest.
+150 http fetch GET 200 https://registry.npmjs.org/postgres-array/-/postgres-array-2.0.0.tgz 476ms (cache miss)
+151 timing reifyNode:node_modules/postgres-array Completed in 534ms
+152 http fetch GET 200 https://registry.npmjs.org/pg-int8/-/pg-int8-1.0.1.tgz 475ms (cache miss)
+153 timing reifyNode:node_modules/pg-int8 Completed in 541ms
+154 http fetch GET 200 https://registry.npmjs.org/postgres-bytea/-/postgres-bytea-1.0.0.tgz 503ms (cache miss)
+155 timing reifyNode:node_modules/postgres-bytea Completed in 555ms
+156 http fetch GET 200 https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz 474ms (cache miss)
+157 timing reifyNode:node_modules/xtend Completed in 562ms
+158 http fetch GET 200 https://registry.npmjs.org/pgpass/-/pgpass-1.0.5.tgz 455ms (cache miss)
+159 timing reifyNode:node_modules/pgpass Completed in 568ms
+160 http fetch GET 200 https://registry.npmjs.org/split2/-/split2-4.2.0.tgz 527ms (cache miss)
+161 timing reifyNode:node_modules/split2 Completed in 576ms
+162 http fetch GET 200 https://registry.npmjs.org/postgres-date/-/postgres-date-1.0.7.tgz 517ms (cache miss)
+163 timing reifyNode:node_modules/postgres-date Completed in 580ms
+164 http fetch GET 200 https://registry.npmjs.org/packet-reader/-/packet-reader-1.0.0.tgz 491ms (cache miss)
+165 timing reifyNode:node_modules/packet-reader Completed in 580ms
+166 http fetch GET 200 https://registry.npmjs.org/pg-connection-string/-/pg-connection-string-2.6.2.tgz 432ms (cache miss)
+167 timing reifyNode:node_modules/pg-connection-string Completed in 583ms
+168 http fetch GET 200 https://registry.npmjs.org/pg-cloudflare/-/pg-cloudflare-1.1.1.tgz 434ms (cache miss)
+169 timing reifyNode:node_modules/pg-cloudflare Completed in 587ms
+170 http fetch GET 200 https://registry.npmjs.org/postgres-interval/-/postgres-interval-1.2.0.tgz 509ms (cache miss)
+171 timing reifyNode:node_modules/postgres-interval Completed in 592ms
+172 http fetch GET 200 https://registry.npmjs.org/pg-cursor/-/pg-cursor-2.10.3.tgz 509ms (cache miss)
+173 timing reifyNode:node_modules/pg-cursor Completed in 605ms
+174 http fetch GET 200 https://registry.npmjs.org/buffer-writer/-/buffer-writer-2.0.0.tgz 516ms (cache miss)
+175 timing reifyNode:node_modules/buffer-writer Completed in 608ms
+176 http fetch GET 200 https://registry.npmjs.org/pg-types/-/pg-types-2.2.0.tgz 559ms (cache miss)
+177 timing reifyNode:node_modules/pg-types Completed in 629ms
+178 http fetch GET 200 https://registry.npmjs.org/pg-pool/-/pg-pool-3.6.1.tgz 560ms (cache miss)
+179 timing reifyNode:node_modules/pg-pool Completed in 637ms
+180 http fetch GET 200 https://registry.npmjs.org/pg/-/pg-8.11.3.tgz 564ms (cache miss)
+181 timing reifyNode:node_modules/pg Completed in 666ms
+182 http fetch GET 200 https://registry.npmjs.org/pg-protocol/-/pg-protocol-1.6.0.tgz 610ms (cache miss)
+183 timing reifyNode:node_modules/pg-protocol Completed in 685ms
+184 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-postgresql/-/node-red-contrib-postgresql-0.14.0.tgz 524ms (cache miss)
+185 timing reifyNode:node_modules/node-red-contrib-postgresql Completed in 682ms
+186 http fetch GET 200 https://registry.npmjs.org/mustache/-/mustache-4.2.0.tgz 590ms (cache miss)
+187 timing reifyNode:node_modules/mustache Completed in 686ms
+188 timing reify:unpack Completed in 696ms
+189 timing reify:unretire Completed in 0ms
+190 timing build:queue Completed in 1ms
+191 timing build:link:node_modules/mustache Completed in 6ms
+192 timing build:link Completed in 7ms
+193 timing build:deps Completed in 11ms
+194 timing build Completed in 11ms
+195 timing reify:build Completed in 12ms
+196 timing reify:trash Completed in 0ms
+197 timing reify:save Completed in 58ms
+198 timing reify Completed in 5271ms
+199 silly ADD node_modules/xtend
+200 silly ADD node_modules/split2
+201 silly ADD node_modules/postgres-interval
+202 silly ADD node_modules/postgres-date
+203 silly ADD node_modules/postgres-bytea
+204 silly ADD node_modules/postgres-array
+205 silly ADD node_modules/pg-int8
+206 silly ADD node_modules/pgpass
+207 silly ADD node_modules/pg-types
+208 silly ADD node_modules/pg-protocol
+209 silly ADD node_modules/pg-pool
+210 silly ADD node_modules/pg-connection-string
+211 silly ADD node_modules/pg-cloudflare
+212 silly ADD node_modules/packet-reader
+213 silly ADD node_modules/buffer-writer
+214 silly ADD node_modules/pg-cursor
+215 silly ADD node_modules/pg
+216 silly ADD node_modules/mustache
+217 silly ADD node_modules/node-red-contrib-postgresql
+218 timing command:install Completed in 5287ms
+219 verbose exit 0
+220 timing npm Completed in 5700ms
+221 info ok

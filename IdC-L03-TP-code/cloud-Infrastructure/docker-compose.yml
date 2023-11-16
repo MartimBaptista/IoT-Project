@@ -43,6 +43,36 @@ services:
           idc-net:
               ipv4_address: 172.100.10.14
 
+  db:
+      image: postgres
+      restart: always
+      expose:
+        - 5432
+      ports:
+        - 5432:5432
+      environment:
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=admin
+        - POSTGRES_DB=database
+      networks:
+          idc-net:
+              ipv4_address: 172.100.10.13
+      volumes:
+        - ./data/DB-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+      PGADMIN_LISTEN_PORT: "5050"
+    ports:
+      - 5050:5050
+    networks:
+          idc-net:
+              ipv4_address: 172.100.10.12
+    
 #
 # Add more containers
 #

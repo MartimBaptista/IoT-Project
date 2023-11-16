@@ -61,6 +61,31 @@
         "willPayload": ""
     },
     {
+        "id": "566d95256d190e9f",
+        "type": "postgreSQLConfig",
+        "name": "PostgresDB",
+        "host": "172.100.10.13",
+        "hostFieldType": "str",
+        "port": "5432",
+        "portFieldType": "num",
+        "database": "database",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": "10",
+        "maxFieldType": "num",
+        "idle": "1000",
+        "idleFieldType": "num",
+        "connectionTimeout": "10000",
+        "connectionTimeoutFieldType": "num",
+        "user": "admin",
+        "userFieldType": "str",
+        "password": "admin",
+        "passwordFieldType": "str"
+    },
+    {
         "id": "3cc11d24.ff01a2",
         "type": "comment",
         "z": "f6f2187d.f17ca8",
@@ -371,6 +396,112 @@
         "wires": [
             [
                 "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "5a3316af34d12ca7",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "CREATE TABLE test (\n    testValue int\n);",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 990,
+        "y": 280,
+        "wires": [
+            [
+                "5008a00b2fcc2a72"
+            ]
+        ]
+    },
+    {
+        "id": "816be605dca77e27",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 790,
+        "y": 280,
+        "wires": [
+            [
+                "5a3316af34d12ca7"
+            ]
+        ]
+    },
+    {
+        "id": "5008a00b2fcc2a72",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7e81ccbe2a02160c",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "043e16ba56cbd5d1",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "INSERT INTO test VALUES (1);\nINSERT INTO test VALUES (3);\nINSERT INTO test VALUES (2);",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 990,
+        "y": 340,
+        "wires": [
+            [
+                "7e81ccbe2a02160c"
+            ]
+        ]
+    },
+    {
+        "id": "66cce16df2672b23",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 790,
+        "y": 340,
+        "wires": [
+            [
+                "043e16ba56cbd5d1"
             ]
         ]
     }
