@@ -1,0 +1,1 @@
+Before pushing do "sudo chmod -R 777 data" so git can access and push all
