@@ -1,3 +1,5 @@
+Start using "docker-compose -f cloud-Infrastructure/docker-compose.yml up -d" if you dont want it to detahc from the terminal remove -d flag
+
 Before pushing do "sudo chmod -R 777 data" so git can access and push all
 
 If DB port is in use, do the following "sudo kill -9 $(lsof -ti:5432)" if this doesnt work do "sudo lsof -ti:5432" and "sudo kill -9 *OUTPUT DO LSOF*"

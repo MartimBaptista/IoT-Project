@@ -591,10 +591,10 @@
         "wires": []
     },
     {
-        "id": "1806c9f34397d367",
+        "id": "2c5f4fc628821511",
         "type": "exec",
         "z": "f6f2187d.f17ca8",
-        "command": "python3 mqtt-pub.py",
+        "command": "ls",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -602,22 +602,22 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 880,
-        "y": 600,
+        "x": 890,
+        "y": 540,
         "wires": [
             [
-                "bce17dabd6c221fa"
+                "ef93ce170a5fa2de"
             ],
             [
-                "4d7edd3a14081c31"
+                "379163cbb6023287"
             ],
             [
-                "5bf7bca58edaa3b8"
+                "5cf7d3f9be98ea66"
             ]
         ]
     },
     {
-        "id": "d333dc4802be1fd8",
+        "id": "7fb507265bf95d6c",
         "type": "inject",
         "z": "f6f2187d.f17ca8",
         "name": "",
@@ -637,16 +637,16 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 700,
-        "y": 600,
+        "x": 750,
+        "y": 540,
         "wires": [
             [
-                "1806c9f34397d367"
+                "2c5f4fc628821511"
             ]
         ]
     },
     {
-        "id": "bce17dabd6c221fa",
+        "id": "ef93ce170a5fa2de",
         "type": "debug",
         "z": "f6f2187d.f17ca8",
         "name": "debug 7",
@@ -657,12 +657,12 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
-        "y": 560,
+        "x": 1050,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "4d7edd3a14081c31",
+        "id": "379163cbb6023287",
         "type": "debug",
         "z": "f6f2187d.f17ca8",
         "name": "debug 8",
@@ -673,12 +673,12 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
-        "y": 600,
+        "x": 1060,
+        "y": 560,
         "wires": []
     },
     {
-        "id": "5bf7bca58edaa3b8",
+        "id": "5cf7d3f9be98ea66",
         "type": "debug",
         "z": "f6f2187d.f17ca8",
         "name": "debug 9",
@@ -689,8 +689,199 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
-        "y": 640,
+        "x": 1050,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1c4a9242ccafc851",
+        "type": "exec",
+        "z": "f6f2187d.f17ca8",
+        "command": "pwd",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1070,
+        "y": 420,
+        "wires": [
+            [
+                "dc5897e2d4bb8e95"
+            ],
+            [
+                "f1926ccc8a984187"
+            ],
+            [
+                "6706322d4700c8f0"
+            ]
+        ]
+    },
+    {
+        "id": "a493a71a36af097c",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 930,
+        "y": 420,
+        "wires": [
+            [
+                "1c4a9242ccafc851"
+            ]
+        ]
+    },
+    {
+        "id": "dc5897e2d4bb8e95",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f1926ccc8a984187",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "6706322d4700c8f0",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "71808ae9c2f6163a",
+        "type": "file in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "filename": "/data/trainning.data",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 310,
+        "y": 800,
+        "wires": [
+            [
+                "2f69c7cf44aec66f"
+            ]
+        ]
+    },
+    {
+        "id": "529fff1d3372ede8",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 800,
+        "wires": [
+            [
+                "71808ae9c2f6163a"
+            ]
+        ]
+    },
+    {
+        "id": "2f69c7cf44aec66f",
+        "type": "csv",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "1",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 470,
+        "y": 800,
+        "wires": [
+            [
+                "7f12a0b824251996"
+            ]
+        ]
+    },
+    {
+        "id": "7f12a0b824251996",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 800,
         "wires": []
     }
 ]
