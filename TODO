@@ -1,9 +1,17 @@
+-Use node red or the web app (python w/ flask) as main processor
+  -Test DB connectivity with python
+
 -DB
   -Find out what actually needs to be there
   -Set up the DB single time or automated
--AI predictor
+  
+-ML predictor
   -Train the model
   -hook up to flask
+
 -Node Red
-  -Use as main program connecting everything
   -Set up the dashboard
+
+-Clean up code in client-phone-simulator and add cli/args to get client id (student id)
+
+-Makefile???
