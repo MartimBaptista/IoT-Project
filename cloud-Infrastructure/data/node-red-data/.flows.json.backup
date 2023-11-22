@@ -1,0 +1,642 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "037aecdc6926ce9a",
+        "type": "mqtt-broker",
+        "name": "IdC",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": false,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f5279b01.b328d8",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "566d95256d190e9f",
+        "type": "postgreSQLConfig",
+        "name": "PostgresDB",
+        "host": "172.100.10.13",
+        "hostFieldType": "str",
+        "port": "5432",
+        "portFieldType": "num",
+        "database": "database",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": "10",
+        "maxFieldType": "num",
+        "idle": "1000",
+        "idleFieldType": "num",
+        "connectionTimeout": "10000",
+        "connectionTimeoutFieldType": "num",
+        "user": "admin",
+        "userFieldType": "str",
+        "password": "admin",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "85ee7547c83fb2fb",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "966177e57dbd7d21",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "idc/iris",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "037aecdc6926ce9a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 640,
+        "wires": [
+            [
+                "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "b5f343a20278eea1",
+        "type": "http request",
+        "z": "f6f2187d.f17ca8",
+        "name": "Predict Service",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://app:8000/predict",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "85ee7547c83fb2fb"
+            ]
+        ]
+    },
+    {
+        "id": "79f05988ab6ded28",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "55d85d4957c06c5e"
+            ]
+        ]
+    },
+    {
+        "id": "305b9fa387c77222",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "55d85d4957c06c5e",
+        "type": "http request",
+        "z": "f6f2187d.f17ca8",
+        "name": "Health Service",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://app:8000/health",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "305b9fa387c77222"
+            ]
+        ]
+    },
+    {
+        "id": "bd0817e58c32174a",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Iris-KNN",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"model\":\"iris-KNN\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 580,
+        "wires": [
+            [
+                "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "15dc23581e715dea",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Iris-GNB",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"model\":\"iris-GNB\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 520,
+        "wires": [
+            [
+                "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "1b4c1fc9240a787b",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Iris-SVC",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"model\":\"iris-SVC\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 460,
+        "wires": [
+            [
+                "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "5d7fa6dbca76c986",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Iris-DT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"model\":\"iris-DT\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
+        "payloadType": "json",
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "fa76cd47cd404c07",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Iris-LDA",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"model\":\"iris-LDA\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "e2c8d2430fd78714",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Iris-LR",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"model\":\"iris-LR\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
+        "payloadType": "json",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "b5f343a20278eea1"
+            ]
+        ]
+    },
+    {
+        "id": "5a3316af34d12ca7",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "CREATE TABLE test (\n    testValue int\n);",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1070,
+        "y": 100,
+        "wires": [
+            [
+                "5008a00b2fcc2a72"
+            ]
+        ]
+    },
+    {
+        "id": "816be605dca77e27",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 870,
+        "y": 100,
+        "wires": [
+            [
+                "5a3316af34d12ca7"
+            ]
+        ]
+    },
+    {
+        "id": "5008a00b2fcc2a72",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "7e81ccbe2a02160c",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "043e16ba56cbd5d1",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "INSERT INTO test VALUES (1);\nINSERT INTO test VALUES (3);\nINSERT INTO test VALUES (2);",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1070,
+        "y": 160,
+        "wires": [
+            [
+                "7e81ccbe2a02160c"
+            ]
+        ]
+    },
+    {
+        "id": "66cce16df2672b23",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 870,
+        "y": 160,
+        "wires": [
+            [
+                "043e16ba56cbd5d1"
+            ]
+        ]
+    },
+    {
+        "id": "5d19779bd6040836",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "Test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f5279b01.b328d8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1130,
+        "y": 240,
+        "wires": [
+            [
+                "b5ee62b53fb559f2"
+            ]
+        ]
+    },
+    {
+        "id": "62a20df8d576c231",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "Test",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f5279b01.b328d8",
+        "x": 1010,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b5ee62b53fb559f2",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d483d6384027fe41",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello",
+        "payloadType": "str",
+        "x": 870,
+        "y": 240,
+        "wires": [
+            [
+                "62a20df8d576c231"
+            ]
+        ]
+    },
+    {
+        "id": "b80eb2d20961c534",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "DB abd MQTT test/demo",
+        "info": "",
+        "x": 910,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "1806c9f34397d367",
+        "type": "exec",
+        "z": "f6f2187d.f17ca8",
+        "command": "python3 /home/martin/Documents/Mestrado/IoT/IoT-Project/mqtt-pub.py",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1080,
+        "y": 600,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d333dc4802be1fd8",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 700,
+        "y": 600,
+        "wires": [
+            [
+                "1806c9f34397d367"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,10 @@
+-Set mqtt to send the online data
+-DB
+  -Find out what actually needs to be there
+  -Set up the DB single time or automated
+-AI predictor
+  -Train the model
+  -hook up to flask
+-Node Red
+  -Use as main program connecting everything
+  -Set up the dashboard
