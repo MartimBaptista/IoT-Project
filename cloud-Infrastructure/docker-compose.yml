@@ -42,6 +42,8 @@ services:
       networks:
           idc-net:
               ipv4_address: 172.100.10.14
+      volumes:
+        - ./data/app-data:/app
 
   db:
       image: postgres

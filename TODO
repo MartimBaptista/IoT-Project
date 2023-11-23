@@ -1,9 +1,10 @@
--Use node red or the web app (python w/ flask) as main processor
-  -Test DB connectivity with python
+-Use Node red as the main processor
+  -Send training data to ML for traning
+  -Receive data from Client and store it (with prediction)
 
 -DB
-  -Find out what actually needs to be there
   -Set up the DB single time or automated
+  -Will store the data from the clients phone
   
 -ML predictor
   -Train the model

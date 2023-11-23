@@ -591,212 +591,6 @@
         "wires": []
     },
     {
-        "id": "2c5f4fc628821511",
-        "type": "exec",
-        "z": "f6f2187d.f17ca8",
-        "command": "ls",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 890,
-        "y": 540,
-        "wires": [
-            [
-                "ef93ce170a5fa2de"
-            ],
-            [
-                "379163cbb6023287"
-            ],
-            [
-                "5cf7d3f9be98ea66"
-            ]
-        ]
-    },
-    {
-        "id": "7fb507265bf95d6c",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 750,
-        "y": 540,
-        "wires": [
-            [
-                "2c5f4fc628821511"
-            ]
-        ]
-    },
-    {
-        "id": "ef93ce170a5fa2de",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "379163cbb6023287",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1060,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "5cf7d3f9be98ea66",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "1c4a9242ccafc851",
-        "type": "exec",
-        "z": "f6f2187d.f17ca8",
-        "command": "pwd",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1070,
-        "y": 420,
-        "wires": [
-            [
-                "dc5897e2d4bb8e95"
-            ],
-            [
-                "f1926ccc8a984187"
-            ],
-            [
-                "6706322d4700c8f0"
-            ]
-        ]
-    },
-    {
-        "id": "a493a71a36af097c",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 930,
-        "y": 420,
-        "wires": [
-            [
-                "1c4a9242ccafc851"
-            ]
-        ]
-    },
-    {
-        "id": "dc5897e2d4bb8e95",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1230,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "f1926ccc8a984187",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 11",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1240,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "6706322d4700c8f0",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1230,
-        "y": 480,
-        "wires": []
-    },
-    {
         "id": "71808ae9c2f6163a",
         "type": "file in",
         "z": "f6f2187d.f17ca8",
@@ -883,5 +677,74 @@
         "x": 620,
         "y": 800,
         "wires": []
+    },
+    {
+        "id": "c67c15e6a0d10fae",
+        "type": "http request",
+        "z": "f6f2187d.f17ca8",
+        "name": "train",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://app:8000/train",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 910,
+        "y": 680,
+        "wires": [
+            [
+                "265f1ec2a088ad5e"
+            ]
+        ]
+    },
+    {
+        "id": "265f1ec2a088ad5e",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "bb0518675f20f213",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 780,
+        "y": 680,
+        "wires": [
+            [
+                "c67c15e6a0d10fae"
+            ]
+        ]
     }
 ]
