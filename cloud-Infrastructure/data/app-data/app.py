@@ -19,7 +19,7 @@ from modules.functions import get_model_response
 
 app = Flask(__name__)
 
-def scale01(x):
+def scaleData(x):
   return (x - x.min())/(x.max() - x.min())
 
 @app.route('/health', methods=['GET'])
@@ -41,35 +41,48 @@ def predict():
     model_name = feature_dict[0]['model']
     model = joblib.load('model/' + model_name + '.dat.gz')
     data.append(feature_dict[1])
+    print(feature_dict)
     response = get_model_response(data, model)
   except ValueError as e:
     return {'error': str(e).split('\n')[-1].strip()}, 500
 
   return response, 200
 
+@app.route('/predict_new', methods=['POST'])
+def predict_new():
+  #check that its not empty and valid
+  data = list(map(float, request.data.decode("utf-8").split(",")))
+  #TODO: findout how to scale this?
+  #Very that the file exists
+  model = joblib.load('model/KKN.dat.gz')
+  print(data)
+  print(model.predict([data]))
+
+  return "ok"
+
 
 @app.route('/train', methods=['GET'])
 def train():
-  # #Loading data
-  # data = np.array(pd.read_csv('data/trainning.data', delimiter=';').values[: , 2:], dtype = float)
-  # (N, d) = data.shape
+  #Loading data
+  data = np.array(pd.read_csv('data/trainning.data', delimiter=';').values[: , 2:], dtype = float)
+  (N, d) = data.shape
 
-  # #Scaling data
-  # for var in range(1, 7):
-  #   data[:, var] = scale01(data[:, var])
+  #Scaling data TODO: find out how to scale the received data
+  #for var in range(1, 7):
+  #  data[:, var] = scaleData(data[:, var])
 
-  # #Spliting Data into inputs (gyro scope data)
-  # inputs = data[:, 1:]
-  # outputs = data[:, 0]
+  #Spliting Data into inputs (gyro scope data)
+  inputs = data[:, 1:]
+  outputs = data[:, 0]
 
   #Fitting the model
-  #KNN = KNeighborsClassifier(n_neighbors = 3, weights = 'uniform')
-  #KNN.fit(inputs, outputs)
+  KNN = KNeighborsClassifier(n_neighbors = 6, weights = 'distance')
+  KNN.fit(inputs, outputs)
 
   #Saving the model
-  #joblib.dump(KNN, 'model/KKN')
+  joblib.dump(KNN, 'model/KKN.dat.gz')
 
-  return "training..."
+  return "ok", 200
 
 
 if __name__ == '__main__':

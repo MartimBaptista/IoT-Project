@@ -682,7 +682,7 @@
         "id": "c67c15e6a0d10fae",
         "type": "http request",
         "z": "f6f2187d.f17ca8",
-        "name": "Health Service",
+        "name": "train",
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
@@ -694,7 +694,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1040,
+        "x": 910,
         "y": 680,
         "wires": [
             [
@@ -714,9 +714,70 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1280,
+        "x": 1040,
         "y": 680,
         "wires": []
+    },
+    {
+        "id": "a64daadc9d4dd331",
+        "type": "http request",
+        "z": "f6f2187d.f17ca8",
+        "name": "Predict Service",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://app:8000/predict_new",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1040,
+        "y": 380,
+        "wires": [
+            [
+                "7a2bf66b6a83af03"
+            ]
+        ]
+    },
+    {
+        "id": "7a2bf66b6a83af03",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "5948fcfd2b76b95d",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "idc/FC56323",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "f5279b01.b328d8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 630,
+        "y": 380,
+        "wires": [
+            [
+                "5251bdf037521b72"
+            ]
+        ]
     },
     {
         "id": "bb0518675f20f213",
@@ -746,5 +807,42 @@
                 "c67c15e6a0d10fae"
             ]
         ]
+    },
+    {
+        "id": "5251bdf037521b72",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Remove date and time",
+        "func": "msg.payload = msg.payload.split(';').slice(2);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 380,
+        "wires": [
+            [
+                "a64daadc9d4dd331",
+                "c81c32d8a2e55739"
+            ]
+        ]
+    },
+    {
+        "id": "c81c32d8a2e55739",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 340,
+        "wires": []
     }
 ]

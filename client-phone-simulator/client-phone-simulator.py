@@ -17,7 +17,7 @@ client.on_connect=on_connect
 client.connect(broker_hostname, port)
 client.loop_start()
 
-topic = "dc/FC56323"
+topic = "idc/FC56323"
 
 with open("online.data", "r") as file:
     msg = [line.rstrip() for line in file]
@@ -26,7 +26,7 @@ try:
     msg_count = 1
     while msg_count < len(msg):
         time.sleep(1)
-        current_msg = datetime.now().strftime("%m/%d/%y;%H:%M:%S:000000000") + msg[msg_count]
+        current_msg = datetime.now().strftime("%m/%d/%y;%H:%M:%S:000000000;") + msg[msg_count]
         result = client.publish(topic, current_msg)
         status = result[0]
         if status == 0:
