@@ -2,6 +2,6 @@ Start using "docker-compose -f cloud-Infrastructure/docker-compose.yml up -d" if
 
 Before pushing do "sudo chmod -R 777 data" so git can access and push all
 
-If DB port is in use, do the following "sudo kill -9 $(lsof -ti:5432)" if this doesnt work do "sudo lsof -ti:5432" and "sudo kill -9 *OUTPUT DO LSOF*"
+If DB port is in use, do the following "sudo kill -9 $(sudo lsof -ti:5432)" if this doesnt work do "sudo lsof -ti:5432" and "sudo kill -9 *OUTPUT DO LSOF*"
 
 Might need to install paho to run mqtt stuff on python, run: "pip install paho-mqtt"
