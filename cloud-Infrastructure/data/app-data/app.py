@@ -55,10 +55,8 @@ def predict_new():
   #TODO: findout how to scale this?
   #Very that the file exists
   model = joblib.load('model/KKN.dat.gz')
-  print(data)
-  print(model.predict([data]))
 
-  return "ok"
+  return str(model.predict([data])), 200
 
 
 @app.route('/train', methods=['GET'])
