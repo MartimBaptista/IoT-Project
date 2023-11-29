@@ -86,6 +86,152 @@
         "passwordFieldType": "str"
     },
     {
+        "id": "4558b5a479f88a7a",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "4429aae43b37c326",
+        "type": "ui_group",
+        "name": "Chart Calorias",
+        "tab": "c6f79a2c0e9e2f01",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c6f79a2c0e9e2f01",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "086e043121d11401",
+        "type": "ui_group",
+        "name": "Introduction",
+        "tab": "c6f79a2c0e9e2f01",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3ba37fd4.6558f",
+        "type": "ui_group",
+        "name": "Example Flow",
+        "tab": "72415252.b2cadc",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "72415252.b2cadc",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "85ee7547c83fb2fb",
         "type": "debug",
         "z": "f6f2187d.f17ca8",
@@ -734,7 +880,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1040,
+        "x": 980,
         "y": 380,
         "wires": [
             [
@@ -754,7 +900,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1220,
+        "x": 1160,
         "y": 380,
         "wires": []
     },
@@ -812,15 +958,15 @@
         "id": "5251bdf037521b72",
         "type": "function",
         "z": "f6f2187d.f17ca8",
-        "name": "Remove date and time",
-        "func": "msg.payload = msg.payload.split(';').slice(2);\nreturn msg;",
+        "name": "Format data",
+        "func": "msg.payload = msg.payload.split(';').slice(2).toString();\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 820,
+        "x": 790,
         "y": 380,
         "wires": [
             [
@@ -841,8 +987,219 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
+        "x": 960,
         "y": 340,
         "wires": []
+    },
+    {
+        "id": "a1da816478b01fb6",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "086e043121d11401",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Welcome,",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 940,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "399c22ea5abcea7b",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Precisa de receber user.name para o msg.payload",
+        "info": "Precisa de receber user.name para o msg.payload",
+        "x": 950,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "8841da6e18a929f0",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "4429aae43b37c326",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Calorie Consuption",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "15000",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 530,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3fcc4fb38fab55c0",
+        "type": "ui_slider",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "4429aae43b37c326",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "15000",
+        "step": 1,
+        "className": "",
+        "x": 230,
+        "y": 980,
+        "wires": [
+            [
+                "8841da6e18a929f0"
+            ]
+        ]
+    },
+    {
+        "id": "918d1eb74676c809",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Receber dados caloricos e preencher",
+        "info": "",
+        "x": 530,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "eca9c0571cd9681f",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3d4d33bc2bdbe0cc",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 810,
+        "y": 1000,
+        "wires": [
+            [
+                "cc32805493c8ea22",
+                "32dc081c05bd8bfa"
+            ]
+        ]
+    },
+    {
+        "id": "cc32805493c8ea22",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 990,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "17d9848c7b093add",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "086e043121d11401",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Date: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 1130,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "32dc081c05bd8bfa",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Format Time",
+        "func": "var d = new Date();\nvar options = { timeZone: 'UTC', timeZoneName: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: `2-digit`, minute: `2-digit`, second: `2-digit`};\nvar _resultDate = d.toLocaleDateString('en-US', options);\nmsg.payload = _resultDate;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 990,
+        "y": 1040,
+        "wires": [
+            [
+                "17d9848c7b093add"
+            ]
+        ]
     }
 ]
