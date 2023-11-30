@@ -232,310 +232,6 @@
         "hidden": false
     },
     {
-        "id": "85ee7547c83fb2fb",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "966177e57dbd7d21",
-        "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "topic": "idc/iris",
-        "qos": "0",
-        "datatype": "auto-detect",
-        "broker": "037aecdc6926ce9a",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 150,
-        "y": 640,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "b5f343a20278eea1",
-        "type": "http request",
-        "z": "f6f2187d.f17ca8",
-        "name": "Predict Service",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://app:8000/predict",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 420,
-        "y": 460,
-        "wires": [
-            [
-                "85ee7547c83fb2fb"
-            ]
-        ]
-    },
-    {
-        "id": "79f05988ab6ded28",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 220,
-        "wires": [
-            [
-                "55d85d4957c06c5e"
-            ]
-        ]
-    },
-    {
-        "id": "305b9fa387c77222",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "55d85d4957c06c5e",
-        "type": "http request",
-        "z": "f6f2187d.f17ca8",
-        "name": "Health Service",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://app:8000/health",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 400,
-        "y": 220,
-        "wires": [
-            [
-                "305b9fa387c77222"
-            ]
-        ]
-    },
-    {
-        "id": "bd0817e58c32174a",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-KNN",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-KNN\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 580,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "15dc23581e715dea",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-GNB",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-GNB\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 520,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "1b4c1fc9240a787b",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-SVC",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-SVC\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 460,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "5d7fa6dbca76c986",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-DT",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-DT\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 150,
-        "y": 400,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "fa76cd47cd404c07",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-LDA",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-LDA\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 280,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "e2c8d2430fd78714",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-LR",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-LR\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 150,
-        "y": 340,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
         "id": "5a3316af34d12ca7",
         "type": "postgresql",
         "z": "f6f2187d.f17ca8",
@@ -748,11 +444,12 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 310,
-        "y": 800,
+        "x": 270,
+        "y": 240,
         "wires": [
             [
-                "2f69c7cf44aec66f"
+                "c67c15e6a0d10fae",
+                "20f2bb31b0c35ce5"
             ]
         ]
     },
@@ -780,32 +477,7 @@
         "x": 140,
         "y": 800,
         "wires": [
-            [
-                "71808ae9c2f6163a"
-            ]
-        ]
-    },
-    {
-        "id": "2f69c7cf44aec66f",
-        "type": "csv",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "sep": ",",
-        "hdrin": "",
-        "hdrout": "none",
-        "multi": "one",
-        "ret": "\\n",
-        "temp": "",
-        "skip": "1",
-        "strings": true,
-        "include_empty_strings": "",
-        "include_null_values": "",
-        "x": 470,
-        "y": 800,
-        "wires": [
-            [
-                "7f12a0b824251996"
-            ]
+            []
         ]
     },
     {
@@ -820,7 +492,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
+        "x": 500,
         "y": 800,
         "wires": []
     },
@@ -829,7 +501,7 @@
         "type": "http request",
         "z": "f6f2187d.f17ca8",
         "name": "train",
-        "method": "GET",
+        "method": "POST",
         "ret": "txt",
         "paytoqs": "ignore",
         "url": "http://app:8000/train",
@@ -840,8 +512,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 910,
-        "y": 680,
+        "x": 430,
+        "y": 240,
         "wires": [
             [
                 "265f1ec2a088ad5e"
@@ -860,8 +532,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1040,
-        "y": 680,
+        "x": 560,
+        "y": 240,
         "wires": []
     },
     {
@@ -872,7 +544,7 @@
         "method": "POST",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://app:8000/predict_new",
+        "url": "http://app:8000/predict",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -880,8 +552,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 980,
-        "y": 380,
+        "x": 440,
+        "y": 140,
         "wires": [
             [
                 "7a2bf66b6a83af03"
@@ -900,8 +572,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1160,
-        "y": 380,
+        "x": 620,
+        "y": 140,
         "wires": []
     },
     {
@@ -917,8 +589,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 630,
-        "y": 380,
+        "x": 90,
+        "y": 140,
         "wires": [
             [
                 "5251bdf037521b72"
@@ -946,11 +618,11 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 780,
-        "y": 680,
+        "x": 100,
+        "y": 240,
         "wires": [
             [
-                "c67c15e6a0d10fae"
+                "71808ae9c2f6163a"
             ]
         ]
     },
@@ -966,8 +638,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 790,
-        "y": 380,
+        "x": 250,
+        "y": 140,
         "wires": [
             [
                 "a64daadc9d4dd331",
@@ -984,11 +656,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 340,
+        "x": 420,
+        "y": 100,
         "wires": []
     },
     {
@@ -1156,11 +829,14 @@
         "type": "debug",
         "z": "f6f2187d.f17ca8",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
         "x": 990,
         "y": 1000,
         "wires": []
@@ -1174,7 +850,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Date: ",
+        "label": "",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
@@ -1201,5 +877,31 @@
                 "17d9848c7b093add"
             ]
         ]
+    },
+    {
+        "id": "03994f40962dce6a",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Receives client phone info, classifies it and stores it",
+        "info": "",
+        "x": 210,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "20f2bb31b0c35ce5",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 200,
+        "wires": []
     }
 ]

@@ -1,4 +1,4 @@
-Start using "docker-compose -f cloud-Infrastructure/docker-compose.yml up -d" if you dont want it to detahc from the terminal remove -d flag
+To start the system do "docker-compose -f cloud-Infrastructure/docker-compose.yml up -d" if you dont want it to detahc from the terminal remove -d flag
 
 Before pushing do "sudo chmod -R 777 data" so git can access and push all
 
