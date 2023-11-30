@@ -74,7 +74,7 @@
         "sslFieldType": "bool",
         "applicationName": "",
         "applicationNameType": "str",
-        "max": "10",
+        "max": "1000",
         "maxFieldType": "num",
         "idle": "1000",
         "idleFieldType": "num",
@@ -232,207 +232,6 @@
         "hidden": false
     },
     {
-        "id": "5a3316af34d12ca7",
-        "type": "postgresql",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "query": "CREATE TABLE test (\n    testValue int\n);",
-        "postgreSQLConfig": "566d95256d190e9f",
-        "split": false,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 1070,
-        "y": 100,
-        "wires": [
-            [
-                "5008a00b2fcc2a72"
-            ]
-        ]
-    },
-    {
-        "id": "816be605dca77e27",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 870,
-        "y": 100,
-        "wires": [
-            [
-                "5a3316af34d12ca7"
-            ]
-        ]
-    },
-    {
-        "id": "5008a00b2fcc2a72",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "7e81ccbe2a02160c",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "043e16ba56cbd5d1",
-        "type": "postgresql",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "query": "INSERT INTO test VALUES (1);\nINSERT INTO test VALUES (3);\nINSERT INTO test VALUES (2);",
-        "postgreSQLConfig": "566d95256d190e9f",
-        "split": false,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 1070,
-        "y": 160,
-        "wires": [
-            [
-                "7e81ccbe2a02160c"
-            ]
-        ]
-    },
-    {
-        "id": "66cce16df2672b23",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 870,
-        "y": 160,
-        "wires": [
-            [
-                "043e16ba56cbd5d1"
-            ]
-        ]
-    },
-    {
-        "id": "5d19779bd6040836",
-        "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "topic": "Test",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "f5279b01.b328d8",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1130,
-        "y": 240,
-        "wires": [
-            [
-                "b5ee62b53fb559f2"
-            ]
-        ]
-    },
-    {
-        "id": "62a20df8d576c231",
-        "type": "mqtt out",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "topic": "Test",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "f5279b01.b328d8",
-        "x": 1010,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "b5ee62b53fb559f2",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "d483d6384027fe41",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "Hello",
-        "payloadType": "str",
-        "x": 870,
-        "y": 240,
-        "wires": [
-            [
-                "62a20df8d576c231"
-            ]
-        ]
-    },
-    {
-        "id": "b80eb2d20961c534",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "DB abd MQTT test/demo",
-        "info": "",
-        "x": 910,
-        "y": 40,
-        "wires": []
-    },
-    {
         "id": "71808ae9c2f6163a",
         "type": "file in",
         "z": "f6f2187d.f17ca8",
@@ -445,55 +244,12 @@
         "encoding": "none",
         "allProps": false,
         "x": 270,
-        "y": 100,
+        "y": 80,
         "wires": [
             [
                 "c67c15e6a0d10fae"
             ]
         ]
-    },
-    {
-        "id": "529fff1d3372ede8",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 800,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7f12a0b824251996",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 13",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
-        "y": 800,
-        "wires": []
     },
     {
         "id": "c67c15e6a0d10fae",
@@ -512,7 +268,7 @@
         "senderr": false,
         "headers": [],
         "x": 430,
-        "y": 100,
+        "y": 80,
         "wires": [
             [
                 "265f1ec2a088ad5e"
@@ -533,7 +289,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 570,
-        "y": 100,
+        "y": 80,
         "wires": []
     },
     {
@@ -553,7 +309,7 @@
         "senderr": false,
         "headers": [],
         "x": 500,
-        "y": 340,
+        "y": 180,
         "wires": [
             [
                 "7a2bf66b6a83af03"
@@ -574,7 +330,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 660,
-        "y": 340,
+        "y": 180,
         "wires": []
     },
     {
@@ -591,39 +347,10 @@
         "rh": 0,
         "inputs": 0,
         "x": 90,
-        "y": 340,
+        "y": 180,
         "wires": [
             [
                 "5251bdf037521b72"
-            ]
-        ]
-    },
-    {
-        "id": "bb0518675f20f213",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 100,
-        "y": 100,
-        "wires": [
-            [
-                "71808ae9c2f6163a"
             ]
         ]
     },
@@ -640,7 +367,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 340,
+        "y": 180,
         "wires": [
             [
                 "a64daadc9d4dd331",
@@ -662,7 +389,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 520,
-        "y": 380,
+        "y": 220,
         "wires": []
     },
     {
@@ -682,8 +409,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 940,
-        "y": 900,
+        "x": 1100,
+        "y": 560,
         "wires": []
     },
     {
@@ -692,8 +419,8 @@
         "z": "f6f2187d.f17ca8",
         "name": "Precisa de receber user.name para o msg.payload",
         "info": "Precisa de receber user.name para o msg.payload",
-        "x": 950,
-        "y": 860,
+        "x": 1110,
+        "y": 520,
         "wires": []
     },
     {
@@ -734,8 +461,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 530,
-        "y": 980,
+        "x": 690,
+        "y": 640,
         "wires": [
             []
         ]
@@ -759,8 +486,8 @@
         "max": "15000",
         "step": 1,
         "className": "",
-        "x": 230,
-        "y": 980,
+        "x": 390,
+        "y": 640,
         "wires": [
             [
                 "8841da6e18a929f0"
@@ -773,8 +500,8 @@
         "z": "f6f2187d.f17ca8",
         "name": "Receber dados caloricos e preencher",
         "info": "",
-        "x": 530,
-        "y": 940,
+        "x": 690,
+        "y": 600,
         "wires": []
     },
     {
@@ -798,8 +525,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
-        "y": 1060,
+        "x": 290,
+        "y": 720,
         "wires": [
             []
         ]
@@ -816,8 +543,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 810,
-        "y": 1000,
+        "x": 970,
+        "y": 660,
         "wires": [
             [
                 "cc32805493c8ea22",
@@ -838,8 +565,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 1000,
+        "x": 1150,
+        "y": 660,
         "wires": []
     },
     {
@@ -859,8 +586,8 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 1130,
-        "y": 1040,
+        "x": 1290,
+        "y": 700,
         "wires": []
     },
     {
@@ -871,8 +598,8 @@
         "func": "var d = new Date();\nvar options = { timeZone: 'UTC', timeZoneName: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: `2-digit`, minute: `2-digit`, second: `2-digit`};\nvar _resultDate = d.toLocaleDateString('en-US', options);\nmsg.payload = _resultDate;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 990,
-        "y": 1040,
+        "x": 1150,
+        "y": 700,
         "wires": [
             [
                 "17d9848c7b093add"
@@ -883,10 +610,10 @@
         "id": "03994f40962dce6a",
         "type": "comment",
         "z": "f6f2187d.f17ca8",
-        "name": "Receives client phone info, classifies it and stores it",
+        "name": "Receives client phone info, classifies it and stores it TODO: add to DB",
         "info": "",
-        "x": 210,
-        "y": 280,
+        "x": 270,
+        "y": 140,
         "wires": []
     },
     {
@@ -897,6 +624,330 @@
         "info": "",
         "x": 320,
         "y": 40,
+        "wires": []
+    },
+    {
+        "id": "2c547707cd5b9e7b",
+        "type": "file in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "filename": "/data/trainning.data",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 250,
+        "y": 320,
+        "wires": [
+            [
+                "5e1de0b3a3ea18e0"
+            ]
+        ]
+    },
+    {
+        "id": "5e1de0b3a3ea18e0",
+        "type": "csv",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "sep": ";",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 410,
+        "y": 320,
+        "wires": [
+            [
+                "e3d8bf37fdaa465d"
+            ]
+        ]
+    },
+    {
+        "id": "1031078df62d838f",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "INSERT INTO user_phone_data VALUES ('{{{ msg.payload.date }}}', '{{{ msg.payload.time }}}', {{{ msg.payload.activity }}}, {{{ msg.payload.acceleration_x }}}, {{{ msg.payload.acceleration_y }}}, {{{ msg.payload.acceleration_z }}}, {{{ msg.payload.gyro_x }}}, {{{ msg.payload.gyro_y }}}, {{{ msg.payload.gyro_z }}});",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": true,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 730,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "082a3570393a3628",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Create result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "9410ec301b9ca15e",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "CREATE TABLE user_phone_data (\n    date VARCHAR(255),\n    time VARCHAR(255),\n    activity INT CHECK (activity IN (0, 1)),\n    acceleration_x FLOAT,\n    acceleration_y FLOAT,\n    acceleration_z FLOAT,\n    gyro_x FLOAT,\n    gyro_y FLOAT,\n    gyro_z FLOAT,\n    PRIMARY KEY (date, time)\n);",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 230,
+        "y": 520,
+        "wires": [
+            [
+                "082a3570393a3628"
+            ]
+        ]
+    },
+    {
+        "id": "9ead1aaa4d753dc3",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 520,
+        "wires": [
+            [
+                "9410ec301b9ca15e"
+            ]
+        ]
+    },
+    {
+        "id": "67f2465bb03e05d5",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 80,
+        "wires": [
+            [
+                "71808ae9c2f6163a"
+            ]
+        ]
+    },
+    {
+        "id": "a290f5de93c62e82",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "2c547707cd5b9e7b"
+            ]
+        ]
+    },
+    {
+        "id": "e5a7e6661a80276f",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Delete result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8c9aba176a9b2898",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "DELETE FROM user_phone_data;",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 230,
+        "y": 420,
+        "wires": [
+            [
+                "e5a7e6661a80276f"
+            ]
+        ]
+    },
+    {
+        "id": "7945c52eb0c02e90",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 420,
+        "wires": [
+            [
+                "8c9aba176a9b2898"
+            ]
+        ]
+    },
+    {
+        "id": "e3d8bf37fdaa465d",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "300",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": true,
+        "outputs": 1,
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "1031078df62d838f"
+            ]
+        ]
+    },
+    {
+        "id": "05abca18221432d5",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Count result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.0.count",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c97655fe639f708c",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "SELECT COUNT(*) FROM user_phone_data",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 770,
+        "y": 420,
+        "wires": [
+            [
+                "05abca18221432d5"
+            ]
+        ]
+    },
+    {
+        "id": "92873e2bd2733b43",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 630,
+        "y": 420,
+        "wires": [
+            [
+                "c97655fe639f708c"
+            ]
+        ]
+    },
+    {
+        "id": "d31cc7e35206eb09",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Load the data from training data to the DB, so it can be used in calculations and charts, not needed to train model.",
+        "info": "",
+        "x": 400,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "2894c71e649539d2",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Clear all phone data in the DB",
+        "info": "",
+        "x": 140,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "cf215da0b4daaa99",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Create table for phone data in DB",
+        "info": "",
+        "x": 150,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "68ee830e8b74a5d7",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Count the entries in phone data table in DB",
+        "info": "",
+        "x": 720,
+        "y": 380,
         "wires": []
     }
 ]

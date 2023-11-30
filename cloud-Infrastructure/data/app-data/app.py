@@ -81,7 +81,7 @@ def predict():
 
     #Verify that the file exists
     model = joblib.load('model/KKN.dat.gz')
-    return str(model.predict([data])), 200
+    return str(int(model.predict([data]))), 200
   else:
     return "No model has trained", 409
 

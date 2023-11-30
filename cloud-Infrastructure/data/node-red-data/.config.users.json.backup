@@ -14,7 +14,14 @@
             },
             "tours": {
                 "welcome": "3.1.0"
+            },
+            "dialog": {
+                "export": {
+                    "pretty": true
+                }
             }
-        }
+        },
+        "menu-deploymenu-item-flow": true,
+        "menu-deploymenu-item-full": false
     }
 }
