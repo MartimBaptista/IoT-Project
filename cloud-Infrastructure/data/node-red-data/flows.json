@@ -802,8 +802,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 559,
-        "y": 251,
+        "x": 740,
+        "y": 260,
         "wires": []
     },
     {
@@ -918,8 +918,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 99,
-        "y": 211,
+        "x": 110,
+        "y": 200,
         "wires": [
             []
         ]
@@ -936,8 +936,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 779,
-        "y": 151,
+        "x": 870,
+        "y": 120,
         "wires": [
             [
                 "cc32805493c8ea22",
@@ -958,8 +958,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 959,
-        "y": 151,
+        "x": 1030,
+        "y": 100,
         "wires": []
     },
     {
@@ -979,8 +979,8 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 1079,
-        "y": 191,
+        "x": 1190,
+        "y": 140,
         "wires": []
     },
     {
@@ -991,11 +991,418 @@
         "func": "var d = new Date();\nvar options = { timeZone: 'UTC', timeZoneName: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: `2-digit`, minute: `2-digit`, second: `2-digit`};\nvar _resultDate = d.toLocaleDateString('en-US', options);\nmsg.payload = _resultDate;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 959,
-        "y": 191,
+        "x": 1030,
+        "y": 140,
         "wires": [
             [
                 "17d9848c7b093add"
+            ]
+        ]
+    },
+    {
+        "id": "7debea1c8fc1048b",
+        "type": "ui_dropdown",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Age",
+        "tooltip": "",
+        "place": "Select age range",
+        "group": "086e043121d11401",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "20 to 29",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "30 to 39",
+                "value": "3",
+                "type": "str"
+            },
+            {
+                "label": "40 to 49",
+                "value": "4",
+                "type": "str"
+            },
+            {
+                "label": "50 to 59",
+                "value": "5",
+                "type": "str"
+            },
+            {
+                "label": "60 to 69",
+                "value": "6",
+                "type": "str"
+            },
+            {
+                "label": "70 to 79",
+                "value": "7",
+                "type": "str"
+            },
+            {
+                "label": "80 to 89",
+                "value": "8",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "d614d03dbc80f6cd"
+            ]
+        ]
+    },
+    {
+        "id": "a19db59d2893123c",
+        "type": "ui_text_input",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Weight (kg)",
+        "tooltip": "",
+        "group": "086e043121d11401",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "number",
+        "delay": "1",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "d1606ab8b46b083c"
+            ]
+        ]
+    },
+    {
+        "id": "734238773bf2a564",
+        "type": "ui_dropdown",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Gender",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "086e043121d11401",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Male",
+                "value": "M",
+                "type": "str"
+            },
+            {
+                "label": "Female",
+                "value": "F",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 140,
+        "y": 400,
+        "wires": [
+            [
+                "ee41390d6d07e323"
+            ]
+        ]
+    },
+    {
+        "id": "8d12acf7e01b49b3",
+        "type": "ui_date_picker",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Date",
+        "group": "086e043121d11401",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 130,
+        "y": 520,
+        "wires": [
+            [
+                "26dadb0e5e8e81b1"
+            ]
+        ]
+    },
+    {
+        "id": "d614d03dbc80f6cd",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "age",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "69383ab57a5bee97"
+            ]
+        ]
+    },
+    {
+        "id": "69383ab57a5bee97",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Get user info",
+        "func": "msg = {}\nmsg.age = global.get(\"age\")\nmsg.weight = global.get(\"weight\")\nmsg.gender = global.get(\"gender\")\nmsg.height = global.get(\"height\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64d5dd9bdd56dbf2",
+        "type": "debug",
+        "z": "d6c329914ca9c596",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "calories",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "d1606ab8b46b083c",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "weight",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "69383ab57a5bee97"
+            ]
+        ]
+    },
+    {
+        "id": "ee41390d6d07e323",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gender",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 400,
+        "wires": [
+            [
+                "69383ab57a5bee97"
+            ]
+        ]
+    },
+    {
+        "id": "26dadb0e5e8e81b1",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "68398c5d08b37f7f",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Calories per secound",
+        "func": "let velocity_map = new Map([\n    [JSON.stringify([\"2\", \"M\"]), 1.36],\n    [JSON.stringify([\"2\", \"F\"]), 1.34],\n    [JSON.stringify([\"3\", \"M\"]), 1.43],\n    [JSON.stringify([\"3\", \"F\"]), 1.34],\n    [JSON.stringify([\"4\", \"M\"]), 1.43],\n    [JSON.stringify([\"4\", \"F\"]), 1.39],\n    [JSON.stringify([\"5\", \"M\"]), 1.43],\n    [JSON.stringify([\"5\", \"F\"]), 1.32],\n    [JSON.stringify([\"6\", \"M\"]), 1.34],\n    [JSON.stringify([\"6\", \"F\"]), 1.24],\n    [JSON.stringify([\"7\", \"M\"]), 1.26],\n    [JSON.stringify([\"7\", \"F\"]), 1.13],\n    [JSON.stringify([\"8\", \"M\"]), 0.97],\n    [JSON.stringify([\"8\", \"F\"]), 0.94]\n]);\n\n//Obtaining user info\nlet age = global.get(\"age\")\nlet weight = global.get(\"weight\")\nlet gender = global.get(\"gender\")\nlet height = global.get(\"height\")\n\n//Getting velocity from the table\nlet velocity = velocity_map.get(JSON.stringify([age, gender]))\n//If user is mostly running over this second double the velocity\nvelocity = velocity * 2 ? msg.activity.filter(x => x==0).length < msg.activity.filter(x => x==1).length : velocity\n\n//Calculate the calories with the given function\nmsg.calories = 0.035 * weight + (velocity ** 2) / (height/100) * 0.029 * weight\n//Round the calories to 3 decimal points\nmsg.calories = Math.round(msg.calories * 1000) / 1000\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 520,
+        "wires": [
+            [
+                "64d5dd9bdd56dbf2"
+            ]
+        ]
+    },
+    {
+        "id": "231f0eae2a43ecb7",
+        "type": "inject",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 530,
+        "y": 520,
+        "wires": [
+            [
+                "2ac85d07c3a7dfac"
+            ]
+        ]
+    },
+    {
+        "id": "a88a32c83179c55f",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "height",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "69383ab57a5bee97"
+            ]
+        ]
+    },
+    {
+        "id": "5b1fa12941257777",
+        "type": "ui_text_input",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Height (cm)",
+        "tooltip": "",
+        "group": "086e043121d11401",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "number",
+        "delay": "1",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "a88a32c83179c55f"
+            ]
+        ]
+    },
+    {
+        "id": "2ac85d07c3a7dfac",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "function 3",
+        "func": "msg.activity = Array.from({ length: 60 }, () => Math.floor(Math.random() * 2));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 520,
+        "wires": [
+            [
+                "68398c5d08b37f7f"
             ]
         ]
     }
