@@ -1,18 +1,4 @@
--Use Node red as the main processor
-  -Send training data to ML for traning
-  -Receive data from Client and store it (with prediction)
-
--DB
-  -Set up the DB single time or automated
-  -Will store the data from the clients phone
-  
--ML predictor
-  -Train the model
-  -hook up to flask
-
 -Node Red
   -Set up the dashboard
-
--Clean up code in client-phone-simulator and add cli/args to get client id (student id)
 
 -Makefile???
