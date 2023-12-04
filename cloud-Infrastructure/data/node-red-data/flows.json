@@ -2,9 +2,25 @@
     {
         "id": "f6f2187d.f17ca8",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "ML and MQTT Subscriber",
         "disabled": false,
         "info": ""
+    },
+    {
+        "id": "e7741acbc4d0c010",
+        "type": "tab",
+        "label": "DB Controls",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d6c329914ca9c596",
+        "type": "tab",
+        "label": "UI",
+        "disabled": false,
+        "info": "",
+        "env": []
     },
     {
         "id": "037aecdc6926ce9a",
@@ -243,8 +259,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 270,
-        "y": 80,
+        "x": 370,
+        "y": 120,
         "wires": [
             [
                 "c67c15e6a0d10fae"
@@ -267,8 +283,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 430,
-        "y": 80,
+        "x": 530,
+        "y": 120,
         "wires": [
             [
                 "265f1ec2a088ad5e"
@@ -288,8 +304,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 570,
-        "y": 80,
+        "x": 670,
+        "y": 120,
         "wires": []
     },
     {
@@ -308,30 +324,13 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 500,
-        "y": 180,
+        "x": 380,
+        "y": 220,
         "wires": [
             [
-                "7a2bf66b6a83af03"
+                "53a58756d285dbb3"
             ]
         ]
-    },
-    {
-        "id": "7a2bf66b6a83af03",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "Prediction",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 180,
-        "wires": []
     },
     {
         "id": "5948fcfd2b76b95d",
@@ -346,56 +345,450 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 90,
-        "y": 180,
+        "x": 190,
+        "y": 220,
         "wires": [
             [
-                "5251bdf037521b72"
+                "a64daadc9d4dd331"
             ]
         ]
     },
     {
-        "id": "5251bdf037521b72",
+        "id": "03994f40962dce6a",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Receives client phone info, classifies it and stores it TODO: add to DB",
+        "info": "",
+        "x": 370,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "45e35c73cfb74595",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "Sends the training data to the ML processor which will train a KNN model with it with with",
+        "info": "",
+        "x": 420,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "67f2465bb03e05d5",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "71808ae9c2f6163a"
+            ]
+        ]
+    },
+    {
+        "id": "517ab78f8a9643ee",
+        "type": "postgresql",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "query": "INSERT INTO user_phone_data VALUES ('{{{ msg.payload.date }}}', '{{{ msg.payload.time }}}', {{{ msg.payload.activity }}}, {{{ msg.payload.acceleration_x }}}, {{{ msg.payload.acceleration_y }}}, {{{ msg.payload.acceleration_z }}}, {{{ msg.payload.gyro_x }}}, {{{ msg.payload.gyro_y }}}, {{{ msg.payload.gyro_z }}});\n",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 810,
+        "y": 220,
+        "wires": [
+            [
+                "94915d9b48332c2c"
+            ]
+        ]
+    },
+    {
+        "id": "53a58756d285dbb3",
         "type": "function",
         "z": "f6f2187d.f17ca8",
-        "name": "Remove data and time",
-        "func": "msg.payload = msg.payload.split(';').slice(2).toString();\nreturn msg;",
+        "name": "function 1",
+        "func": "msg.payload = \"date;time;activity;acceleration_x;acceleration_y;acceleration_z;gyro_x;gyro_y;gyro_z \\n\" + msg.payload\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 180,
+        "x": 540,
+        "y": 220,
         "wires": [
             [
-                "a64daadc9d4dd331",
-                "c81c32d8a2e55739"
+                "d7d69a1c80776d27"
             ]
         ]
     },
     {
-        "id": "c81c32d8a2e55739",
+        "id": "d7d69a1c80776d27",
+        "type": "csv",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "sep": ";",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 670,
+        "y": 220,
+        "wires": [
+            [
+                "517ab78f8a9643ee"
+            ]
+        ]
+    },
+    {
+        "id": "94915d9b48332c2c",
         "type": "debug",
         "z": "f6f2187d.f17ca8",
-        "name": "Recieved from phone",
+        "name": "debug 1",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2c547707cd5b9e7b",
+        "type": "file in",
+        "z": "e7741acbc4d0c010",
+        "name": "",
+        "filename": "/data/trainning.data",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 350,
+        "y": 440,
+        "wires": [
+            [
+                "5e1de0b3a3ea18e0"
+            ]
+        ]
+    },
+    {
+        "id": "5e1de0b3a3ea18e0",
+        "type": "csv",
+        "z": "e7741acbc4d0c010",
+        "name": "",
+        "sep": ";",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 510,
+        "y": 440,
+        "wires": [
+            [
+                "e3d8bf37fdaa465d"
+            ]
+        ]
+    },
+    {
+        "id": "1031078df62d838f",
+        "type": "postgresql",
+        "z": "e7741acbc4d0c010",
+        "name": "",
+        "query": "INSERT INTO user_phone_data VALUES ('{{{ msg.payload.date }}}', '{{{ msg.payload.time }}}', {{{ msg.payload.activity }}}, {{{ msg.payload.acceleration_x }}}, {{{ msg.payload.acceleration_y }}}, {{{ msg.payload.acceleration_z }}}, {{{ msg.payload.gyro_x }}}, {{{ msg.payload.gyro_y }}}, {{{ msg.payload.gyro_z }}});",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": true,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 830,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "082a3570393a3628",
+        "type": "debug",
+        "z": "e7741acbc4d0c010",
+        "name": "Create result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9410ec301b9ca15e",
+        "type": "postgresql",
+        "z": "e7741acbc4d0c010",
+        "name": "",
+        "query": "CREATE TABLE user_phone_data (\n    date VARCHAR(255),\n    time VARCHAR(255),\n    activity INT CHECK (activity IN (0, 1)),\n    acceleration_x FLOAT,\n    acceleration_y FLOAT,\n    acceleration_z FLOAT,\n    gyro_x FLOAT,\n    gyro_y FLOAT,\n    gyro_z FLOAT,\n    PRIMARY KEY (date, time)\n);",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [
+                "082a3570393a3628"
+            ]
+        ]
+    },
+    {
+        "id": "9ead1aaa4d753dc3",
+        "type": "inject",
+        "z": "e7741acbc4d0c010",
+        "name": "Creta table",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "9410ec301b9ca15e"
+            ]
+        ]
+    },
+    {
+        "id": "a290f5de93c62e82",
+        "type": "inject",
+        "z": "e7741acbc4d0c010",
+        "name": "Load traning data",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "2c547707cd5b9e7b"
+            ]
+        ]
+    },
+    {
+        "id": "e5a7e6661a80276f",
+        "type": "debug",
+        "z": "e7741acbc4d0c010",
+        "name": "Delete result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8c9aba176a9b2898",
+        "type": "postgresql",
+        "z": "e7741acbc4d0c010",
+        "name": "",
+        "query": "DELETE FROM user_phone_data;",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "e5a7e6661a80276f"
+            ]
+        ]
+    },
+    {
+        "id": "7945c52eb0c02e90",
+        "type": "inject",
+        "z": "e7741acbc4d0c010",
+        "name": "Clear table contents",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "8c9aba176a9b2898"
+            ]
+        ]
+    },
+    {
+        "id": "e3d8bf37fdaa465d",
+        "type": "delay",
+        "z": "e7741acbc4d0c010",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "300",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": true,
+        "outputs": 1,
+        "x": 660,
+        "y": 440,
+        "wires": [
+            [
+                "1031078df62d838f"
+            ]
+        ]
+    },
+    {
+        "id": "05abca18221432d5",
+        "type": "debug",
+        "z": "e7741acbc4d0c010",
+        "name": "Count result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.0.count",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 220,
+        "x": 530,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c97655fe639f708c",
+        "type": "postgresql",
+        "z": "e7741acbc4d0c010",
+        "name": "",
+        "query": "SELECT COUNT(*) FROM user_phone_data",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "05abca18221432d5"
+            ]
+        ]
+    },
+    {
+        "id": "92873e2bd2733b43",
+        "type": "inject",
+        "z": "e7741acbc4d0c010",
+        "name": "Count table contents",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "c97655fe639f708c"
+            ]
+        ]
+    },
+    {
+        "id": "d31cc7e35206eb09",
+        "type": "comment",
+        "z": "e7741acbc4d0c010",
+        "name": "Load the data from training data to the DB, so it can be used in calculations and charts, not needed to train model.",
+        "info": "",
+        "x": 460,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2894c71e649539d2",
+        "type": "comment",
+        "z": "e7741acbc4d0c010",
+        "name": "Clear all phone data in the DB",
+        "info": "",
+        "x": 220,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cf215da0b4daaa99",
+        "type": "comment",
+        "z": "e7741acbc4d0c010",
+        "name": "Create table for phone data in DB",
+        "info": "",
+        "x": 230,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "68ee830e8b74a5d7",
+        "type": "comment",
+        "z": "e7741acbc4d0c010",
+        "name": "Count the entries in phone data table in DB",
+        "info": "",
+        "x": 260,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6305476c22694738",
+        "type": "comment",
+        "z": "e7741acbc4d0c010",
+        "name": "ATTENTION! This takes up to 6 minutes and might crash depending on the system. Rate can be reduced to increse stability at the cost of time",
+        "info": "",
+        "x": 550,
+        "y": 480,
         "wires": []
     },
     {
         "id": "a1da816478b01fb6",
         "type": "ui_text",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "group": "086e043121d11401",
         "order": 1,
         "width": "0",
@@ -409,24 +802,24 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1100,
-        "y": 560,
+        "x": 559,
+        "y": 251,
         "wires": []
     },
     {
         "id": "399c22ea5abcea7b",
         "type": "comment",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "Precisa de receber user.name para o msg.payload",
         "info": "Precisa de receber user.name para o msg.payload",
-        "x": 1110,
-        "y": 520,
+        "x": 739,
+        "y": 211,
         "wires": []
     },
     {
         "id": "8841da6e18a929f0",
         "type": "ui_chart",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "",
         "group": "4429aae43b37c326",
         "order": 1,
@@ -461,8 +854,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 690,
-        "y": 640,
+        "x": 519,
+        "y": 131,
         "wires": [
             []
         ]
@@ -470,7 +863,7 @@
     {
         "id": "3fcc4fb38fab55c0",
         "type": "ui_slider",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "",
         "label": "slider",
         "tooltip": "",
@@ -486,8 +879,8 @@
         "max": "15000",
         "step": 1,
         "className": "",
-        "x": 390,
-        "y": 640,
+        "x": 179,
+        "y": 131,
         "wires": [
             [
                 "8841da6e18a929f0"
@@ -497,17 +890,17 @@
     {
         "id": "918d1eb74676c809",
         "type": "comment",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "Receber dados caloricos e preencher",
         "info": "",
-        "x": 690,
-        "y": 600,
+        "x": 579,
+        "y": 91,
         "wires": []
     },
     {
         "id": "eca9c0571cd9681f",
         "type": "inject",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "",
         "props": [
             {
@@ -525,8 +918,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 290,
-        "y": 720,
+        "x": 99,
+        "y": 211,
         "wires": [
             []
         ]
@@ -534,7 +927,7 @@
     {
         "id": "3d4d33bc2bdbe0cc",
         "type": "inject",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "",
         "repeat": "1",
         "crontab": "",
@@ -543,8 +936,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 970,
-        "y": 660,
+        "x": 779,
+        "y": 151,
         "wires": [
             [
                 "cc32805493c8ea22",
@@ -555,7 +948,7 @@
     {
         "id": "cc32805493c8ea22",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -565,14 +958,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1150,
-        "y": 660,
+        "x": 959,
+        "y": 151,
         "wires": []
     },
     {
         "id": "17d9848c7b093add",
         "type": "ui_text",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "group": "086e043121d11401",
         "order": 0,
         "width": 0,
@@ -586,368 +979,24 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 1290,
-        "y": 700,
+        "x": 1079,
+        "y": 191,
         "wires": []
     },
     {
         "id": "32dc081c05bd8bfa",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "d6c329914ca9c596",
         "name": "Format Time",
         "func": "var d = new Date();\nvar options = { timeZone: 'UTC', timeZoneName: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: `2-digit`, minute: `2-digit`, second: `2-digit`};\nvar _resultDate = d.toLocaleDateString('en-US', options);\nmsg.payload = _resultDate;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1150,
-        "y": 700,
+        "x": 959,
+        "y": 191,
         "wires": [
             [
                 "17d9848c7b093add"
             ]
         ]
-    },
-    {
-        "id": "03994f40962dce6a",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "Receives client phone info, classifies it and stores it TODO: add to DB",
-        "info": "",
-        "x": 270,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "45e35c73cfb74595",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "Sends the training data to the ML processor which will train a KNN model with it with with",
-        "info": "",
-        "x": 320,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "2c547707cd5b9e7b",
-        "type": "file in",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "filename": "/data/trainning.data",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 250,
-        "y": 320,
-        "wires": [
-            [
-                "5e1de0b3a3ea18e0"
-            ]
-        ]
-    },
-    {
-        "id": "5e1de0b3a3ea18e0",
-        "type": "csv",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "sep": ";",
-        "hdrin": true,
-        "hdrout": "none",
-        "multi": "one",
-        "ret": "\\n",
-        "temp": "",
-        "skip": "0",
-        "strings": true,
-        "include_empty_strings": "",
-        "include_null_values": "",
-        "x": 410,
-        "y": 320,
-        "wires": [
-            [
-                "e3d8bf37fdaa465d"
-            ]
-        ]
-    },
-    {
-        "id": "1031078df62d838f",
-        "type": "postgresql",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "query": "INSERT INTO user_phone_data VALUES ('{{{ msg.payload.date }}}', '{{{ msg.payload.time }}}', {{{ msg.payload.activity }}}, {{{ msg.payload.acceleration_x }}}, {{{ msg.payload.acceleration_y }}}, {{{ msg.payload.acceleration_z }}}, {{{ msg.payload.gyro_x }}}, {{{ msg.payload.gyro_y }}}, {{{ msg.payload.gyro_z }}});",
-        "postgreSQLConfig": "566d95256d190e9f",
-        "split": true,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 730,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "082a3570393a3628",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "Create result",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "9410ec301b9ca15e",
-        "type": "postgresql",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "query": "CREATE TABLE user_phone_data (\n    date VARCHAR(255),\n    time VARCHAR(255),\n    activity INT CHECK (activity IN (0, 1)),\n    acceleration_x FLOAT,\n    acceleration_y FLOAT,\n    acceleration_z FLOAT,\n    gyro_x FLOAT,\n    gyro_y FLOAT,\n    gyro_z FLOAT,\n    PRIMARY KEY (date, time)\n);",
-        "postgreSQLConfig": "566d95256d190e9f",
-        "split": false,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 230,
-        "y": 520,
-        "wires": [
-            [
-                "082a3570393a3628"
-            ]
-        ]
-    },
-    {
-        "id": "9ead1aaa4d753dc3",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 90,
-        "y": 520,
-        "wires": [
-            [
-                "9410ec301b9ca15e"
-            ]
-        ]
-    },
-    {
-        "id": "67f2465bb03e05d5",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 90,
-        "y": 80,
-        "wires": [
-            [
-                "71808ae9c2f6163a"
-            ]
-        ]
-    },
-    {
-        "id": "a290f5de93c62e82",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 90,
-        "y": 320,
-        "wires": [
-            [
-                "2c547707cd5b9e7b"
-            ]
-        ]
-    },
-    {
-        "id": "e5a7e6661a80276f",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "Delete result",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "8c9aba176a9b2898",
-        "type": "postgresql",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "query": "DELETE FROM user_phone_data;",
-        "postgreSQLConfig": "566d95256d190e9f",
-        "split": false,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 230,
-        "y": 420,
-        "wires": [
-            [
-                "e5a7e6661a80276f"
-            ]
-        ]
-    },
-    {
-        "id": "7945c52eb0c02e90",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 90,
-        "y": 420,
-        "wires": [
-            [
-                "8c9aba176a9b2898"
-            ]
-        ]
-    },
-    {
-        "id": "e3d8bf37fdaa465d",
-        "type": "delay",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "300",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": true,
-        "outputs": 1,
-        "x": 560,
-        "y": 320,
-        "wires": [
-            [
-                "1031078df62d838f"
-            ]
-        ]
-    },
-    {
-        "id": "05abca18221432d5",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "Count result",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload.0.count",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 930,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "c97655fe639f708c",
-        "type": "postgresql",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "query": "SELECT COUNT(*) FROM user_phone_data",
-        "postgreSQLConfig": "566d95256d190e9f",
-        "split": false,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 770,
-        "y": 420,
-        "wires": [
-            [
-                "05abca18221432d5"
-            ]
-        ]
-    },
-    {
-        "id": "92873e2bd2733b43",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 630,
-        "y": 420,
-        "wires": [
-            [
-                "c97655fe639f708c"
-            ]
-        ]
-    },
-    {
-        "id": "d31cc7e35206eb09",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "Load the data from training data to the DB, so it can be used in calculations and charts, not needed to train model.",
-        "info": "",
-        "x": 400,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "2894c71e649539d2",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "Clear all phone data in the DB",
-        "info": "",
-        "x": 140,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "cf215da0b4daaa99",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "Create table for phone data in DB",
-        "info": "",
-        "x": 150,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "68ee830e8b74a5d7",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "Count the entries in phone data table in DB",
-        "info": "",
-        "x": 720,
-        "y": 380,
-        "wires": []
     }
 ]

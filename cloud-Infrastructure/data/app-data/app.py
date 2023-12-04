@@ -20,31 +20,10 @@ app = Flask(__name__)
 def scaleData(x, min, max):
   return (x - min)/(max - min)
 
-#TODO: REMOVE ME, eventually
-# @app.route('/predict', methods=['POST'])
-# def predict():
-#   feature_dict = request.get_json()
-#   if not feature_dict:
-#     return {
-#       'error': 'Body is empty.'
-#     }, 500
-
-#   try:
-#     data = []
-#     model_name = feature_dict[0]['model']
-#     model = joblib.load('model/' + model_name + '.dat.gz')
-#     data.append(feature_dict[1])
-#     print(feature_dict)
-#     response = get_model_response(data, model)
-#   except ValueError as e:
-#     return {'error': str(e).split('\n')[-1].strip()}, 500
-
-#   return response, 200
-
 @app.route('/train', methods=['POST'])
 def train():
 
-  #Loading data from request into file
+  #Loading data from request into file (for later use when scaling)
   file = open("data/trainning.data", "w")
   file.write(request.data.decode("utf-8"))
   file.close()
@@ -74,14 +53,22 @@ def predict():
   #Check for model and data file
   if os.path.exists(os.path.abspath("data/trainning.data")) and os.path.exists(os.path.abspath("model/KKN.dat.gz")):
     train_data = np.array(pd.read_csv('data/trainning.data', delimiter=';').values[: , 3:], dtype = float)
-    data = list(map(float, request.data.decode("utf-8").split(",")))
-
+    raw_data = request.data.decode("utf-8").split(";")
+    #Processing the data
+    data = raw_data.copy()
+    data = list(map(float, data[2:]))
+    #Scaling the data
     for var in range(6):
       data[var] = scaleData(data[var], train_data[:, var].min(), train_data[:, var].max())
 
-    #Verify that the file exists
+    #Loading the model and predicting
     model = joblib.load('model/KKN.dat.gz')
-    return str(int(model.predict([data]))), 200
+    prediction = str(int(model.predict([data])))
+
+    #Inserts the prediction into the raw data
+    raw_data.insert(2, prediction)
+
+    return ";".join(raw_data), 200
   else:
     return "No model has trained", 409
 
