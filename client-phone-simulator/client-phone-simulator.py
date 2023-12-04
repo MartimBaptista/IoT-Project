@@ -1,6 +1,6 @@
 from datetime import datetime
 import paho.mqtt.client as mqtt 
-import time
+import time, sys
 
 broker_hostname = "localhost"
 port = 1883 
@@ -22,18 +22,21 @@ topic = "idc/FC56323"
 with open("online.data", "r") as file:
     msg = [line.rstrip() for line in file]
 
-try:
-    msg_count = 1
-    while msg_count < len(msg):
+msg = msg[1:]
+
+msg_count = 0
+while True:
+    try:
         time.sleep(1)
         current_msg = datetime.now().strftime("%m/%d/%y;%H:%M:%S:000000000;") + msg[msg_count]
         result = client.publish(topic, current_msg)
         status = result[0]
         if status == 0:
-            print("Message "+ current_msg + " is published to topic " + topic)
+           print("Message "+ current_msg + " is published to topic " + topic)
         else:
-            print("Failed to send message to topic " + topic)
-        msg_count += 1
-finally:
-    client.loop_stop()
-
+           print("Failed to send message to topic " + topic)
+        msg_count = (msg_count + 1) % len(msg)
+    except KeyboardInterrupt:
+        print("Shuting down")
+        client.loop_stop()
+        sys.exit()
