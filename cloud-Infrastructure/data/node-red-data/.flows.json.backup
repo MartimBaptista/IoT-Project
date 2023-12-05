@@ -206,7 +206,7 @@
         "tab": "c6f79a2c0e9e2f01",
         "order": 2,
         "disp": true,
-        "width": "6",
+        "width": "14",
         "collapse": false,
         "className": ""
     },
@@ -402,12 +402,10 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 810,
-        "y": 220,
+        "x": 830,
+        "y": 240,
         "wires": [
-            [
-                "94915d9b48332c2c"
-            ]
+            []
         ]
     },
     {
@@ -449,25 +447,26 @@
         "y": 220,
         "wires": [
             [
-                "517ab78f8a9643ee"
+                "517ab78f8a9643ee",
+                "0ec786a993048655"
             ]
         ]
     },
     {
-        "id": "94915d9b48332c2c",
+        "id": "0ec786a993048655",
         "type": "debug",
         "z": "f6f2187d.f17ca8",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": false,
+        "console": true,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 220,
+        "x": 830,
+        "y": 200,
         "wires": []
     },
     {
@@ -823,17 +822,17 @@
         "name": "",
         "group": "4429aae43b37c326",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": "0",
+        "height": "0",
         "label": "Calorie Consuption",
         "chartType": "line",
         "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
+        "xformat": "HH:mm",
+        "interpolate": "step",
+        "nodata": "No activity for the selecte day",
         "dot": false,
-        "ymin": "",
-        "ymax": "15000",
+        "ymin": "0",
+        "ymax": "30",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "86400",
@@ -854,37 +853,10 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 519,
-        "y": 131,
+        "x": 1770,
+        "y": 360,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "3fcc4fb38fab55c0",
-        "type": "ui_slider",
-        "z": "d6c329914ca9c596",
-        "name": "",
-        "label": "slider",
-        "tooltip": "",
-        "group": "4429aae43b37c326",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "15000",
-        "step": 1,
-        "className": "",
-        "x": 179,
-        "y": 131,
-        "wires": [
-            [
-                "8841da6e18a929f0"
-            ]
         ]
     },
     {
@@ -902,26 +874,18 @@
         "type": "inject",
         "z": "d6c329914ca9c596",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
+        "props": [],
+        "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 110,
-        "y": 200,
+        "x": 370,
+        "y": 280,
         "wires": [
-            []
+            [
+                "83efde91ac7f43d9"
+            ]
         ]
     },
     {
@@ -1141,10 +1105,11 @@
         "topicType": "msg",
         "className": "",
         "x": 130,
-        "y": 520,
+        "y": 480,
         "wires": [
             [
-                "26dadb0e5e8e81b1"
+                "26dadb0e5e8e81b1",
+                "5bb7d1936ad7cc78"
             ]
         ]
     },
@@ -1172,44 +1137,9 @@
         "y": 320,
         "wires": [
             [
-                "69383ab57a5bee97"
+                "83efde91ac7f43d9"
             ]
         ]
-    },
-    {
-        "id": "69383ab57a5bee97",
-        "type": "function",
-        "z": "d6c329914ca9c596",
-        "name": "Get user info",
-        "func": "msg = {}\nmsg.age = global.get(\"age\")\nmsg.weight = global.get(\"weight\")\nmsg.gender = global.get(\"gender\")\nmsg.height = global.get(\"height\")\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 550,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "64d5dd9bdd56dbf2",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "calories",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 960,
-        "y": 520,
-        "wires": []
     },
     {
         "id": "d1606ab8b46b083c",
@@ -1235,7 +1165,7 @@
         "y": 360,
         "wires": [
             [
-                "69383ab57a5bee97"
+                "83efde91ac7f43d9"
             ]
         ]
     },
@@ -1263,7 +1193,7 @@
         "y": 400,
         "wires": [
             [
-                "69383ab57a5bee97"
+                "83efde91ac7f43d9"
             ]
         ]
     },
@@ -1288,47 +1218,31 @@
         "to": "",
         "reg": false,
         "x": 340,
-        "y": 520,
+        "y": 480,
         "wires": [
-            []
+            [
+                "83efde91ac7f43d9"
+            ]
         ]
     },
     {
         "id": "68398c5d08b37f7f",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "function 2",
-        "func": "let velocity_map = new Map([\n    [JSON.stringify([\"2\", \"M\"]), 1.36],\n    [JSON.stringify([\"2\", \"F\"]), 1.34],\n    [JSON.stringify([\"3\", \"M\"]), 1.43],\n    [JSON.stringify([\"3\", \"F\"]), 1.34],\n    [JSON.stringify([\"4\", \"M\"]), 1.43],\n    [JSON.stringify([\"4\", \"F\"]), 1.39],\n    [JSON.stringify([\"5\", \"M\"]), 1.43],\n    [JSON.stringify([\"5\", \"F\"]), 1.32],\n    [JSON.stringify([\"6\", \"M\"]), 1.34],\n    [JSON.stringify([\"6\", \"F\"]), 1.24],\n    [JSON.stringify([\"7\", \"M\"]), 1.26],\n    [JSON.stringify([\"7\", \"F\"]), 1.13],\n    [JSON.stringify([\"8\", \"M\"]), 0.97],\n    [JSON.stringify([\"8\", \"F\"]), 0.94]\n]);\n\n//Obtaining user info\nlet age = global.get(\"age\")\nlet weight = global.get(\"weight\")\nlet gender = global.get(\"gender\")\nlet height = global.get(\"height\")\n\n//Getting velocity from the table\nlet velocity = velocity_map.get(JSON.stringify([age, gender]))\n//If user is mostly running over this second double the velocity\nvelocity = velocity * 2 ? msg.activity.filter(x => x==0).length < msg.activity.filter(x => x==1).length : velocity\n\n//Calculate the calories with the given function\nmsg.calories = 0.035 * weight + (velocity ** 2) / (height/100) * 0.029 * weight\n//Round the calories to 3 decimal points\nmsg.calories = Math.round(msg.calories * 1000) / 1000\nreturn msg;",
+        "name": "Convert activity to calories and minutes to miliseconds",
+        "func": "if(msg.payload.length == 0)\n    return msg\n\nlet velocity_map = new Map([\n    [JSON.stringify([\"2\", \"M\"]), 1.36],\n    [JSON.stringify([\"2\", \"F\"]), 1.34],\n    [JSON.stringify([\"3\", \"M\"]), 1.43],\n    [JSON.stringify([\"3\", \"F\"]), 1.34],\n    [JSON.stringify([\"4\", \"M\"]), 1.43],\n    [JSON.stringify([\"4\", \"F\"]), 1.39],\n    [JSON.stringify([\"5\", \"M\"]), 1.43],\n    [JSON.stringify([\"5\", \"F\"]), 1.32],\n    [JSON.stringify([\"6\", \"M\"]), 1.34],\n    [JSON.stringify([\"6\", \"F\"]), 1.24],\n    [JSON.stringify([\"7\", \"M\"]), 1.26],\n    [JSON.stringify([\"7\", \"F\"]), 1.13],\n    [JSON.stringify([\"8\", \"M\"]), 0.97],\n    [JSON.stringify([\"8\", \"F\"]), 0.94]\n]);\n\n//Obtaining user info\nlet age = global.get(\"age\")\nlet weight = global.get(\"weight\")\nlet gender = global.get(\"gender\")\nlet height = global.get(\"height\")\n\n//Getting velocity from the table\nlet velocity = velocity_map.get(JSON.stringify([age, gender]))\n\nfor (let i = 0; i < msg.payload[0].data[0].length; i++) {\n    //Convert the non null activities to calories\n    if (msg.payload[0].data[0][i].y != null){\n        let calories = 0.035 * weight + ((velocity + (velocity * msg.payload[0].data[0][i].y)) ** 2) / (height/100) * 0.029 * weight\n        msg.payload[0].data[0][i].y = Math.round(calories * 1000) / 1000\n    }\n    //Convert the minutes to miliseconds\n    msg.payload[0].data[0][i].x = msg.payload[0].data[0][i].x * 60 * 1000\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 820,
-        "y": 520,
+        "x": 1440,
+        "y": 320,
         "wires": [
             [
-                "64d5dd9bdd56dbf2"
-            ]
-        ]
-    },
-    {
-        "id": "231f0eae2a43ecb7",
-        "type": "inject",
-        "z": "d6c329914ca9c596",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 530,
-        "y": 520,
-        "wires": [
-            [
-                "2ac85d07c3a7dfac"
+                "8841da6e18a929f0",
+                "cb53a9dd2e83dab4"
             ]
         ]
     },
@@ -1356,7 +1270,7 @@
         "y": 440,
         "wires": [
             [
-                "69383ab57a5bee97"
+                "83efde91ac7f43d9"
             ]
         ]
     },
@@ -1387,41 +1301,233 @@
         ]
     },
     {
-        "id": "2ac85d07c3a7dfac",
+        "id": "32b80f416b60e62c",
+        "type": "postgresql",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "query": "SELECT time, activity\nFROM user_phone_data\nWHERE date = '{{{msg.payload}}}'\n/*WHERE SUBSTRING(date, 4, 2) = '{{{msg.payload}}}';*/",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 890,
+        "y": 320,
+        "wires": [
+            [
+                "04e36d29a5c4ec36",
+                "7b55f7e1dcc2aa2e"
+            ]
+        ]
+    },
+    {
+        "id": "49821b580309f835",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "function 3",
-        "func": "msg.activity = Array.from({ length: 60 }, () => Math.floor(Math.random() * 2));\nreturn msg;",
+        "name": "Get and format date for query",
+        "func": "//Adding 12h (43200000 ms) is a simple way to get around the daylight saving time problem\nlet date = new Date(global.get(\"date\") + 43200000)\nmsg.payload = \n    (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 520,
+        "x": 870,
+        "y": 420,
         "wires": [
             [
-                "68398c5d08b37f7f",
-                "edc6a6ac3fe33103"
+                "32b80f416b60e62c"
             ]
         ]
     },
     {
-        "id": "edc6a6ac3fe33103",
+        "id": "96c5044c1f6bcebb",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Format to table input",
+        "func": "if(msg.payload != undefined){\n    msg.timestamp = msg.payload.time * 10000\n    switch(msg.payload.activity){\n    case -1:\n        msg.payload = 0\n        break;\n    case 0:\n        msg.payload = Math.floor(Math.random() * 500 + 1000)\n        break;\n    case 1:\n        msg.payload = Math.floor((Math.random() * 500 + 1000) * 2)\n        break;\n    }\n\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1560,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "04e36d29a5c4ec36",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Reduce to one per minute",
+        "func": "if(msg.payload.length == 0)\n    return msg\n\nfunction timeToMinutes(time) {\n    let [hours, minutes, seconds] = time.split(':').map(Number)\n    return Math.round(hours * 60 + minutes + seconds/60)\n}\n\nlet counters = new Map()\n\nfor (let element of msg.payload) {\n    if(counters.get(timeToMinutes(element.time)) == undefined){\n        counters.set(timeToMinutes(element.time), {walking : 0, running: 0})\n    }\n    if(element.activity)\n        counters.get(timeToMinutes(element.time)).running++;\n    else\n        counters.get(timeToMinutes(element.time)).walking++;\n}\n\nmsg.payload = [{\nseries: [\"A\"],\ndata: [[]],\nlabels: [\"\"]\n}]\n\nlet jump = true\n\nfor (let m = 0; m < 1440; m++) {\n    let value = counters.get(m)\n    if(value){\n        if(value.running > value.walking)\n            msg.payload[0].data[0].push({x: m, y: 1})\n        else\n            msg.payload[0].data[0].push({x: m, y: 0})\n        jump = false\n    }\n    else if (!jump){\n        msg.payload[0].data[0].push({x: m, y: null})\n        jump = true\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 320,
+        "wires": [
+            [
+                "68398c5d08b37f7f",
+                "84fd9f5d19077596"
+            ]
+        ]
+    },
+    {
+        "id": "591676ad0652b1c5",
+        "type": "ui_ui_control",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "events": "change",
+        "x": 140,
+        "y": 520,
+        "wires": [
+            [
+                "55e0a5142dd35db4"
+            ]
+        ]
+    },
+    {
+        "id": "83efde91ac7f43d9",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Check info is present",
+        "func": "if(\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"date\") \n){\n    return msg;\n}\nelse{\n    node.warn(\"not all user info is filled\");\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 420,
+        "wires": [
+            [
+                "49821b580309f835"
+            ]
+        ]
+    },
+    {
+        "id": "55e0a5142dd35db4",
+        "type": "delay",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 350,
+        "y": 520,
+        "wires": [
+            [
+                "83efde91ac7f43d9"
+            ]
+        ]
+    },
+    {
+        "id": "cb53a9dd2e83dab4",
         "type": "debug",
         "z": "d6c329914ca9c596",
-        "name": "debug 5",
+        "name": "debug 8",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "activity",
+        "complete": "payload",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 820,
-        "y": 480,
+        "x": 1760,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "84fd9f5d19077596",
+        "type": "debug",
+        "z": "d6c329914ca9c596",
+        "name": "debug 9",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[0].data[0]",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "96bf1dce4128e508",
+        "type": "inject",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "x": 1570,
+        "y": 360,
+        "wires": [
+            [
+                "8841da6e18a929f0",
+                "cb53a9dd2e83dab4"
+            ]
+        ]
+    },
+    {
+        "id": "7b55f7e1dcc2aa2e",
+        "type": "debug",
+        "z": "d6c329914ca9c596",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5bb7d1936ad7cc78",
+        "type": "debug",
+        "z": "d6c329914ca9c596",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 620,
         "wires": []
     }
 ]

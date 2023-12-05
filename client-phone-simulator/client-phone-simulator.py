@@ -28,7 +28,7 @@ msg_count = 0
 while True:
     try:
         time.sleep(1)
-        current_msg = datetime.now().strftime("%m/%d/%y;%H:%M:%S:000000000;") + msg[msg_count]
+        current_msg = datetime.now().strftime("%d/%m/%y;%H:%M:%S:000000000;") + msg[msg_count]
         result = client.publish(topic, current_msg)
         status = result[0]
         if status == 0:
