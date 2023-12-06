@@ -3287,3 +3287,245 @@
 1701811756: Client Client1 closed its connection.
 1701811839: mosquitto version 2.0.18 terminating
 1701811839: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1701871408: mosquitto version 2.0.18 starting
+1701871408: Config loaded from /mosquitto/config/mosquitto.conf.
+1701871408: Opening ipv4 listen socket on port 1883.
+1701871408: mosquitto version 2.0.18 running
+1701871413: New connection from 172.100.10.15:43846 on port 1883.
+1701871413: New client connected from 172.100.10.15:43846 as nodered_f65a1143c9a29901 (p2, c1, k60).
+1701871555: Client nodered_f65a1143c9a29901 disconnected.
+1701871555: New connection from 172.100.10.15:32874 on port 1883.
+1701871555: New client connected from 172.100.10.15:32874 as nodered_73ee08328e858b9c (p2, c1, k60).
+1701871584: Client nodered_73ee08328e858b9c disconnected.
+1701871585: New connection from 172.100.10.15:58634 on port 1883.
+1701871585: New client connected from 172.100.10.15:58634 as nodered_60dd758b12b15e11 (p2, c1, k60).
+1701871759: Client nodered_60dd758b12b15e11 disconnected.
+1701871759: New connection from 172.100.10.15:35640 on port 1883.
+1701871759: New client connected from 172.100.10.15:35640 as nodered_24da7c22b587b39b (p2, c1, k60).
+1701871890: Client nodered_24da7c22b587b39b disconnected.
+1701871890: New connection from 172.100.10.15:55246 on port 1883.
+1701871890: New client connected from 172.100.10.15:55246 as nodered_4ad06ef79565e299 (p2, c1, k60).
+1701871905: Client nodered_4ad06ef79565e299 disconnected.
+1701871905: New connection from 172.100.10.15:60900 on port 1883.
+1701871905: New client connected from 172.100.10.15:60900 as nodered_ceda62d9c5b53365 (p2, c1, k60).
+1701871999: Client nodered_ceda62d9c5b53365 disconnected.
+1701871999: New connection from 172.100.10.15:55530 on port 1883.
+1701871999: New client connected from 172.100.10.15:55530 as nodered_f48da1744be7097d (p2, c1, k60).
+1701872008: Client nodered_f48da1744be7097d disconnected.
+1701872008: New connection from 172.100.10.15:56112 on port 1883.
+1701872008: New client connected from 172.100.10.15:56112 as nodered_f497f8180ffd8e92 (p2, c1, k60).
+1701872021: Client nodered_f497f8180ffd8e92 disconnected.
+1701872021: New connection from 172.100.10.15:54720 on port 1883.
+1701872021: New client connected from 172.100.10.15:54720 as nodered_37f0d58436805fc5 (p2, c1, k60).
+1701872046: Client nodered_37f0d58436805fc5 disconnected.
+1701872046: New connection from 172.100.10.15:34616 on port 1883.
+1701872046: New client connected from 172.100.10.15:34616 as nodered_bb60479996e1b9db (p2, c1, k60).
+1701872074: Client nodered_bb60479996e1b9db disconnected.
+1701872074: New connection from 172.100.10.15:36864 on port 1883.
+1701872074: New client connected from 172.100.10.15:36864 as nodered_0b2b4e30f877fc24 (p2, c1, k60).
+1701872178: Client nodered_0b2b4e30f877fc24 disconnected.
+1701872178: New connection from 172.100.10.15:49678 on port 1883.
+1701872178: New client connected from 172.100.10.15:49678 as nodered_de6b371b3eba7fe9 (p2, c1, k60).
+1701872268: Client nodered_de6b371b3eba7fe9 disconnected.
+1701872268: New connection from 172.100.10.15:32966 on port 1883.
+1701872268: New client connected from 172.100.10.15:32966 as nodered_202a43c4af71c04b (p2, c1, k60).
+1701872629: Client nodered_202a43c4af71c04b disconnected.
+1701872629: New connection from 172.100.10.15:42534 on port 1883.
+1701872629: New client connected from 172.100.10.15:42534 as nodered_0ebe9809e40ed47b (p2, c1, k60).
+1701872675: Client nodered_0ebe9809e40ed47b disconnected.
+1701872675: New connection from 172.100.10.15:41938 on port 1883.
+1701872675: New client connected from 172.100.10.15:41938 as nodered_816bb47ab02edf07 (p2, c1, k60).
+1701872689: Client nodered_816bb47ab02edf07 disconnected.
+1701872689: New connection from 172.100.10.15:41864 on port 1883.
+1701872689: New client connected from 172.100.10.15:41864 as nodered_6b0f4d6145cac24d (p2, c1, k60).
+1701872731: New connection from 172.100.10.1:64006 on port 1883.
+1701872731: New client connected from 172.100.10.1:64006 as Client1 (p2, c1, k60).
+1701873208: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1701875009: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1701875776: Client nodered_6b0f4d6145cac24d disconnected.
+1701875777: New connection from 172.100.10.15:56838 on port 1883.
+1701875777: New client connected from 172.100.10.15:56838 as nodered_ca188e0debef290d (p2, c1, k60).
+1701875859: Client nodered_ca188e0debef290d disconnected.
+1701875859: New connection from 172.100.10.15:48700 on port 1883.
+1701875859: New client connected from 172.100.10.15:48700 as nodered_3c04ad99bd389a71 (p2, c1, k60).
+1701875904: Client nodered_3c04ad99bd389a71 disconnected.
+1701875904: New connection from 172.100.10.15:37492 on port 1883.
+1701875904: New client connected from 172.100.10.15:37492 as nodered_3cfec60bd03967ef (p2, c1, k60).
+1701875984: Client nodered_3cfec60bd03967ef disconnected.
+1701875984: New connection from 172.100.10.15:46386 on port 1883.
+1701875984: New client connected from 172.100.10.15:46386 as nodered_327f4eb1c1bd55d5 (p2, c1, k60).
+1701876008: Client nodered_327f4eb1c1bd55d5 disconnected.
+1701876008: New connection from 172.100.10.15:33814 on port 1883.
+1701876008: New client connected from 172.100.10.15:33814 as nodered_f9e727bfbe1e9d07 (p2, c1, k60).
+1701876045: Client nodered_f9e727bfbe1e9d07 disconnected.
+1701876045: New connection from 172.100.10.15:43506 on port 1883.
+1701876045: New client connected from 172.100.10.15:43506 as nodered_a39032865eb1c75c (p2, c1, k60).
+1701876297: Client nodered_a39032865eb1c75c disconnected.
+1701876298: New connection from 172.100.10.15:47696 on port 1883.
+1701876298: New client connected from 172.100.10.15:47696 as nodered_22679dd7fa5853e2 (p2, c1, k60).
+1701876317: Client nodered_22679dd7fa5853e2 disconnected.
+1701876317: New connection from 172.100.10.15:49510 on port 1883.
+1701876317: New client connected from 172.100.10.15:49510 as nodered_88eda6bd23677696 (p2, c1, k60).
+1701876334: Client nodered_88eda6bd23677696 disconnected.
+1701876334: New connection from 172.100.10.15:52004 on port 1883.
+1701876334: New client connected from 172.100.10.15:52004 as nodered_0020810e980c23fe (p2, c1, k60).
+1701876392: Client nodered_0020810e980c23fe disconnected.
+1701876392: New connection from 172.100.10.15:48542 on port 1883.
+1701876392: New client connected from 172.100.10.15:48542 as nodered_8579153da4a50794 (p2, c1, k60).
+1701876415: Client nodered_8579153da4a50794 disconnected.
+1701876415: New connection from 172.100.10.15:44452 on port 1883.
+1701876415: New client connected from 172.100.10.15:44452 as nodered_3184bd52b7b61719 (p2, c1, k60).
+1701876486: Client nodered_3184bd52b7b61719 disconnected.
+1701876487: New connection from 172.100.10.15:45904 on port 1883.
+1701876487: New client connected from 172.100.10.15:45904 as nodered_45377373a7508e09 (p2, c1, k60).
+1701876519: Client nodered_45377373a7508e09 disconnected.
+1701876519: New connection from 172.100.10.15:34562 on port 1883.
+1701876519: New client connected from 172.100.10.15:34562 as nodered_41d3c657f2c399ae (p2, c1, k60).
+1701876722: Client nodered_41d3c657f2c399ae disconnected.
+1701876722: New connection from 172.100.10.15:44192 on port 1883.
+1701876722: New client connected from 172.100.10.15:44192 as nodered_80a3a16a9c2ed298 (p2, c1, k60).
+1701876756: Client nodered_80a3a16a9c2ed298 disconnected.
+1701876756: New connection from 172.100.10.15:40636 on port 1883.
+1701876756: New client connected from 172.100.10.15:40636 as nodered_f92f10dcf9813909 (p2, c1, k60).
+1701876776: Client nodered_f92f10dcf9813909 disconnected.
+1701876776: New connection from 172.100.10.15:53828 on port 1883.
+1701876776: New client connected from 172.100.10.15:53828 as nodered_4e77783e84228b98 (p2, c1, k60).
+1701876810: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1701876811: Client nodered_4e77783e84228b98 disconnected.
+1701876811: New connection from 172.100.10.15:49392 on port 1883.
+1701876811: New client connected from 172.100.10.15:49392 as nodered_8b1f3bbec966cee6 (p2, c1, k60).
+1701876857: Client nodered_8b1f3bbec966cee6 disconnected.
+1701876857: New connection from 172.100.10.15:51862 on port 1883.
+1701876857: New client connected from 172.100.10.15:51862 as nodered_0717e79a5d9e8768 (p2, c1, k60).
+1701876884: Client nodered_0717e79a5d9e8768 disconnected.
+1701876884: New connection from 172.100.10.15:57980 on port 1883.
+1701876884: New client connected from 172.100.10.15:57980 as nodered_5bec0ce870289bdf (p2, c1, k60).
+1701876948: Client nodered_5bec0ce870289bdf disconnected.
+1701876948: New connection from 172.100.10.15:35334 on port 1883.
+1701876948: New client connected from 172.100.10.15:35334 as nodered_8a474c07a1e708d1 (p2, c1, k60).
+1701877002: Client nodered_8a474c07a1e708d1 disconnected.
+1701877002: New connection from 172.100.10.15:48720 on port 1883.
+1701877002: New client connected from 172.100.10.15:48720 as nodered_1c2f3039809341c0 (p2, c1, k60).
+1701877041: Client nodered_1c2f3039809341c0 disconnected.
+1701877041: New connection from 172.100.10.15:52590 on port 1883.
+1701877041: New client connected from 172.100.10.15:52590 as nodered_194c231cb0bc4348 (p2, c1, k60).
+1701877050: Client nodered_194c231cb0bc4348 disconnected.
+1701877050: New connection from 172.100.10.15:37574 on port 1883.
+1701877050: New client connected from 172.100.10.15:37574 as nodered_31b82ea09eaf57d5 (p2, c1, k60).
+1701877069: Client nodered_31b82ea09eaf57d5 disconnected.
+1701877069: New connection from 172.100.10.15:55410 on port 1883.
+1701877069: New client connected from 172.100.10.15:55410 as nodered_d05aefbdb2832fd2 (p2, c1, k60).
+1701877166: Client nodered_d05aefbdb2832fd2 disconnected.
+1701877166: New connection from 172.100.10.15:47502 on port 1883.
+1701877166: New client connected from 172.100.10.15:47502 as nodered_8e5e5390d5e30610 (p2, c1, k60).
+1701877174: Client nodered_8e5e5390d5e30610 disconnected.
+1701877174: New connection from 172.100.10.15:35104 on port 1883.
+1701877174: New client connected from 172.100.10.15:35104 as nodered_bb096d2dbd5ed536 (p2, c1, k60).
+1701877226: Client nodered_bb096d2dbd5ed536 disconnected.
+1701877226: New connection from 172.100.10.15:56706 on port 1883.
+1701877226: New client connected from 172.100.10.15:56706 as nodered_8e3a1464518fb0f6 (p2, c1, k60).
+1701877306: Client nodered_8e3a1464518fb0f6 disconnected.
+1701877306: New connection from 172.100.10.15:36624 on port 1883.
+1701877306: New client connected from 172.100.10.15:36624 as nodered_81b5b194b3d71fc8 (p2, c1, k60).
+1701878280: Client nodered_81b5b194b3d71fc8 disconnected.
+1701878280: New connection from 172.100.10.15:52454 on port 1883.
+1701878280: New client connected from 172.100.10.15:52454 as nodered_6e7b5d56dda03d4e (p2, c1, k60).
+1701878312: Client nodered_6e7b5d56dda03d4e disconnected.
+1701878312: New connection from 172.100.10.15:51212 on port 1883.
+1701878312: New client connected from 172.100.10.15:51212 as nodered_4675e55a416aa05c (p2, c1, k60).
+1701878423: Client nodered_4675e55a416aa05c disconnected.
+1701878423: New connection from 172.100.10.15:59504 on port 1883.
+1701878423: New client connected from 172.100.10.15:59504 as nodered_afdb1da5a30e76b9 (p2, c1, k60).
+1701878458: Client nodered_afdb1da5a30e76b9 disconnected.
+1701878458: New connection from 172.100.10.15:41288 on port 1883.
+1701878458: New client connected from 172.100.10.15:41288 as nodered_ea3dba3ca0ae0d78 (p2, c1, k60).
+1701878485: Client nodered_ea3dba3ca0ae0d78 disconnected.
+1701878485: New connection from 172.100.10.15:43294 on port 1883.
+1701878485: New client connected from 172.100.10.15:43294 as nodered_a2f301886c8021b1 (p2, c1, k60).
+1701878581: Client nodered_a2f301886c8021b1 disconnected.
+1701878581: New connection from 172.100.10.15:44712 on port 1883.
+1701878581: New client connected from 172.100.10.15:44712 as nodered_54f51a2634b52f3b (p2, c1, k60).
+1701878611: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1701878623: Client nodered_54f51a2634b52f3b disconnected.
+1701878624: New connection from 172.100.10.15:58008 on port 1883.
+1701878624: New client connected from 172.100.10.15:58008 as nodered_7d10950eefc4d366 (p2, c1, k60).
+1701878658: Client nodered_7d10950eefc4d366 disconnected.
+1701878658: New connection from 172.100.10.15:49486 on port 1883.
+1701878658: New client connected from 172.100.10.15:49486 as nodered_7c2f628f25a6a430 (p2, c1, k60).
+1701878700: Client nodered_7c2f628f25a6a430 disconnected.
+1701878700: New connection from 172.100.10.15:33362 on port 1883.
+1701878700: New client connected from 172.100.10.15:33362 as nodered_8bf23c6b28fe6bc1 (p2, c1, k60).
+1701878725: Client nodered_8bf23c6b28fe6bc1 disconnected.
+1701878725: New connection from 172.100.10.15:58488 on port 1883.
+1701878725: New client connected from 172.100.10.15:58488 as nodered_42bef1254dddb8a6 (p2, c1, k60).
+1701878778: Client nodered_42bef1254dddb8a6 disconnected.
+1701878778: New connection from 172.100.10.15:33276 on port 1883.
+1701878778: New client connected from 172.100.10.15:33276 as nodered_883c5c2a1579f4cf (p2, c1, k60).
+1701878972: Client nodered_883c5c2a1579f4cf disconnected.
+1701878972: New connection from 172.100.10.15:36570 on port 1883.
+1701878972: New client connected from 172.100.10.15:36570 as nodered_e04fa4fc301e978d (p2, c1, k60).
+1701878982: Client nodered_e04fa4fc301e978d disconnected.
+1701878982: New connection from 172.100.10.15:46668 on port 1883.
+1701878982: New client connected from 172.100.10.15:46668 as nodered_3064cc3b05d03ca9 (p2, c1, k60).
+1701878989: Client nodered_3064cc3b05d03ca9 disconnected.
+1701878989: New connection from 172.100.10.15:40332 on port 1883.
+1701878989: New client connected from 172.100.10.15:40332 as nodered_c93f654ca4179c86 (p2, c1, k60).
+1701879753: Client nodered_c93f654ca4179c86 disconnected.
+1701879753: New connection from 172.100.10.15:54934 on port 1883.
+1701879753: New client connected from 172.100.10.15:54934 as nodered_3f20b7912452f27f (p2, c1, k60).
+1701880412: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1701881074: Client nodered_3f20b7912452f27f disconnected.
+1701881074: New connection from 172.100.10.15:45918 on port 1883.
+1701881074: New client connected from 172.100.10.15:45918 as nodered_27de6730e791650c (p2, c1, k60).
+1701881114: Client nodered_27de6730e791650c disconnected.
+1701881114: New connection from 172.100.10.15:41160 on port 1883.
+1701881114: New client connected from 172.100.10.15:41160 as nodered_4956ff1ca3481447 (p2, c1, k60).
+1701881143: Client nodered_4956ff1ca3481447 disconnected.
+1701881144: New connection from 172.100.10.15:42644 on port 1883.
+1701881144: New client connected from 172.100.10.15:42644 as nodered_da353f908f1a7459 (p2, c1, k60).
+1701881245: Client nodered_da353f908f1a7459 disconnected.
+1701881246: New connection from 172.100.10.15:37704 on port 1883.
+1701881246: New client connected from 172.100.10.15:37704 as nodered_b7a14e4bf4bff50b (p2, c1, k60).
+1701881288: Client nodered_b7a14e4bf4bff50b disconnected.
+1701881289: New connection from 172.100.10.15:33738 on port 1883.
+1701881289: New client connected from 172.100.10.15:33738 as nodered_0d2191a0a4d73419 (p2, c1, k60).
+1701881326: Client nodered_0d2191a0a4d73419 disconnected.
+1701881326: New connection from 172.100.10.15:37242 on port 1883.
+1701881326: New client connected from 172.100.10.15:37242 as nodered_48681f38dae170de (p2, c1, k60).
+1701881589: Client nodered_48681f38dae170de disconnected.
+1701881589: New connection from 172.100.10.15:52604 on port 1883.
+1701881589: New client connected from 172.100.10.15:52604 as nodered_b7952442ddb09fc6 (p2, c1, k60).
+1701881600: Client nodered_b7952442ddb09fc6 disconnected.
+1701881600: New connection from 172.100.10.15:42660 on port 1883.
+1701881600: New client connected from 172.100.10.15:42660 as nodered_cbe7992df3501b8b (p2, c1, k60).
+1701881678: Client nodered_cbe7992df3501b8b disconnected.
+1701881678: New connection from 172.100.10.15:53834 on port 1883.
+1701881678: New client connected from 172.100.10.15:53834 as nodered_ce395a5b56923467 (p2, c1, k60).
+1701881727: Client nodered_ce395a5b56923467 disconnected.
+1701881727: New connection from 172.100.10.15:38058 on port 1883.
+1701881727: New client connected from 172.100.10.15:38058 as nodered_2de0abe98362bd79 (p2, c1, k60).
+1701881740: Client nodered_2de0abe98362bd79 disconnected.
+1701881740: New connection from 172.100.10.15:48454 on port 1883.
+1701881740: New client connected from 172.100.10.15:48454 as nodered_673b2e0dd4aca128 (p2, c1, k60).
+1701881771: Client nodered_673b2e0dd4aca128 disconnected.
+1701881771: New connection from 172.100.10.15:39394 on port 1883.
+1701881771: New client connected from 172.100.10.15:39394 as nodered_be27b3b74497730f (p2, c1, k60).
+1701881898: Client nodered_be27b3b74497730f disconnected.
+1701881898: New connection from 172.100.10.15:38234 on port 1883.
+1701881898: New client connected from 172.100.10.15:38234 as nodered_803dccd5bac9dd82 (p2, c1, k60).
+1701881918: Client nodered_803dccd5bac9dd82 disconnected.
+1701881918: New connection from 172.100.10.15:58866 on port 1883.
+1701881918: New client connected from 172.100.10.15:58866 as nodered_cb8a9a44c5b27fe8 (p2, c1, k60).
+1701882099: Client nodered_cb8a9a44c5b27fe8 disconnected.
+1701882099: New connection from 172.100.10.15:47494 on port 1883.
+1701882099: New client connected from 172.100.10.15:47494 as nodered_71111a068e1ecb9a (p2, c1, k60).
+1701882159: Client nodered_71111a068e1ecb9a disconnected.
+1701882159: New connection from 172.100.10.15:58850 on port 1883.
+1701882159: New client connected from 172.100.10.15:58850 as nodered_876860a8bbecebee (p2, c1, k60).
+1701882213: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1701882301: Client nodered_876860a8bbecebee disconnected.
+1701882301: New connection from 172.100.10.15:41086 on port 1883.
+1701882301: New client connected from 172.100.10.15:41086 as nodered_96a1dd0c9f737f76 (p2, c1, k60).
+1701882441: Client Client1 closed its connection.
+1701882447: mosquitto version 2.0.18 terminating
+1701882447: Saving in-memory database to /mosquitto/data//mosquitto.db.

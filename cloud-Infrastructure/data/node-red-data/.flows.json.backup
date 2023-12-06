@@ -23,37 +23,6 @@
         "env": []
     },
     {
-        "id": "037aecdc6926ce9a",
-        "type": "mqtt-broker",
-        "name": "IdC",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "autoUnsubscribe": false,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
         "id": "f5279b01.b328d8",
         "type": "mqtt-broker",
         "name": "",
@@ -115,7 +84,7 @@
             },
             "darkTheme": {
                 "default": "#097479",
-                "baseColor": "#097479",
+                "baseColor": "#457709",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
                 "edited": true,
                 "reset": false
@@ -129,11 +98,11 @@
             "themeState": {
                 "base-color": {
                     "default": "#097479",
-                    "value": "#097479",
-                    "edited": false
+                    "value": "#457709",
+                    "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#097479",
+                    "value": "#457709",
                     "edited": false
                 },
                 "page-backgroundColor": {
@@ -145,7 +114,7 @@
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#0eb8c0",
+                    "value": "#6ebe0e",
                     "edited": false
                 },
                 "group-borderColor": {
@@ -161,7 +130,7 @@
                     "edited": false
                 },
                 "widget-backgroundColor": {
-                    "value": "#097479",
+                    "value": "#457709",
                     "edited": false
                 },
                 "widget-borderColor": {
@@ -181,10 +150,10 @@
             }
         },
         "site": {
-            "name": "Node-RED Dashboard",
+            "name": "Fitness Monitor",
             "hideToolbar": "false",
             "allowSwipe": "false",
-            "lockMenu": "false",
+            "lockMenu": "true",
             "allowTempTheme": "true",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
@@ -202,7 +171,7 @@
     {
         "id": "4429aae43b37c326",
         "type": "ui_group",
-        "name": "Chart Calorias",
+        "name": "Your Caloric Information",
         "tab": "c6f79a2c0e9e2f01",
         "order": 2,
         "disp": true,
@@ -214,38 +183,58 @@
         "id": "c6f79a2c0e9e2f01",
         "type": "ui_tab",
         "name": "Home",
-        "icon": "dashboard",
+        "icon": "home",
         "disabled": false,
         "hidden": false
     },
     {
-        "id": "086e043121d11401",
+        "id": "f1571b0d0c85903e",
+        "type": "ui_tab",
+        "name": "User Info",
+        "icon": "person",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5d778ec448492bfb",
         "type": "ui_group",
-        "name": "Introduction",
-        "tab": "c6f79a2c0e9e2f01",
+        "name": "Your personal information",
+        "tab": "f1571b0d0c85903e",
         "order": 1,
-        "disp": false,
+        "disp": true,
         "width": "6",
         "collapse": false,
         "className": ""
     },
     {
-        "id": "3ba37fd4.6558f",
-        "type": "ui_group",
-        "name": "Example Flow",
-        "tab": "72415252.b2cadc",
-        "order": 1,
-        "disp": true,
-        "width": "8",
-        "collapse": false
-    },
-    {
-        "id": "72415252.b2cadc",
+        "id": "629d4cb688713e6b",
         "type": "ui_tab",
-        "name": "Home",
-        "icon": "dashboard",
+        "name": "Settings",
+        "icon": "settings",
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "bfc4c39bf4583c3a",
+        "type": "ui_group",
+        "name": "Settings",
+        "tab": "629d4cb688713e6b",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "67cf9908fe08f1e8",
+        "type": "ui_group",
+        "name": "Calories burned:",
+        "tab": "c6f79a2c0e9e2f01",
+        "order": 2,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "71808ae9c2f6163a",
@@ -785,43 +774,12 @@
         "wires": []
     },
     {
-        "id": "a1da816478b01fb6",
-        "type": "ui_text",
-        "z": "d6c329914ca9c596",
-        "group": "086e043121d11401",
-        "order": 1,
-        "width": "0",
-        "height": "0",
-        "name": "",
-        "label": "Welcome,",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 740,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "399c22ea5abcea7b",
-        "type": "comment",
-        "z": "d6c329914ca9c596",
-        "name": "Precisa de receber user.name para o msg.payload",
-        "info": "Precisa de receber user.name para o msg.payload",
-        "x": 739,
-        "y": 211,
-        "wires": []
-    },
-    {
         "id": "8841da6e18a929f0",
         "type": "ui_chart",
         "z": "d6c329914ca9c596",
         "name": "",
         "group": "4429aae43b37c326",
-        "order": 1,
+        "order": 3,
         "width": "0",
         "height": "0",
         "label": "Calorie Consuption",
@@ -829,7 +787,7 @@
         "legend": "false",
         "xformat": "HH:mm",
         "interpolate": "step",
-        "nodata": "No activity for the selecte day",
+        "nodata": "No activity for the selected day (or missing info)",
         "dot": false,
         "ymin": "0",
         "ymax": "30",
@@ -853,114 +811,10 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1770,
-        "y": 360,
+        "x": 1230,
+        "y": 600,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "918d1eb74676c809",
-        "type": "comment",
-        "z": "d6c329914ca9c596",
-        "name": "Receber dados caloricos e preencher",
-        "info": "",
-        "x": 579,
-        "y": 91,
-        "wires": []
-    },
-    {
-        "id": "eca9c0571cd9681f",
-        "type": "inject",
-        "z": "d6c329914ca9c596",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 370,
-        "y": 280,
-        "wires": [
-            [
-                "83efde91ac7f43d9"
-            ]
-        ]
-    },
-    {
-        "id": "3d4d33bc2bdbe0cc",
-        "type": "inject",
-        "z": "d6c329914ca9c596",
-        "name": "",
-        "repeat": "1",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 870,
-        "y": 120,
-        "wires": [
-            [
-                "cc32805493c8ea22",
-                "32dc081c05bd8bfa"
-            ]
-        ]
-    },
-    {
-        "id": "cc32805493c8ea22",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1030,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "17d9848c7b093add",
-        "type": "ui_text",
-        "z": "d6c329914ca9c596",
-        "group": "086e043121d11401",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": "",
-        "color": "#000000",
-        "x": 1190,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "32dc081c05bd8bfa",
-        "type": "function",
-        "z": "d6c329914ca9c596",
-        "name": "Format Time",
-        "func": "var d = new Date();\nvar options = { timeZone: 'UTC', timeZoneName: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: `2-digit`, minute: `2-digit`, second: `2-digit`};\nvar _resultDate = d.toLocaleDateString('en-US', options);\nmsg.payload = _resultDate;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1030,
-        "y": 140,
-        "wires": [
-            [
-                "17d9848c7b093add"
-            ]
         ]
     },
     {
@@ -971,7 +825,7 @@
         "label": "Age",
         "tooltip": "",
         "place": "Select age range",
-        "group": "086e043121d11401",
+        "group": "5d778ec448492bfb",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -1018,8 +872,8 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 130,
-        "y": 320,
+        "x": 90,
+        "y": 220,
         "wires": [
             [
                 "d614d03dbc80f6cd"
@@ -1033,7 +887,7 @@
         "name": "",
         "label": "Weight (kg)",
         "tooltip": "",
-        "group": "086e043121d11401",
+        "group": "5d778ec448492bfb",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -1044,8 +898,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 150,
-        "y": 360,
+        "x": 110,
+        "y": 260,
         "wires": [
             [
                 "d1606ab8b46b083c"
@@ -1059,9 +913,9 @@
         "name": "",
         "label": "Gender",
         "tooltip": "",
-        "place": "Select option",
-        "group": "086e043121d11401",
-        "order": 4,
+        "place": "Select gender",
+        "group": "5d778ec448492bfb",
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1082,8 +936,8 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 140,
-        "y": 400,
+        "x": 100,
+        "y": 300,
         "wires": [
             [
                 "ee41390d6d07e323"
@@ -1096,20 +950,19 @@
         "z": "d6c329914ca9c596",
         "name": "",
         "label": "Date",
-        "group": "086e043121d11401",
-        "order": 5,
-        "width": 0,
-        "height": 0,
+        "group": "4429aae43b37c326",
+        "order": 1,
+        "width": "6",
+        "height": "1",
         "passthru": false,
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 130,
-        "y": 480,
+        "x": 90,
+        "y": 420,
         "wires": [
             [
-                "26dadb0e5e8e81b1",
-                "5bb7d1936ad7cc78"
+                "26dadb0e5e8e81b1"
             ]
         ]
     },
@@ -1133,11 +986,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 340,
-        "y": 320,
+        "x": 300,
+        "y": 220,
         "wires": [
             [
-                "83efde91ac7f43d9"
+                "83efde91ac7f43d9",
+                "314c7a2c2ddb25cf"
             ]
         ]
     },
@@ -1161,11 +1015,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 360,
+        "x": 290,
+        "y": 260,
         "wires": [
             [
-                "83efde91ac7f43d9"
+                "83efde91ac7f43d9",
+                "314c7a2c2ddb25cf"
             ]
         ]
     },
@@ -1189,11 +1044,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 400,
+        "x": 290,
+        "y": 300,
         "wires": [
             [
-                "83efde91ac7f43d9"
+                "83efde91ac7f43d9",
+                "314c7a2c2ddb25cf"
             ]
         ]
     },
@@ -1217,32 +1073,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 340,
-        "y": 480,
+        "x": 300,
+        "y": 420,
         "wires": [
             [
                 "83efde91ac7f43d9"
-            ]
-        ]
-    },
-    {
-        "id": "68398c5d08b37f7f",
-        "type": "function",
-        "z": "d6c329914ca9c596",
-        "name": "Convert activity to calories and minutes to miliseconds",
-        "func": "if(msg.payload.length == 0)\n    return msg\n\nlet velocity_map = new Map([\n    [JSON.stringify([\"2\", \"M\"]), 1.36],\n    [JSON.stringify([\"2\", \"F\"]), 1.34],\n    [JSON.stringify([\"3\", \"M\"]), 1.43],\n    [JSON.stringify([\"3\", \"F\"]), 1.34],\n    [JSON.stringify([\"4\", \"M\"]), 1.43],\n    [JSON.stringify([\"4\", \"F\"]), 1.39],\n    [JSON.stringify([\"5\", \"M\"]), 1.43],\n    [JSON.stringify([\"5\", \"F\"]), 1.32],\n    [JSON.stringify([\"6\", \"M\"]), 1.34],\n    [JSON.stringify([\"6\", \"F\"]), 1.24],\n    [JSON.stringify([\"7\", \"M\"]), 1.26],\n    [JSON.stringify([\"7\", \"F\"]), 1.13],\n    [JSON.stringify([\"8\", \"M\"]), 0.97],\n    [JSON.stringify([\"8\", \"F\"]), 0.94]\n]);\n\n//Obtaining user info\nlet age = global.get(\"age\")\nlet weight = global.get(\"weight\")\nlet gender = global.get(\"gender\")\nlet height = global.get(\"height\")\n\n//Getting velocity from the table\nlet velocity = velocity_map.get(JSON.stringify([age, gender]))\n\nfor (let i = 0; i < msg.payload[0].data[0].length; i++) {\n    //Convert the non null activities to calories\n    if (msg.payload[0].data[0][i].y != null){\n        let calories = 0.035 * weight + ((velocity + (velocity * msg.payload[0].data[0][i].y)) ** 2) / (height/100) * 0.029 * weight\n        msg.payload[0].data[0][i].y = Math.round(calories * 1000) / 1000\n    }\n    //Convert the minutes to miliseconds\n    msg.payload[0].data[0][i].x = msg.payload[0].data[0][i].x * 60 * 1000\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1440,
-        "y": 320,
-        "wires": [
-            [
-                "8841da6e18a929f0",
-                "cb53a9dd2e83dab4"
             ]
         ]
     },
@@ -1266,11 +1101,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 340,
-        "y": 440,
+        "x": 300,
+        "y": 340,
         "wires": [
             [
-                "83efde91ac7f43d9"
+                "83efde91ac7f43d9",
+                "314c7a2c2ddb25cf"
             ]
         ]
     },
@@ -1281,8 +1117,8 @@
         "name": "",
         "label": "Height (cm)",
         "tooltip": "",
-        "group": "086e043121d11401",
-        "order": 3,
+        "group": "5d778ec448492bfb",
+        "order": 4,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1292,8 +1128,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 150,
-        "y": 440,
+        "x": 110,
+        "y": 340,
         "wires": [
             [
                 "a88a32c83179c55f"
@@ -1310,12 +1146,11 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 890,
-        "y": 320,
+        "x": 430,
+        "y": 600,
         "wires": [
             [
-                "04e36d29a5c4ec36",
-                "7b55f7e1dcc2aa2e"
+                "04e36d29a5c4ec36"
             ]
         ]
     },
@@ -1331,8 +1166,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 870,
-        "y": 420,
+        "x": 210,
+        "y": 600,
         "wires": [
             [
                 "32b80f416b60e62c"
@@ -1340,41 +1175,22 @@
         ]
     },
     {
-        "id": "96c5044c1f6bcebb",
-        "type": "function",
-        "z": "d6c329914ca9c596",
-        "name": "Format to table input",
-        "func": "if(msg.payload != undefined){\n    msg.timestamp = msg.payload.time * 10000\n    switch(msg.payload.activity){\n    case -1:\n        msg.payload = 0\n        break;\n    case 0:\n        msg.payload = Math.floor(Math.random() * 500 + 1000)\n        break;\n    case 1:\n        msg.payload = Math.floor((Math.random() * 500 + 1000) * 2)\n        break;\n    }\n\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1560,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "04e36d29a5c4ec36",
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Reduce to one per minute",
-        "func": "if(msg.payload.length == 0)\n    return msg\n\nfunction timeToMinutes(time) {\n    let [hours, minutes, seconds] = time.split(':').map(Number)\n    return Math.round(hours * 60 + minutes + seconds/60)\n}\n\nlet counters = new Map()\n\nfor (let element of msg.payload) {\n    if(counters.get(timeToMinutes(element.time)) == undefined){\n        counters.set(timeToMinutes(element.time), {walking : 0, running: 0})\n    }\n    if(element.activity)\n        counters.get(timeToMinutes(element.time)).running++;\n    else\n        counters.get(timeToMinutes(element.time)).walking++;\n}\n\nmsg.payload = [{\nseries: [\"A\"],\ndata: [[]],\nlabels: [\"\"]\n}]\n\nlet jump = true\n\nfor (let m = 0; m < 1440; m++) {\n    let value = counters.get(m)\n    if(value){\n        if(value.running > value.walking)\n            msg.payload[0].data[0].push({x: m, y: 1})\n        else\n            msg.payload[0].data[0].push({x: m, y: 0})\n        jump = false\n    }\n    else if (!jump){\n        msg.payload[0].data[0].push({x: m, y: null})\n        jump = true\n    }\n}\n\nreturn msg;",
+        "func": "if(msg.payload.length == 0)\n    return msg\n\nfunction timeToMinutes(time) {\n    let [hours, minutes, seconds] = time.split(':').map(Number)\n    return Math.round(hours * 60 + minutes + seconds/60)\n}\n\nlet counters = new Map()\n\nfor (let element of msg.payload) {\n    if(counters.get(timeToMinutes(element.time)) == undefined){\n        counters.set(timeToMinutes(element.time), {walking : 0, running: 0})\n    }\n    if(element.activity)\n        counters.get(timeToMinutes(element.time)).running++;\n    else\n        counters.get(timeToMinutes(element.time)).walking++;\n}\n\n\nlet jump = true\n\nmsg.payload = []\nmsg.minutes = []\n\nfor (let m = 0; m < 1440; m++) {\n    let value = counters.get(m)\n    if(value){\n        if(value.running > value.walking)\n            msg.payload.push(1)\n        else\n            msg.payload.push(0)\n        jump = false\n        msg.minutes.push(m)\n    }\n    else if (!jump){\n            msg.payload.push(null)\n        jump = true\n        msg.minutes.push(m)\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1090,
-        "y": 320,
+        "x": 630,
+        "y": 600,
         "wires": [
             [
-                "68398c5d08b37f7f",
-                "84fd9f5d19077596"
+                "e79d928988479d36"
             ]
         ]
     },
@@ -1384,8 +1200,8 @@
         "z": "d6c329914ca9c596",
         "name": "",
         "events": "change",
-        "x": 140,
-        "y": 520,
+        "x": 100,
+        "y": 380,
         "wires": [
             [
                 "55e0a5142dd35db4"
@@ -1396,19 +1212,19 @@
         "id": "83efde91ac7f43d9",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "Check info is present",
-        "func": "if(\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"date\") \n){\n    return msg;\n}\nelse{\n    node.warn(\"not all user info is filled\");\n}",
+        "name": "Check if info, date and period is present",
+        "func": "if(\n    !msg.tab && (\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"date\") &&\n    global.get(\"period\")) \n){\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
-        "y": 420,
+        "x": 640,
+        "y": 380,
         "wires": [
             [
-                "49821b580309f835"
+                "51b0665da8aa29d5"
             ]
         ]
     },
@@ -1429,105 +1245,454 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 350,
-        "y": 520,
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "83efde91ac7f43d9",
+                "314c7a2c2ddb25cf"
+            ]
+        ]
+    },
+    {
+        "id": "8230ba53c5b608f9",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "67cf9908fe08f1e8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Today:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 270,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "4edabed895ed0ee0",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "67cf9908fe08f1e8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "This week:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 290,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "3f59ba744b423683",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "67cf9908fe08f1e8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "This month:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 290,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "bf0c97628dea71e8",
+        "type": "ui_slider",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Daily walking threshold (minutes)",
+        "tooltip": "",
+        "group": "bfc4c39bf4583c3a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "120",
+        "step": "15",
+        "className": "",
+        "x": 180,
+        "y": 880,
+        "wires": [
+            [
+                "225bc9b18e7bacd8"
+            ]
+        ]
+    },
+    {
+        "id": "9f278712df827d23",
+        "type": "comment",
+        "z": "d6c329914ca9c596",
+        "name": "Obtain user info and other inputs",
+        "info": "",
+        "x": 190,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "4a0e932c44646be8",
+        "type": "link in",
+        "z": "d6c329914ca9c596",
+        "name": "link in 1",
+        "links": [
+            "51b0665da8aa29d5"
+        ],
+        "x": 55,
+        "y": 600,
+        "wires": [
+            [
+                "49821b580309f835"
+            ]
+        ]
+    },
+    {
+        "id": "51b0665da8aa29d5",
+        "type": "link out",
+        "z": "d6c329914ca9c596",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "4a0e932c44646be8"
+        ],
+        "x": 835,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "053d457e84065668",
+        "type": "comment",
+        "z": "d6c329914ca9c596",
+        "name": "Update the chart",
+        "info": "",
+        "x": 140,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "308ca807f578609a",
+        "type": "comment",
+        "z": "d6c329914ca9c596",
+        "name": "Update the calorie counters",
+        "info": "",
+        "x": 180,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "90c776b85692a363",
+        "type": "comment",
+        "z": "d6c329914ca9c596",
+        "name": "Get threshold settings",
+        "info": "",
+        "x": 160,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "7b1185f6a35e9c97",
+        "type": "ui_slider",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Daily running threshold (minutes)",
+        "tooltip": "",
+        "group": "bfc4c39bf4583c3a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "120",
+        "step": "15",
+        "className": "",
+        "x": 180,
+        "y": 920,
+        "wires": [
+            [
+                "9d4058bf531961dd"
+            ]
+        ]
+    },
+    {
+        "id": "12127ab281dc7016",
+        "type": "ui_toast",
+        "z": "d6c329914ca9c596",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "#457709",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 790,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "314c7a2c2ddb25cf",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Check if info is missing",
+        "func": "if(\n    msg.tab == 0 && (\n    !global.get(\"age\") ||\n    !global.get(\"weight\") ||\n    !global.get(\"gender\") ||\n    !global.get(\"height\"))\n){\n    msg.payload = \"Please fill-in the missing personal information.\"\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 320,
+        "wires": [
+            [
+                "12127ab281dc7016"
+            ]
+        ]
+    },
+    {
+        "id": "225bc9b18e7bacd8",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "walking_threshold",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d4058bf531961dd",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "running_threshold",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e79d928988479d36",
+        "type": "link call",
+        "z": "d6c329914ca9c596",
+        "name": "Calorie calculator",
+        "links": [
+            "47e3b0882b8e5a83"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 850,
+        "y": 600,
+        "wires": [
+            [
+                "e7f7bae9ed1624b5"
+            ]
+        ]
+    },
+    {
+        "id": "47e3b0882b8e5a83",
+        "type": "link in",
+        "z": "d6c329914ca9c596",
+        "name": "Calorie in",
+        "links": [],
+        "x": 55,
+        "y": 120,
+        "wires": [
+            [
+                "a4a69d3023f619dd"
+            ]
+        ]
+    },
+    {
+        "id": "d7e3c757c9390afa",
+        "type": "link out",
+        "z": "d6c329914ca9c596",
+        "name": "Calorie out",
+        "mode": "return",
+        "links": [],
+        "x": 305,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a4a69d3023f619dd",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Calcualte calories",
+        "func": "if(msg.payload.length == 0)\n    return msg\n\nlet velocity_map = new Map([\n    [JSON.stringify([2, \"M\"]), 1.36],\n    [JSON.stringify([2, \"F\"]), 1.34],\n    [JSON.stringify([3, \"M\"]), 1.43],\n    [JSON.stringify([3, \"F\"]), 1.34],\n    [JSON.stringify([4, \"M\"]), 1.43],\n    [JSON.stringify([4, \"F\"]), 1.39],\n    [JSON.stringify([5, \"M\"]), 1.43],\n    [JSON.stringify([5, \"F\"]), 1.32],\n    [JSON.stringify([6, \"M\"]), 1.34],\n    [JSON.stringify([6, \"F\"]), 1.24],\n    [JSON.stringify([7, \"M\"]), 1.26],\n    [JSON.stringify([7, \"F\"]), 1.13],\n    [JSON.stringify([8, \"M\"]), 0.97],\n    [JSON.stringify([8, \"F\"]), 0.94]\n]);\n\n//Obtaining user info\nlet age = global.get(\"age\")\nlet weight = global.get(\"weight\")\nlet gender = global.get(\"gender\")\nlet height = global.get(\"height\")\n\n//Getting velocity from the table\nlet velocity = velocity_map.get(JSON.stringify([age, gender]))\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    //Convert the non null activities to calories\n    if (msg.payload[i] != null){\n        let calories = 0.035 * weight + ((velocity + (velocity * msg.payload[i])) ** 2) / (height/100) * 0.029 * weight\n        msg.payload[i] = Math.round(calories * 1000) / 1000\n    }\n}\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "d7e3c757c9390afa"
+            ]
+        ]
+    },
+    {
+        "id": "6cc12dec39b583b0",
+        "type": "comment",
+        "z": "d6c329914ca9c596",
+        "name": "Calorie calculator",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e7f7bae9ed1624b5",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Format to chart",
+        "func": "if(msg.payload.length == 0)\n    return msg\n\nlet new_payload = [{\n\"series\": [],\n\"data\": [[]],\n\"labels\": [\"\"]\n}]\n\nfor (let m = 0; m < msg.minutes.length; m++) {\n    new_payload[0].data[0].push({x: msg.minutes[m] * 60 * 1000, y: msg.payload[m]})\n}\n\nmsg.payload = new_payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 600,
+        "wires": [
+            [
+                "8841da6e18a929f0"
+            ]
+        ]
+    },
+    {
+        "id": "1ff99c451571a9f0",
+        "type": "ui_dropdown",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "label": "Period",
+        "tooltip": "",
+        "place": "Select period",
+        "group": "4429aae43b37c326",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Day",
+                "value": "D",
+                "type": "str"
+            },
+            {
+                "label": "Week",
+                "value": "W",
+                "type": "str"
+            },
+            {
+                "label": "Month",
+                "value": "M",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 90,
+        "y": 460,
+        "wires": [
+            [
+                "110b15d5af128e0d"
+            ]
+        ]
+    },
+    {
+        "id": "110b15d5af128e0d",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "period",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 460,
         "wires": [
             [
                 "83efde91ac7f43d9"
             ]
         ]
-    },
-    {
-        "id": "cb53a9dd2e83dab4",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1760,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "84fd9f5d19077596",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 9",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload[0].data[0]",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1320,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "96bf1dce4128e508",
-        "type": "inject",
-        "z": "d6c329914ca9c596",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[]",
-        "payloadType": "json",
-        "x": 1570,
-        "y": 360,
-        "wires": [
-            [
-                "8841da6e18a929f0",
-                "cb53a9dd2e83dab4"
-            ]
-        ]
-    },
-    {
-        "id": "7b55f7e1dcc2aa2e",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 10",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1100,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "5bb7d1936ad7cc78",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 11",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 310,
-        "y": 620,
-        "wires": []
     }
 ]
