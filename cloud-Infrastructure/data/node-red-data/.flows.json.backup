@@ -23,6 +23,14 @@
         "env": []
     },
     {
+        "id": "6ca9b774b8ac1908",
+        "type": "tab",
+        "label": "CSS Styling",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "f5279b01.b328d8",
         "type": "mqtt-broker",
         "name": "",
@@ -74,7 +82,7 @@
         "id": "4558b5a479f88a7a",
         "type": "ui_base",
         "theme": {
-            "name": "theme-dark",
+            "name": "theme-custom",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -90,19 +98,20 @@
                 "reset": false
             },
             "customTheme": {
-                "name": "Untitled Theme 1",
+                "name": "Nosso estilo",
                 "default": "#4B7930",
                 "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
             },
             "themeState": {
                 "base-color": {
-                    "default": "#097479",
-                    "value": "#457709",
+                    "default": "#4B7930",
+                    "value": "#4B7930",
                     "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#457709",
+                    "value": "#4B7930",
                     "edited": false
                 },
                 "page-backgroundColor": {
@@ -114,7 +123,7 @@
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#6ebe0e",
+                    "value": "#6db046",
                     "edited": false
                 },
                 "group-borderColor": {
@@ -130,7 +139,7 @@
                     "edited": false
                 },
                 "widget-backgroundColor": {
-                    "value": "#457709",
+                    "value": "#4b7930",
                     "edited": false
                 },
                 "widget-borderColor": {
@@ -153,7 +162,7 @@
             "name": "Fitness Monitor",
             "hideToolbar": "false",
             "allowSwipe": "false",
-            "lockMenu": "true",
+            "lockMenu": "false",
             "allowTempTheme": "true",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
@@ -811,7 +820,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1230,
+        "x": 1250,
         "y": 600,
         "wires": [
             []
@@ -1146,7 +1155,7 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 430,
+        "x": 450,
         "y": 600,
         "wires": [
             [
@@ -1186,7 +1195,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
+        "x": 650,
         "y": 600,
         "wires": [
             [
@@ -1541,7 +1550,7 @@
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 850,
+        "x": 870,
         "y": 600,
         "wires": [
             [
@@ -1616,7 +1625,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
+        "x": 1060,
         "y": 600,
         "wires": [
             [
@@ -1693,6 +1702,69 @@
             [
                 "83efde91ac7f43d9"
             ]
+        ]
+    },
+    {
+        "id": "7987918428dd0e13",
+        "type": "ui_template",
+        "z": "6ca9b774b8ac1908",
+        "group": "4429aae43b37c326",
+        "name": "Home style",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "<Style>\n    /* Estilo global Home */\n    ui-card-panel {\n        border-radius: 5px;\n    }\n    /*Estilo para os elementos dentro dos grupos */\n    ui-card-panel * {\n        border-radius: 2.5px;\n    }\n    /* Estilo titulo: !important para dar override às settings do node-red */\n    .nr-dashboard-cardtitle {\n        font-weight: bold !important;\n    }\n    h1 {\n        font-weight: bold !important;\n    }\n</Style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 310,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2676604bbd514f6e",
+        "type": "ui_template",
+        "z": "6ca9b774b8ac1908",
+        "group": "5d778ec448492bfb",
+        "name": "User info Style",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<Style>\n    /* Estilo global Home */\n    ui-card-panel {\n        border-radius: 5px;\n    }\n\n    /*Estilo para os elementos dentro dos grupos */\n    ui-card-panel * {\n        border-radius: 2.5px;\n    }\n\n    /* Estilo titulo: !important para dar override às settings do node-red */\n    .nr-dashboard-cardtitle {\n        font-weight: bold !important;\n    }\n\n    h1 {\n        font-weight: bold !important;\n    }\n</Style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 600,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77bc7884c565ad5f",
+        "type": "ui_template",
+        "z": "6ca9b774b8ac1908",
+        "group": "bfc4c39bf4583c3a",
+        "name": "Settings Style",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<Style>\n    /* Estilo global Home */\n    ui-card-panel {\n        border-radius: 5px;\n    }\n\n    /*Estilo para os elementos dentro dos grupos */\n    ui-card-panel * {\n        border-radius: 2.5px;\n    }\n\n    /* Estilo titulo: !important para dar override às settings do node-red */\n    .nr-dashboard-cardtitle {\n        font-weight: bold !important;\n    }\n\n    h1 {\n        font-weight: bold !important;\n    }\n</Style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 900,
+        "y": 60,
+        "wires": [
+            []
         ]
     }
 ]
