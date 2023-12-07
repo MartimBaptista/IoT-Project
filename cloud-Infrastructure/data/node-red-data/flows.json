@@ -31,6 +31,43 @@
         "env": []
     },
     {
+        "id": "15a76122872f1b12",
+        "type": "junction",
+        "z": "d6c329914ca9c596",
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "83efde91ac7f43d9",
+                "ae01a85cbf5ba11e"
+            ]
+        ]
+    },
+    {
+        "id": "eac6d0179a14444b",
+        "type": "junction",
+        "z": "d6c329914ca9c596",
+        "x": 1240,
+        "y": 720,
+        "wires": [
+            [
+                "291d300e07c66a6c"
+            ]
+        ]
+    },
+    {
+        "id": "c8cb10c8d5b6705a",
+        "type": "junction",
+        "z": "d6c329914ca9c596",
+        "x": 2000,
+        "y": 720,
+        "wires": [
+            [
+                "833783b4b518259b"
+            ]
+        ]
+    },
+    {
         "id": "f5279b01.b328d8",
         "type": "mqtt-broker",
         "name": "",
@@ -211,7 +248,7 @@
         "tab": "f1571b0d0c85903e",
         "order": 1,
         "disp": true,
-        "width": "6",
+        "width": 8,
         "collapse": false,
         "className": ""
     },
@@ -248,12 +285,12 @@
     {
         "id": "e6b826ceadaf28b1",
         "type": "ui_group",
-        "name": "General Info",
+        "name": "Wealcome",
         "tab": "c6f79a2c0e9e2f01",
         "order": 1,
         "disp": true,
         "width": "16",
-        "collapse": true,
+        "collapse": false,
         "className": ""
     },
     {
@@ -872,7 +909,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 1070,
-        "y": 600,
+        "y": 640,
         "wires": [
             []
         ]
@@ -899,33 +936,33 @@
             },
             {
                 "label": "30 to 39",
-                "value": "3",
-                "type": "str"
+                "value": 3,
+                "type": "num"
             },
             {
                 "label": "40 to 49",
-                "value": "4",
-                "type": "str"
+                "value": 4,
+                "type": "num"
             },
             {
                 "label": "50 to 59",
-                "value": "5",
-                "type": "str"
+                "value": 5,
+                "type": "num"
             },
             {
                 "label": "60 to 69",
-                "value": "6",
-                "type": "str"
+                "value": 6,
+                "type": "num"
             },
             {
                 "label": "70 to 79",
-                "value": "7",
-                "type": "str"
+                "value": 7,
+                "type": "num"
             },
             {
                 "label": "80 to 89",
-                "value": "8",
-                "type": "str"
+                "value": 8,
+                "type": "num"
             }
         ],
         "payload": "",
@@ -1046,12 +1083,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 300,
+        "x": 520,
         "y": 220,
         "wires": [
             [
-                "83efde91ac7f43d9",
-                "314c7a2c2ddb25cf"
+                "15a76122872f1b12"
             ]
         ]
     },
@@ -1075,12 +1111,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
+        "x": 510,
         "y": 260,
         "wires": [
             [
-                "83efde91ac7f43d9",
-                "314c7a2c2ddb25cf"
+                "15a76122872f1b12"
             ]
         ]
     },
@@ -1104,12 +1139,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
+        "x": 510,
         "y": 300,
         "wires": [
             [
-                "83efde91ac7f43d9",
-                "314c7a2c2ddb25cf"
+                "15a76122872f1b12"
             ]
         ]
     },
@@ -1133,11 +1167,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 300,
+        "x": 520,
         "y": 420,
         "wires": [
             [
-                "83efde91ac7f43d9"
+                "83efde91ac7f43d9",
+                "314c7a2c2ddb25cf"
             ]
         ]
     },
@@ -1161,12 +1196,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 300,
+        "x": 520,
         "y": 340,
         "wires": [
             [
-                "83efde91ac7f43d9",
-                "314c7a2c2ddb25cf"
+                "15a76122872f1b12"
             ]
         ]
     },
@@ -1207,7 +1241,7 @@
         "rowsPerMsg": 1,
         "outputs": 1,
         "x": 450,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "e79d928988479d36"
@@ -1218,7 +1252,7 @@
         "id": "49821b580309f835",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "Get and format date for query",
+        "name": "Get date and format for day",
         "func": "//Adding 12h (43200000 ms) is a simple way to get around the daylight saving time problem\nlet date = new Date(global.get(\"date\") + 43200000)\nmsg.params =[ \n    (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -1226,8 +1260,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
-        "y": 600,
+        "x": 220,
+        "y": 640,
         "wires": [
             [
                 "32b80f416b60e62c"
@@ -1273,15 +1307,15 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Check if info, date and period is present",
-        "func": "if(\n    !msg.tab && (\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"date\") &&\n    global.get(\"period\")) \n){\n    return msg;\n}",
+        "func": "if(\n    !msg.tab && (\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"date\")) \n){\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 380,
+        "x": 940,
+        "y": 220,
         "wires": [
             [
                 "51b0665da8aa29d5"
@@ -1305,7 +1339,7 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 320,
+        "x": 520,
         "y": 380,
         "wires": [
             [
@@ -1324,15 +1358,15 @@
         "height": 1,
         "name": "",
         "label": "Today:",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "format": "{{msg.payload}} cal",
+        "layout": "row-center",
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 270,
-        "y": 860,
+        "x": 1330,
+        "y": 900,
         "wires": []
     },
     {
@@ -1345,15 +1379,15 @@
         "height": 1,
         "name": "",
         "label": "This week:",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "format": "{{msg.payload}} cal",
+        "layout": "row-center",
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 290,
-        "y": 900,
+        "x": 1350,
+        "y": 940,
         "wires": []
     },
     {
@@ -1366,15 +1400,15 @@
         "height": 1,
         "name": "",
         "label": "This month:",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "format": "{{msg.payload}} cal",
+        "layout": "row-center",
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 290,
-        "y": 940,
+        "x": 1350,
+        "y": 980,
         "wires": []
     },
     {
@@ -1397,7 +1431,7 @@
         "step": "15",
         "className": "",
         "x": 180,
-        "y": 1040,
+        "y": 500,
         "wires": [
             [
                 "225bc9b18e7bacd8"
@@ -1423,7 +1457,7 @@
             "51b0665da8aa29d5"
         ],
         "x": 55,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "49821b580309f835"
@@ -1440,8 +1474,8 @@
             "4a0e932c44646be8",
             "fdaf70c6fa7470cc"
         ],
-        "x": 835,
-        "y": 380,
+        "x": 1135,
+        "y": 220,
         "wires": []
     },
     {
@@ -1451,7 +1485,7 @@
         "name": "Update daily activity chart",
         "info": "",
         "x": 170,
-        "y": 560,
+        "y": 600,
         "wires": []
     },
     {
@@ -1461,7 +1495,7 @@
         "name": "Update the calorie counters",
         "info": "",
         "x": 180,
-        "y": 800,
+        "y": 840,
         "wires": []
     },
     {
@@ -1471,7 +1505,7 @@
         "name": "Get threshold settings",
         "info": "",
         "x": 160,
-        "y": 1000,
+        "y": 1040,
         "wires": []
     },
     {
@@ -1494,7 +1528,7 @@
         "step": "15",
         "className": "",
         "x": 180,
-        "y": 1080,
+        "y": 540,
         "wires": [
             [
                 "9d4058bf531961dd"
@@ -1516,8 +1550,8 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 790,
-        "y": 320,
+        "x": 1090,
+        "y": 340,
         "wires": []
     },
     {
@@ -1525,15 +1559,15 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Check if info is missing",
-        "func": "if(\n    msg.tab == 0 && (\n    !global.get(\"age\") ||\n    !global.get(\"weight\") ||\n    !global.get(\"gender\") ||\n    !global.get(\"height\"))\n){\n    return msg;\n}",
+        "func": "if(\n    msg.tab == 0 && (\n    !global.get(\"age\") ||\n    !global.get(\"weight\") ||\n    !global.get(\"gender\") ||\n    !global.get(\"height\")) ||\n    !global.get(\"walking_threshold\") ||\n    !global.get(\"running_threshold\")\n){\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 320,
+        "x": 880,
+        "y": 340,
         "wires": [
             [
                 "12127ab281dc7016"
@@ -1561,9 +1595,11 @@
         "to": "",
         "reg": false,
         "x": 480,
-        "y": 1040,
+        "y": 500,
         "wires": [
-            []
+            [
+                "ae01a85cbf5ba11e"
+            ]
         ]
     },
     {
@@ -1587,9 +1623,11 @@
         "to": "",
         "reg": false,
         "x": 480,
-        "y": 1080,
+        "y": 540,
         "wires": [
-            []
+            [
+                "ae01a85cbf5ba11e"
+            ]
         ]
     },
     {
@@ -1603,7 +1641,7 @@
         "linkType": "static",
         "timeout": "30",
         "x": 660,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "e7f7bae9ed1624b5"
@@ -1678,7 +1716,7 @@
         "finalize": "",
         "libs": [],
         "x": 880,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "8841da6e18a929f0"
@@ -1716,7 +1754,7 @@
         "topicType": "msg",
         "className": "",
         "x": 90,
-        "y": 700,
+        "y": 740,
         "wires": [
             [
                 "110b15d5af128e0d"
@@ -1744,7 +1782,7 @@
         "to": "",
         "reg": false,
         "x": 240,
-        "y": 700,
+        "y": 740,
         "wires": [
             [
                 "eb8d793826659f4f"
@@ -1789,8 +1827,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 2080,
-        "y": 720,
+        "x": 2140,
+        "y": 760,
         "wires": [
             []
         ]
@@ -1804,7 +1842,7 @@
             "51b0665da8aa29d5"
         ],
         "x": 305,
-        "y": 740,
+        "y": 780,
         "wires": [
             [
                 "eb8d793826659f4f"
@@ -1815,7 +1853,7 @@
         "id": "c0fc5627808cf434",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "Get and format month",
+        "name": "Get date and format for month",
         "func": "//Adding 12h (43200000 ms) is a simple way to get around the daylight saving time problem\nlet date = new Date(global.get(\"date\") + 43200000)\nmsg.params =[ \n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n\nlet month = date.getMonth()\n\n//Set start of month\ndate.setDate(1)\nmsg.startDate = new Date(date.valueOf())\n\n//Find and set end of month\ndate.setDate(28)\nwhile(date.getMonth() == month)\n    date.setDate(date.getDate() + 1)\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -1823,8 +1861,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
-        "y": 700,
+        "x": 710,
+        "y": 780,
         "wires": [
             [
                 "8291d09e0b4e658f"
@@ -1841,8 +1879,8 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 870,
-        "y": 700,
+        "x": 930,
+        "y": 780,
         "wires": [
             [
                 "265a602fc9e75f7a"
@@ -1859,12 +1897,12 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "M",
+                "v": "W",
                 "vt": "str"
             },
             {
                 "t": "eq",
-                "v": "W",
+                "v": "M",
                 "vt": "str"
             }
         ],
@@ -1872,13 +1910,13 @@
         "repair": false,
         "outputs": 2,
         "x": 450,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
-                "c0fc5627808cf434"
+                "51456e65e634a3d3"
             ],
             [
-                "51456e65e634a3d3"
+                "c0fc5627808cf434"
             ]
         ]
     },
@@ -1889,14 +1927,14 @@
         "name": "Update period chart",
         "info": "",
         "x": 150,
-        "y": 660,
+        "y": 700,
         "wires": []
     },
     {
         "id": "51456e65e634a3d3",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "Get and format week",
+        "name": "Get date and format for week",
         "func": "//Adding 12h (43200000 ms) is a simple way to get around the daylight saving time problem\nlet date = new Date(global.get(\"date\") + 43200000)\n\n//Set date to first day of the week (sunday)\ndate.setDate(date.getDate() - date.getDay())\n\nmsg.startDate = new Date(date.valueOf())\n\nmsg.params = []\nfor (let i = 0; i < 7; i++) {\n    msg.params[i] = \n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\n    date.setDate(date.getDate() + 1)\n}\n\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -1904,7 +1942,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
+        "x": 700,
         "y": 740,
         "wires": [
             [
@@ -1922,7 +1960,7 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 870,
+        "x": 930,
         "y": 740,
         "wires": [
             [
@@ -1942,12 +1980,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1060,
-        "y": 720,
+        "x": 1120,
+        "y": 760,
         "wires": [
             [
                 "e07aee4b7732bd4d",
-                "291d300e07c66a6c"
+                "eac6d0179a14444b"
             ]
         ]
     },
@@ -1962,8 +2000,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 1210,
-        "y": 720,
+        "x": 1270,
+        "y": 760,
         "wires": [
             [
                 "296936bcd0e61eda"
@@ -1980,8 +2018,8 @@
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 1560,
-        "y": 720,
+        "x": 1620,
+        "y": 760,
         "wires": [
             [
                 "108b8a0315965c5c"
@@ -2016,8 +2054,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1350,
-        "y": 720,
+        "x": 1410,
+        "y": 760,
         "wires": [
             [
                 "95b4b96a1f42c368"
@@ -2036,8 +2074,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1830,
-        "y": 720,
+        "x": 1890,
+        "y": 760,
         "wires": [
             [
                 "833783b4b518259b"
@@ -2063,11 +2101,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1650,
-        "y": 680,
+        "x": 1630,
+        "y": 720,
         "wires": [
             [
-                "833783b4b518259b"
+                "c8cb10c8d5b6705a"
             ]
         ]
     },
@@ -2078,7 +2116,7 @@
         "name": "General info group stuff",
         "info": "",
         "x": 160,
-        "y": 1140,
+        "y": 1180,
         "wires": []
     },
     {
@@ -2099,7 +2137,7 @@
         "fontSize": 16,
         "color": "#000000",
         "x": 420,
-        "y": 1180,
+        "y": 1220,
         "wires": []
     },
     {
@@ -2124,7 +2162,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             [
                 "fa63cbec5e0c8308"
@@ -2144,7 +2182,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             [
                 "da481163dd32cae5"
@@ -2168,8 +2206,372 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 410,
-        "y": 1220,
+        "x": 430,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "6376136d28bb8d0f",
+        "type": "inject",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "x": 90,
+        "y": 460,
+        "wires": [
+            [
+                "7cc24c989e675c71"
+            ]
+        ]
+    },
+    {
+        "id": "dc9aa86d1c21ed58",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "todayMinuteAgo",
+                "pt": "msg",
+                "to": "today",
+                "tot": "global",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "today",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 460,
+        "wires": [
+            [
+                "ae01a85cbf5ba11e",
+                "314c7a2c2ddb25cf"
+            ]
+        ]
+    },
+    {
+        "id": "7cc24c989e675c71",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "get date",
+        "func": "let date = new Date()\nmsg.payload = (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 460,
+        "wires": [
+            [
+                "dc9aa86d1c21ed58"
+            ]
+        ]
+    },
+    {
+        "id": "ae01a85cbf5ba11e",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Check if or and if day changed",
+        "func": "if(\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"walking_threshold\") &&\n    global.get(\"running_threshold\")\n    ){\n        if(msg.todayMinuteAgo){\n            if(msg.todayMinuteAgo != global.get(\"today\"))\n                return msg\n        } else{\n            return msg;\n        }\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 420,
+        "wires": [
+            [
+                "597a8906cf65fb49"
+            ]
+        ]
+    },
+    {
+        "id": "597a8906cf65fb49",
+        "type": "link out",
+        "z": "d6c329914ca9c596",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "48c5862d296d2c3f",
+            "e02ca9c1e112e0e4"
+        ],
+        "x": 1075,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "48c5862d296d2c3f",
+        "type": "link in",
+        "z": "d6c329914ca9c596",
+        "name": "link in 3",
+        "links": [
+            "597a8906cf65fb49"
+        ],
+        "x": 55,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e02ca9c1e112e0e4",
+        "type": "link in",
+        "z": "d6c329914ca9c596",
+        "name": "link in 4",
+        "links": [
+            "597a8906cf65fb49"
+        ],
+        "x": 55,
+        "y": 940,
+        "wires": [
+            [
+                "a767a2ebf838a593",
+                "3a950c725939ad5f",
+                "ddd94a3449a97e81"
+            ]
+        ]
+    },
+    {
+        "id": "3a950c725939ad5f",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Get today and format for month",
+        "func": "let date = new Date()\nmsg.params =[ \n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n\n    msg.flow = \"M\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 980,
+        "wires": [
+            [
+                "eedf9b63cee72090"
+            ]
+        ]
+    },
+    {
+        "id": "a767a2ebf838a593",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Get today and format for week",
+        "func": "let date = new Date()\n\n//Set date to first day of the week (sunday)\ndate.setDate(date.getDate() - date.getDay())\n\nmsg.params = []\nfor (let i = 0; i < 7; i++) {\n    msg.params[i] = \n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\n    date.setDate(date.getDate() + 1)\n}\n\n    msg.flow = \"W\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 940,
+        "wires": [
+            [
+                "23d8b292f0f5a91b"
+            ]
+        ]
+    },
+    {
+        "id": "609641b241f2eb60",
+        "type": "postgresql",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "query": "SELECT time, activity\nFROM user_phone_data\nWHERE date = $1",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 470,
+        "y": 900,
+        "wires": [
+            [
+                "7b7c4769cc17b876"
+            ]
+        ]
+    },
+    {
+        "id": "eedf9b63cee72090",
+        "type": "postgresql",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "query": "SELECT date, time, activity\nFROM user_phone_data\nWHERE SUBSTRING(date, 4, 5) = $1;",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 470,
+        "y": 980,
+        "wires": [
+            [
+                "7b7c4769cc17b876"
+            ]
+        ]
+    },
+    {
+        "id": "23d8b292f0f5a91b",
+        "type": "postgresql",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "query": "SELECT date, time, activity\nFROM user_phone_data\nWHERE\ndate = $1 OR\ndate = $2 OR\ndate = $3 OR\ndate = $4 OR\ndate = $5 OR\ndate = $6 OR\ndate = $7;\n",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 470,
+        "y": 940,
+        "wires": [
+            [
+                "7b7c4769cc17b876"
+            ]
+        ]
+    },
+    {
+        "id": "ddd94a3449a97e81",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Get today and format for day",
+        "func": "let date = new Date()\nmsg.params =[ \n    (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n    \n    msg.flow = \"D\"\n    \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 900,
+        "wires": [
+            [
+                "609641b241f2eb60"
+            ]
+        ]
+    },
+    {
+        "id": "7b7c4769cc17b876",
+        "type": "link call",
+        "z": "d6c329914ca9c596",
+        "name": "Calorie per minute calculator",
+        "links": [
+            "47e3b0882b8e5a83"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 700,
+        "y": 940,
+        "wires": [
+            [
+                "1279659aa345dc18"
+            ]
+        ]
+    },
+    {
+        "id": "c72c1f08ce41521c",
+        "type": "switch",
+        "z": "d6c329914ca9c596",
+        "name": "Month/Week switch",
+        "property": "flow",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "D",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "W",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "M",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1150,
+        "y": 940,
+        "wires": [
+            [
+                "8230ba53c5b608f9"
+            ],
+            [
+                "4edabed895ed0ee0"
+            ],
+            [
+                "3f59ba744b423683"
+            ]
+        ]
+    },
+    {
+        "id": "1279659aa345dc18",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Sum up the calories",
+        "func": "if (msg.payload && msg.payload.calories){\n  msg.payload = Math.round(msg.payload.calories.reduce(function(acc, value) {\n    if(value == null || value == undefined)\n          return acc\n      else\n          return acc + value\n  }))\n}\nelse{\n  msg.payload = 0\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 940,
+        "wires": [
+            [
+                "c72c1f08ce41521c"
+            ]
+        ]
+    },
+    {
+        "id": "289822d2a5b38e46",
+        "type": "inject",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 710,
+        "y": 540,
+        "wires": [
+            [
+                "ae01a85cbf5ba11e"
+            ]
+        ]
+    },
+    {
+        "id": "4422469208ead6ae",
+        "type": "comment",
+        "z": "d6c329914ca9c596",
+        "name": "READ ME (PLAN)",
+        "info": "Register how many days since week/month start.\nuse a map to count activity ",
+        "x": 190,
+        "y": 1100,
         "wires": []
     },
     {
@@ -2199,7 +2601,7 @@
         "z": "6ca9b774b8ac1908",
         "group": "5d778ec448492bfb",
         "name": "User info Style",
-        "order": 4,
+        "order": 5,
         "width": 0,
         "height": 0,
         "format": "<Style>\n    /* Estilo global User info */\n    ui-card-panel {\n        border-radius: 5px;\n    }\n\n    /*Estilo para os elementos dentro dos grupos */\n    ui-card-panel * {\n        border-radius: 2.5px;\n    }\n\n    /* Estilo titulo: !important para dar override às settings do node-red */\n    .nr-dashboard-cardtitle {\n        font-weight: bold !important;\n    }\n\n    h1 {\n        font-weight: bold !important;\n    }\n</Style>",
