@@ -34,12 +34,12 @@
         "id": "15a76122872f1b12",
         "type": "junction",
         "z": "d6c329914ca9c596",
-        "x": 660,
+        "x": 680,
         "y": 280,
         "wires": [
             [
                 "83efde91ac7f43d9",
-                "ae01a85cbf5ba11e"
+                "bf7c1997d4d534c1"
             ]
         ]
     },
@@ -294,44 +294,34 @@
         "className": ""
     },
     {
-        "id": "7339fc69817678b9",
-        "type": "ui_spacer",
-        "z": "d6c329914ca9c596",
-        "name": "spacer",
-        "group": "4429aae43b37c326",
-        "order": 2,
-        "width": 10,
-        "height": 1
-    },
-    {
-        "id": "b70891a675cf5a99",
-        "type": "ui_spacer",
-        "z": "d6c329914ca9c596",
-        "name": "spacer",
-        "group": "4429aae43b37c326",
-        "order": 4,
-        "width": 10,
-        "height": 1
-    },
-    {
-        "id": "7d35c2cc5b9783bb",
+        "id": "a1a07fa8145116b2",
         "type": "ui_spacer",
         "z": "d6c329914ca9c596",
         "name": "spacer",
         "group": "67cf9908fe08f1e8",
         "order": 4,
-        "width": "5",
-        "height": "1"
+        "width": 1,
+        "height": 1
     },
     {
-        "id": "5cae01f7057fe9ea",
+        "id": "9b5b7465367fd466",
         "type": "ui_spacer",
         "z": "d6c329914ca9c596",
         "name": "spacer",
-        "group": "e6b826ceadaf28b1",
+        "group": "4429aae43b37c326",
         "order": 2,
-        "width": "5",
-        "height": "1"
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "283038976bbdfe25",
+        "type": "ui_spacer",
+        "z": "d6c329914ca9c596",
+        "name": "spacer",
+        "group": "4429aae43b37c326",
+        "order": 4,
+        "width": 10,
+        "height": 1
     },
     {
         "id": "71808ae9c2f6163a",
@@ -1306,7 +1296,7 @@
         "id": "83efde91ac7f43d9",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "Check if info, date and period is present",
+        "name": "Check if info and date is present",
         "func": "if(\n    !msg.tab && (\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"date\")) \n){\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
@@ -1314,8 +1304,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 940,
-        "y": 220,
+        "x": 910,
+        "y": 320,
         "wires": [
             [
                 "51b0665da8aa29d5"
@@ -1474,8 +1464,8 @@
             "4a0e932c44646be8",
             "fdaf70c6fa7470cc"
         ],
-        "x": 1135,
-        "y": 220,
+        "x": 1165,
+        "y": 320,
         "wires": []
     },
     {
@@ -1551,7 +1541,7 @@
         "topic": "",
         "name": "",
         "x": 1090,
-        "y": 320,
+        "y": 400,
         "wires": []
     },
     {
@@ -1567,7 +1557,7 @@
         "finalize": "",
         "libs": [],
         "x": 880,
-        "y": 320,
+        "y": 400,
         "wires": [
             [
                 "12127ab281dc7016"
@@ -2125,19 +2115,19 @@
         "z": "d6c329914ca9c596",
         "group": "e6b826ceadaf28b1",
         "order": 1,
-        "width": "7",
-        "height": "1",
-        "name": "",
-        "label": "Today is",
-        "format": "{{msg.payload}}",
+        "width": 7,
+        "height": 1,
+        "name": "Date",
+        "label": "",
+        "format": "{{msg.payload1}}",
         "layout": "row-left",
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 420,
-        "y": 1300,
+        "x": 430,
+        "y": 1280,
         "wires": []
     },
     {
@@ -2174,7 +2164,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Formate date",
-        "func": "msg.payload = new Date(msg.payload)\nreturn msg;",
+        "func": "let date = new Date(msg.payload)\nmsg.payload1 = date.getDate() + \"/\" + date.getMonth()  + \"/\" + date.getFullYear()\nmsg.payload2 = date.getHours() + \":\" + date.getMinutes()  + \":\" + date.getHours()\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2185,7 +2175,8 @@
         "y": 1300,
         "wires": [
             [
-                "da481163dd32cae5"
+                "da481163dd32cae5",
+                "b163e2c1a65041e4"
             ]
         ]
     },
@@ -2194,19 +2185,19 @@
         "type": "ui_text",
         "z": "d6c329914ca9c596",
         "group": "e6b826ceadaf28b1",
-        "order": 1,
-        "width": "7",
-        "height": "1",
-        "name": "",
-        "label": "Quota",
-        "format": "{{msg.payload1}} --- {{msg.payload2}}",
+        "order": 2,
+        "width": 9,
+        "height": 1,
+        "name": "Last week activity",
+        "label": "",
+        "format": "{{msg.payload1}}",
         "layout": "row-left",
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1250,
+        "x": 1290,
         "y": 1100,
         "wires": []
     },
@@ -2253,16 +2244,16 @@
         "id": "ae01a85cbf5ba11e",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "Check if info and threshholds are present",
-        "func": "if(\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"walking_threshold\") &&\n    global.get(\"running_threshold\")\n    ){\n        if(msg.todayMinuteAgo){\n            if(msg.todayMinuteAgo != global.get(\"today\"))\n                return msg\n        } else{\n            return msg;\n        }\n}",
+        "name": "Check if threshholds are present",
+        "func": "if(global.get(\"walking_threshold\") && global.get(\"running_threshold\")){\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 940,
-        "y": 420,
+        "x": 910,
+        "y": 440,
         "wires": [
             [
                 "597a8906cf65fb49"
@@ -2276,11 +2267,10 @@
         "name": "link out 2",
         "mode": "link",
         "links": [
-            "48c5862d296d2c3f",
-            "e02ca9c1e112e0e4"
+            "48c5862d296d2c3f"
         ],
-        "x": 1145,
-        "y": 420,
+        "x": 1165,
+        "y": 440,
         "wires": []
     },
     {
@@ -2306,7 +2296,7 @@
         "z": "d6c329914ca9c596",
         "name": "link in 4",
         "links": [
-            "597a8906cf65fb49"
+            "46133a0156e5204f"
         ],
         "x": 55,
         "y": 940,
@@ -2548,7 +2538,7 @@
         "wires": [
             [
                 "ae01a85cbf5ba11e",
-                "314c7a2c2ddb25cf"
+                "bf7c1997d4d534c1"
             ]
         ]
     },
@@ -2577,7 +2567,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Get today and past 30 days",
-        "func": "let date = new Date()\nmsg.params = []\n\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nfor (let i = 0; i < 30; i++) {\n    msg.params.push(\n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" +\n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000))\n    date.setDate(date.getDate() - 1)\n}\n\ndate.setDate(date.getDate() + 1)\nmsg.startDate = new Date(date.valueOf())\n\nmsg.flow = \"W\"\n\nreturn msg;",
+        "func": "let date = new Date()\nmsg.params = []\n\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nfor (let i = 0; i < 30; i++) {\n    msg.params.push(\n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" +\n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000))\n    date.setDate(date.getDate() - 1)\n}\n\ndate.setDate(date.getDate() + 1)\nmsg.startDate = new Date(date.valueOf())\n\nmsg.flow = \"M\"\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2644,7 +2634,7 @@
         "y": 1120,
         "wires": [
             [
-                "77c5d2e8c472d153"
+                "1fa934684c8fd080"
             ]
         ]
     },
@@ -2679,20 +2669,109 @@
         ]
     },
     {
-        "id": "77c5d2e8c472d153",
-        "type": "debug",
+        "id": "1fa934684c8fd080",
+        "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 860,
+        "name": "Activity-threshold evaluator and week month join",
+        "func": "if(msg.flow == \"W\"){\n    global.set(\"week_result\", {\n        walking: (msg.payload.average_walking >= global.get(\"walking_threshold\")),\n        running: (msg.payload.average_running >= global.get(\"running_threshold\"))\n    })\n}else if(msg.flow == \"M\"){\n    global.set(\"month_result\", {\n        walking: (msg.payload.average_walking >= global.get(\"walking_threshold\")),\n        running: (msg.payload.average_running >= global.get(\"running_threshold\"))\n    })\n}\n\nif(global.get(\"week_result\") && global.get(\"month_result\")){\n    let w = global.get(\"week_result\")\n    let m = global.get(\"month_result\")\n\n    global.set(\"week_result\", null)\n    global.set(\"month_result\", null)\n\n    if(w.walking && w.running)\n        msg.payload1 = \"You have been active this last week.\"\n    else if(w.walking)\n        msg.payload1 = \"You have been sedentary this last week. Run more.\"\n    else if(w.running)\n        msg.payload1 = \"You have been sedentary this last week. Walk more.\"\n    else\n        msg.payload1 = \"You have been sedentary this last week. Walk and run more.\"\n    \n    if(m.walking && m.running)\n        msg.payload2 = \"You have been active this last month.\"\n    else if(m.walking)\n        msg.payload2 = \"You have been sedentary this last month. Run more.\"\n    else if(m.running)\n        msg.payload2 = \"You have been sedentary this last month. Walk more.\"\n    else\n        msg.payload2 = \"You have been sedentary this last month. Walk and run more.\"\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
         "y": 1120,
+        "wires": [
+            [
+                "ac462bb9a24240d8",
+                "e16f5d40d5274a1f"
+            ]
+        ]
+    },
+    {
+        "id": "e16f5d40d5274a1f",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "e6b826ceadaf28b1",
+        "order": 4,
+        "width": 9,
+        "height": 1,
+        "name": "Last month activity",
+        "label": "",
+        "format": "{{msg.payload2}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1290,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "b163e2c1a65041e4",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "e6b826ceadaf28b1",
+        "order": 3,
+        "width": 7,
+        "height": 1,
+        "name": "Time",
+        "label": "",
+        "format": "{{msg.payload2}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 430,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "46133a0156e5204f",
+        "type": "link out",
+        "z": "d6c329914ca9c596",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "e02ca9c1e112e0e4"
+        ],
+        "x": 1165,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "bf7c1997d4d534c1",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Check if info is present",
+        "func": "if(\n    !msg.tab && (\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\"))\n){\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 360,
+        "wires": [
+            [
+                "46133a0156e5204f"
+            ]
+        ]
+    },
+    {
+        "id": "ef0a12e63d89fd34",
+        "type": "comment",
+        "z": "d6c329914ca9c596",
+        "name": "TODO FIX THID BUG, it just takes time so seconds from diferent days overlap",
+        "info": "",
+        "x": 890,
+        "y": 880,
         "wires": []
     },
     {
