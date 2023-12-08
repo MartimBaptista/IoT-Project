@@ -96,7 +96,7 @@
         "name": "PostgresDB",
         "host": "172.100.10.13",
         "hostFieldType": "str",
-        "port": "5432",
+        "port": "5423",
         "portFieldType": "num",
         "database": "database",
         "databaseFieldType": "str",
@@ -1293,12 +1293,12 @@
         "type": "ui_ui_control",
         "z": "d6c329914ca9c596",
         "name": "",
-        "events": "change",
+        "events": "all",
         "x": 100,
         "y": 380,
         "wires": [
             [
-                "55e0a5142dd35db4"
+                "696de7eaebe0d32d"
             ]
         ]
     },
@@ -1540,7 +1540,7 @@
         "type": "ui_toast",
         "z": "d6c329914ca9c596",
         "position": "top right",
-        "displayTime": "5",
+        "displayTime": "3",
         "highlight": "#457709",
         "sendall": true,
         "outputs": 0,
@@ -1551,7 +1551,7 @@
         "topic": "",
         "name": "",
         "x": 1090,
-        "y": 340,
+        "y": 320,
         "wires": []
     },
     {
@@ -1559,7 +1559,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Check if info is missing",
-        "func": "if(\n    msg.tab == 0 && (\n    !global.get(\"age\") ||\n    !global.get(\"weight\") ||\n    !global.get(\"gender\") ||\n    !global.get(\"height\")) ||\n    !global.get(\"walking_threshold\") ||\n    !global.get(\"running_threshold\")\n){\n    return msg;\n}",
+        "func": "if(\n    msg.tab == 0 && (\n    !global.get(\"age\") ||\n    !global.get(\"weight\") ||\n    !global.get(\"gender\") ||\n    !global.get(\"height\")) ||\n    !global.get(\"walking_threshold\") ||\n    !global.get(\"running_threshold\")\n){\n    msg.payload = \"Fill in missing personal info\"\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1567,7 +1567,7 @@
         "finalize": "",
         "libs": [],
         "x": 880,
-        "y": 340,
+        "y": 320,
         "wires": [
             [
                 "12127ab281dc7016"
@@ -2206,8 +2206,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 410,
-        "y": 1300,
+        "x": 430,
+        "y": 1140,
         "wires": []
     },
     {
@@ -2216,7 +2216,7 @@
         "z": "d6c329914ca9c596",
         "name": "",
         "props": [],
-        "repeat": "60",
+        "repeat": "30",
         "crontab": "",
         "once": true,
         "onceDelay": "0",
@@ -2226,43 +2226,6 @@
         "wires": [
             [
                 "7cc24c989e675c71"
-            ]
-        ]
-    },
-    {
-        "id": "dc9aa86d1c21ed58",
-        "type": "change",
-        "z": "d6c329914ca9c596",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "todayMinuteAgo",
-                "pt": "msg",
-                "to": "today",
-                "tot": "global",
-                "dc": true
-            },
-            {
-                "t": "set",
-                "p": "today",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg",
-                "dc": true
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 520,
-        "y": 460,
-        "wires": [
-            [
-                "ae01a85cbf5ba11e",
-                "314c7a2c2ddb25cf"
             ]
         ]
     },
@@ -2282,7 +2245,7 @@
         "y": 460,
         "wires": [
             [
-                "dc9aa86d1c21ed58"
+                "98b516865528afe0"
             ]
         ]
     },
@@ -2290,7 +2253,7 @@
         "id": "ae01a85cbf5ba11e",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "Check if or and if day changed",
+        "name": "Check if info and threshholds are present",
         "func": "if(\n    global.get(\"age\") &&\n    global.get(\"weight\") &&\n    global.get(\"gender\") &&\n    global.get(\"height\") &&\n    global.get(\"walking_threshold\") &&\n    global.get(\"running_threshold\")\n    ){\n        if(msg.todayMinuteAgo){\n            if(msg.todayMinuteAgo != global.get(\"today\"))\n                return msg\n        } else{\n            return msg;\n        }\n}",
         "outputs": 1,
         "timeout": 0,
@@ -2298,7 +2261,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 910,
+        "x": 940,
         "y": 420,
         "wires": [
             [
@@ -2316,7 +2279,7 @@
             "48c5862d296d2c3f",
             "e02ca9c1e112e0e4"
         ],
-        "x": 1075,
+        "x": 1145,
         "y": 420,
         "wires": []
     },
@@ -2328,10 +2291,13 @@
         "links": [
             "597a8906cf65fb49"
         ],
-        "x": 65,
-        "y": 1300,
+        "x": 55,
+        "y": 1100,
         "wires": [
-            []
+            [
+                "92bb25046c49eb34",
+                "e55338dcdcfb9983"
+            ]
         ]
     },
     {
@@ -2546,23 +2512,91 @@
         ]
     },
     {
-        "id": "289822d2a5b38e46",
-        "type": "inject",
+        "id": "4422469208ead6ae",
+        "type": "comment",
         "z": "d6c329914ca9c596",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 710,
-        "y": 540,
+        "name": "READ ME (PLAN)",
+        "info": "Register how many days since week/month start.\nuse a map to count activity ",
+        "x": 350,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "696de7eaebe0d32d",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "assert thas is home page",
+        "func": "if(msg.tab == 0){\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 380,
         "wires": [
             [
-                "ae01a85cbf5ba11e"
+                "55e0a5142dd35db4"
             ]
         ]
+    },
+    {
+        "id": "98b516865528afe0",
+        "type": "rbe",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 550,
+        "y": 460,
+        "wires": [
+            [
+                "ae01a85cbf5ba11e",
+                "314c7a2c2ddb25cf"
+            ]
+        ]
+    },
+    {
+        "id": "92bb25046c49eb34",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "function 2",
+        "func": "msg.payload = \"UPDATED\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 1120,
+        "wires": [
+            [
+                "ac462bb9a24240d8"
+            ]
+        ]
+    },
+    {
+        "id": "e55338dcdcfb9983",
+        "type": "debug",
+        "z": "d6c329914ca9c596",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 1100,
+        "wires": []
     },
     {
         "id": "7987918428dd0e13",

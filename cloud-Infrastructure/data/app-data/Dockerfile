@@ -8,7 +8,6 @@ WORKDIR /app
 COPY app.py /app
 COPY requirements.txt /app
 COPY model /app/model
-COPY modules /app/modules
 
 # Install dependencies
 RUN pip install -r requirements.txt
