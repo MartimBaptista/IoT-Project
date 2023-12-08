@@ -22,6 +22,9 @@
             }
         },
         "menu-deploymenu-item-flow": false,
-        "menu-deploymenu-item-full": true
+        "menu-deploymenu-item-full": true,
+        "debug": {
+            "filter": "filterAll"
+        }
     }
 }

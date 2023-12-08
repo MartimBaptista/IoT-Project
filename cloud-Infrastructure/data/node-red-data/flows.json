@@ -285,7 +285,7 @@
     {
         "id": "e6b826ceadaf28b1",
         "type": "ui_group",
-        "name": "Wealcome",
+        "name": "Welcome",
         "tab": "c6f79a2c0e9e2f01",
         "order": 1,
         "disp": true,
@@ -2116,7 +2116,7 @@
         "name": "General info group stuff",
         "info": "",
         "x": 160,
-        "y": 1180,
+        "y": 1260,
         "wires": []
     },
     {
@@ -2137,7 +2137,7 @@
         "fontSize": 16,
         "color": "#000000",
         "x": 420,
-        "y": 1220,
+        "y": 1300,
         "wires": []
     },
     {
@@ -2162,7 +2162,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 1220,
+        "y": 1300,
         "wires": [
             [
                 "fa63cbec5e0c8308"
@@ -2182,7 +2182,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 1220,
+        "y": 1300,
         "wires": [
             [
                 "da481163dd32cae5"
@@ -2199,15 +2199,15 @@
         "height": "1",
         "name": "",
         "label": "Quota",
-        "format": "{{msg.payload}}",
+        "format": "{{msg.payload1}} --- {{msg.payload2}}",
         "layout": "row-left",
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 430,
-        "y": 1140,
+        "x": 1250,
+        "y": 1100,
         "wires": []
     },
     {
@@ -2291,11 +2291,12 @@
         "links": [
             "597a8906cf65fb49"
         ],
-        "x": 55,
-        "y": 1100,
+        "x": 65,
+        "y": 1120,
         "wires": [
             [
-                "92bb25046c49eb34"
+                "7eb9cbf6a3a832c4",
+                "8c2c16945f160388"
             ]
         ]
     },
@@ -2322,7 +2323,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Get today and format for month",
-        "func": "let date = new Date()\nmsg.params =[ \n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n\n    msg.flow = \"M\"\n\nreturn msg;",
+        "func": "let date = new Date()\nmsg.params =[ \n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n\nmsg.flow = \"M\"\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2342,7 +2343,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Get today and format for week",
-        "func": "let date = new Date()\n\n//Set date to first day of the week (sunday)\ndate.setDate(date.getDate() - date.getDay())\n\nmsg.params = []\nfor (let i = 0; i < 7; i++) {\n    msg.params[i] = \n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\n    date.setDate(date.getDate() + 1)\n}\n\n    msg.flow = \"W\"\n\nreturn msg;",
+        "func": "let date = new Date()\n\n//Set date to first day of the week (sunday)\ndate.setDate(date.getDate() - date.getDay())\n\nmsg.params = []\nfor (let i = 0; i < 7; i++) {\n    msg.params[i] = \n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\n    date.setDate(date.getDate() + 1)\n}\n\nmsg.flow = \"W\"\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2416,7 +2417,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Get today and format for day",
-        "func": "let date = new Date()\nmsg.params =[ \n    (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n    \n    msg.flow = \"D\"\n    \nreturn msg;",
+        "func": "let date = new Date()\nmsg.params =[ \n    (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n    \nmsg.flow = \"D\"\n    \nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2511,16 +2512,6 @@
         ]
     },
     {
-        "id": "4422469208ead6ae",
-        "type": "comment",
-        "z": "d6c329914ca9c596",
-        "name": "READ ME (PLAN)",
-        "info": "Register how many days since week/month start.\nuse a map to count activity ",
-        "x": 350,
-        "y": 1080,
-        "wires": []
-    },
-    {
         "id": "696de7eaebe0d32d",
         "type": "function",
         "z": "d6c329914ca9c596",
@@ -2562,24 +2553,147 @@
         ]
     },
     {
-        "id": "92bb25046c49eb34",
+        "id": "7eb9cbf6a3a832c4",
         "type": "function",
         "z": "d6c329914ca9c596",
-        "name": "function 2",
-        "func": "msg.payload = \"UPDATED\"\nreturn msg;",
+        "name": "Get today and past 8 days",
+        "func": "let date = new Date()\nmsg.params = []\n\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nfor (let i = 0; i < 8; i++) {\n    msg.params.push(\n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" +\n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000))\n    date.setDate(date.getDate() - 1)\n}\n\ndate.setDate(date.getDate() + 1)\nmsg.startDate = new Date(date.valueOf())\n\nmsg.flow = \"W\"\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 260,
+        "x": 230,
+        "y": 1100,
+        "wires": [
+            [
+                "66431dfdc3ea0dcd"
+            ]
+        ]
+    },
+    {
+        "id": "8c2c16945f160388",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Get today and past 30 days",
+        "func": "let date = new Date()\nmsg.params = []\n\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nfor (let i = 0; i < 30; i++) {\n    msg.params.push(\n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" +\n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000))\n    date.setDate(date.getDate() - 1)\n}\n\ndate.setDate(date.getDate() + 1)\nmsg.startDate = new Date(date.valueOf())\n\nmsg.flow = \"W\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 1140,
+        "wires": [
+            [
+                "3869b32b892d4906"
+            ]
+        ]
+    },
+    {
+        "id": "66431dfdc3ea0dcd",
+        "type": "postgresql",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "query": "SELECT date, time, activity\nFROM user_phone_data\nWHERE\ndate = $1 OR\ndate = $2 OR\ndate = $3 OR\ndate = $4 OR\ndate = $5 OR\ndate = $6 OR\ndate = $7 OR\ndate = $8 ;\n",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 450,
+        "y": 1100,
+        "wires": [
+            [
+                "b26eedf0223b5c8c"
+            ]
+        ]
+    },
+    {
+        "id": "3869b32b892d4906",
+        "type": "postgresql",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "query": "SELECT date, time, activity\nFROM user_phone_data\nWHERE\ndate = $1 OR\ndate = $2 OR\ndate = $3 OR\ndate = $4 OR\ndate = $5 OR\ndate = $6 OR\ndate = $7 OR\ndate = $8 OR\ndate = $9 OR\ndate = $10 OR\ndate = $11 OR\ndate = $12 OR\ndate = $13 OR\ndate = $14 OR\ndate = $15 OR\ndate = $16 OR\ndate = $17 OR\ndate = $18 OR\ndate = $19 OR\ndate = $20 OR\ndate = $21 OR\ndate = $22 OR\ndate = $23 OR\ndate = $23 OR\ndate = $24 OR\ndate = $25 OR\ndate = $26 OR\ndate = $27 OR\ndate = $28 OR\ndate = $29 OR\ndate = $30;",
+        "postgreSQLConfig": "566d95256d190e9f",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 450,
+        "y": 1140,
+        "wires": [
+            [
+                "b26eedf0223b5c8c"
+            ]
+        ]
+    },
+    {
+        "id": "b26eedf0223b5c8c",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Calculate average per day",
+        "func": "const TIME_FOR_INACTIVITY = 5;\n\nfunction getMonthNDay(date){\n    return (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) \n}\n\nfunction getSeconds(time){\n    let parts = time.split(\":\")\n    return parseInt(parts[0]) * 60 * 60 + parseInt(parts[1]) * 60 + parseInt(parts[2])\n}\n\nfunction compareFn(a, b) {\n  if (a < b) {\n    return -1;\n  } else if (a > b) {\n    return 1;\n  }\n  // a must be equal to b\n  return 0;\n}\n\nif(msg.payload.length == 0)\n    return msg\n\nlet days = new Map()\n\nfor (let day = msg.startDate; day.valueOf() <= msg.endDate.valueOf(); day.setDate(day.getDate() + 1)) {\n    days.set(getMonthNDay(day), [])\n}\n\nfor (let element of msg.payload) {\n    days.get(element.date.substring(0, 5)).push({time: element.time ,activity: element.activity})\n}\n\nlet per_day = []\n\nfor(let date of days.keys()){\n    if (days.get(date).legth == 0){\n        per_day.push({walking: 0, running: 0})\n        continue\n    }\n\n    //easy deep copy\n    let sorted_entries = JSON.parse(JSON.stringify(days.get(date)));\n    sorted_entries.sort(function(a,b){return getSeconds(a.time) - getSeconds(b.time)})\n    \n    let start = null\n    let last = days.get(date)[0]\n    let time_walking = 0\n    let time_running = 0\n\n    for(let entrie of sorted_entries){\n        if(start == null)\n            start = entrie\n        else if (entrie.activity != start.activity || getSeconds(entrie.time) - getSeconds(last.time) > TIME_FOR_INACTIVITY){\n            if (start.activity)\n                time_running += getSeconds(last.time) - getSeconds(start.time)\n            else\n                time_walking += getSeconds(last.time) - getSeconds(start.time)\n            start = entrie\n        }\n        last = entrie\n    }\n    per_day.push({ walking: Math.round(time_walking / 60), running: Math.round(time_running / 60) })\n}\n\nlet total_days = Array.from(days.keys()).length\nlet total_walking = per_day.reduce(function(acc, x){ return acc + x.walking }, 0);\nlet total_running = per_day.reduce(function (acc, x) { return acc + x.running }, 0);\n\nmsg.payload = {average_walking: Math.round(total_walking / total_days), average_running: Math.round(total_running / total_days)}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
         "y": 1120,
         "wires": [
             [
-                "ac462bb9a24240d8"
+                "77c5d2e8c472d153"
             ]
         ]
+    },
+    {
+        "id": "6561098320b1f3a2",
+        "type": "inject",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 1200,
+        "wires": [
+            [
+                "7eb9cbf6a3a832c4",
+                "8c2c16945f160388"
+            ]
+        ]
+    },
+    {
+        "id": "77c5d2e8c472d153",
+        "type": "debug",
+        "z": "d6c329914ca9c596",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 1120,
+        "wires": []
     },
     {
         "id": "7987918428dd0e13",
