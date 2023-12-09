@@ -4695,3 +4695,23 @@
 1702129634: Client Client1 closed its connection.
 1702129641: mosquitto version 2.0.18 terminating
 1702129641: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1702129735: mosquitto version 2.0.18 starting
+1702129735: Config loaded from /mosquitto/config/mosquitto.conf.
+1702129735: Opening ipv4 listen socket on port 1883.
+1702129735: mosquitto version 2.0.18 running
+1702129737: New connection from 172.100.10.1:61998 on port 1883.
+1702129737: New client connected from 172.100.10.1:61998 as Client1 (p2, c1, k60).
+1702129738: New connection from 172.100.10.15:41076 on port 1883.
+1702129738: New client connected from 172.100.10.15:41076 as nodered_26e367a339460523 (p2, c1, k60).
+1702129986: Client nodered_26e367a339460523 disconnected.
+1702129986: New connection from 172.100.10.15:56616 on port 1883.
+1702129986: New client connected from 172.100.10.15:56616 as nodered_24fdd9dd5079c753 (p2, c1, k60).
+1702130140: Client nodered_24fdd9dd5079c753 disconnected.
+1702130140: New connection from 172.100.10.15:48552 on port 1883.
+1702130140: New client connected from 172.100.10.15:48552 as nodered_c35f262d1e20b1e6 (p2, c1, k60).
+1702131535: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1702133336: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1702135138: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1702135195: Client Client1 closed its connection.
+1702135235: mosquitto version 2.0.18 terminating
+1702135235: Saving in-memory database to /mosquitto/data//mosquitto.db.

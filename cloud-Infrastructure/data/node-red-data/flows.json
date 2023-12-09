@@ -294,7 +294,7 @@
         "className": ""
     },
     {
-        "id": "a1a07fa8145116b2",
+        "id": "a0ca64a2598c0f04",
         "type": "ui_spacer",
         "z": "d6c329914ca9c596",
         "name": "spacer",
@@ -304,7 +304,7 @@
         "height": 1
     },
     {
-        "id": "9b5b7465367fd466",
+        "id": "0d530f74030a4a99",
         "type": "ui_spacer",
         "z": "d6c329914ca9c596",
         "name": "spacer",
@@ -314,7 +314,7 @@
         "height": 1
     },
     {
-        "id": "283038976bbdfe25",
+        "id": "1b3b85e5f5580308",
         "type": "ui_spacer",
         "z": "d6c329914ca9c596",
         "name": "spacer",
@@ -433,9 +433,9 @@
         "id": "03994f40962dce6a",
         "type": "comment",
         "z": "f6f2187d.f17ca8",
-        "name": "Receives client phone info, classifies it and stores it TODO: add to DB",
+        "name": "Receives client phone info, classifies it and stores it",
         "info": "",
-        "x": 370,
+        "x": 310,
         "y": 180,
         "wires": []
     },
@@ -557,8 +557,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 350,
-        "y": 440,
+        "x": 370,
+        "y": 380,
         "wires": [
             [
                 "5e1de0b3a3ea18e0"
@@ -580,8 +580,8 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 510,
-        "y": 440,
+        "x": 530,
+        "y": 380,
         "wires": [
             [
                 "e3d8bf37fdaa465d"
@@ -598,8 +598,8 @@
         "split": true,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 830,
-        "y": 440,
+        "x": 850,
+        "y": 380,
         "wires": [
             []
         ]
@@ -669,8 +669,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 160,
-        "y": 440,
+        "x": 180,
+        "y": 380,
         "wires": [
             [
                 "2c547707cd5b9e7b"
@@ -691,7 +691,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 530,
-        "y": 200,
+        "y": 180,
         "wires": []
     },
     {
@@ -705,7 +705,7 @@
         "rowsPerMsg": 1,
         "outputs": 1,
         "x": 370,
-        "y": 200,
+        "y": 180,
         "wires": [
             [
                 "e5a7e6661a80276f"
@@ -724,7 +724,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 190,
-        "y": 200,
+        "y": 180,
         "wires": [
             [
                 "8c9aba176a9b2898"
@@ -748,8 +748,8 @@
         "drop": false,
         "allowrate": true,
         "outputs": 1,
-        "x": 660,
-        "y": 440,
+        "x": 680,
+        "y": 380,
         "wires": [
             [
                 "1031078df62d838f"
@@ -770,7 +770,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 530,
-        "y": 320,
+        "y": 280,
         "wires": []
     },
     {
@@ -784,7 +784,7 @@
         "rowsPerMsg": 1,
         "outputs": 1,
         "x": 370,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
                 "05abca18221432d5"
@@ -803,7 +803,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 190,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
                 "c97655fe639f708c"
@@ -817,7 +817,7 @@
         "name": "Load the data from training data to the DB, so it can be used in calculations and charts, not needed to train model.",
         "info": "",
         "x": 460,
-        "y": 400,
+        "y": 340,
         "wires": []
     },
     {
@@ -827,7 +827,7 @@
         "name": "Clear all phone data in the DB",
         "info": "",
         "x": 220,
-        "y": 160,
+        "y": 140,
         "wires": []
     },
     {
@@ -847,7 +847,7 @@
         "name": "Count the entries in phone data table in DB",
         "info": "",
         "x": 260,
-        "y": 280,
+        "y": 240,
         "wires": []
     },
     {
@@ -857,7 +857,7 @@
         "name": "ATTENTION! This takes up to 6 minutes and might crash depending on the system. Rate can be reduced to increse stability at the cost of time",
         "info": "",
         "x": 550,
-        "y": 480,
+        "y": 420,
         "wires": []
     },
     {
