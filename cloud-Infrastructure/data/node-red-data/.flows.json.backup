@@ -1339,69 +1339,6 @@
         ]
     },
     {
-        "id": "8230ba53c5b608f9",
-        "type": "ui_text",
-        "z": "d6c329914ca9c596",
-        "group": "67cf9908fe08f1e8",
-        "order": 1,
-        "width": 5,
-        "height": 1,
-        "name": "",
-        "label": "Today:",
-        "format": "{{msg.payload}} cal",
-        "layout": "row-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 1330,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "4edabed895ed0ee0",
-        "type": "ui_text",
-        "z": "d6c329914ca9c596",
-        "group": "67cf9908fe08f1e8",
-        "order": 2,
-        "width": 5,
-        "height": 1,
-        "name": "",
-        "label": "This week:",
-        "format": "{{msg.payload}} cal",
-        "layout": "row-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 1350,
-        "y": 940,
-        "wires": []
-    },
-    {
-        "id": "3f59ba744b423683",
-        "type": "ui_text",
-        "z": "d6c329914ca9c596",
-        "group": "67cf9908fe08f1e8",
-        "order": 3,
-        "width": 5,
-        "height": 1,
-        "name": "",
-        "label": "This month:",
-        "format": "{{msg.payload}} cal",
-        "layout": "row-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 1350,
-        "y": 980,
-        "wires": []
-    },
-    {
         "id": "bf0c97628dea71e8",
         "type": "ui_slider",
         "z": "d6c329914ca9c596",
@@ -1963,7 +1900,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Split into days",
-        "func": "function getMonthNDay(date){\n    return (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) \n}\n\nif(msg.payload.length == 0)\n    return msg\n\nlet days = new Map()\n\nfor (let day = msg.startDate; day.valueOf() <= msg.endDate.valueOf(); day.setDate(day.getDate() + 1)) {\n    days.set(getMonthNDay(day), [])\n}\n\nfor (let element of msg.payload) {\n    days.get(element.date.substring(0, 5)).push({time: element.time ,activity: element.activity})\n}\n\nmsg.payload = []\nfor(let date of days.keys()){\n    msg.payload.push({date: date, data: days.get(date)})\n}\n\nreturn msg;",
+        "func": "function getMonthNDay(date){\n    return (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) \n}\n\nif(msg.payload.length == 0)\n    return msg\n\nlet days = new Map()\n\nfor (let day = new Date(msg.startDate.valueOf()); day.valueOf() <= msg.endDate.valueOf(); day.setDate(day.getDate() + 1)) {\n    days.set(getMonthNDay(day), [])\n}\n\nfor (let element of msg.payload) {\n    days.get(element.date.substring(0, 5)).push({time: element.time ,activity: element.activity})\n}\n\nmsg.payload = []\nfor(let date of days.keys()){\n    msg.payload.push({date: date, data: days.get(date)})\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2313,7 +2250,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Get today and format for month",
-        "func": "let date = new Date()\nmsg.params =[ \n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n\nmsg.flow = \"M\"\n\nreturn msg;",
+        "func": "let date = new Date()\n\nmsg.params =[ \n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n\nlet month = date.getMonth()\n\n//Set start of month\ndate.setDate(1)\nmsg.startDate = new Date(date.valueOf())\n\n//Find and set end of month\ndate.setDate(28)\nwhile(date.getMonth() == month)\n    date.setDate(date.getDate() + 1)\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nmsg.flow = \"M\"\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2333,7 +2270,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Get today and format for week",
-        "func": "let date = new Date()\n\n//Set date to first day of the week (sunday)\ndate.setDate(date.getDate() - date.getDay())\n\nmsg.params = []\nfor (let i = 0; i < 7; i++) {\n    msg.params[i] = \n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\n    date.setDate(date.getDate() + 1)\n}\n\nmsg.flow = \"W\"\n\nreturn msg;",
+        "func": "let date = new Date()\n\n//Set date to first day of the week (sunday)\ndate.setDate(date.getDate() - date.getDay())\n\nmsg.startDate = new Date(date.valueOf())\n\nmsg.params = []\nfor (let i = 0; i < 7; i++) {\n    msg.params[i] = \n        (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n        (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)\n    date.setDate(date.getDate() + 1)\n}\n\ndate.setDate(date.getDate() - 1)\nmsg.endDate = new Date(date.valueOf())\n\nmsg.flow = \"W\"\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2353,7 +2290,7 @@
         "type": "postgresql",
         "z": "d6c329914ca9c596",
         "name": "",
-        "query": "SELECT time, activity\nFROM user_phone_data\nWHERE date = $1",
+        "query": "SELECT date, time, activity\nFROM user_phone_data\nWHERE date = $1",
         "postgreSQLConfig": "566d95256d190e9f",
         "split": false,
         "rowsPerMsg": 1,
@@ -2362,8 +2299,7 @@
         "y": 900,
         "wires": [
             [
-                "7b7c4769cc17b876",
-                "5c2eb1ce6d0e7e81"
+                "1d87a07fb4c2252e"
             ]
         ]
     },
@@ -2381,8 +2317,7 @@
         "y": 980,
         "wires": [
             [
-                "7b7c4769cc17b876",
-                "7beaa73657bbdeef"
+                "1d87a07fb4c2252e"
             ]
         ]
     },
@@ -2400,8 +2335,7 @@
         "y": 940,
         "wires": [
             [
-                "7b7c4769cc17b876",
-                "aa66e566af9b617b"
+                "1d87a07fb4c2252e"
             ]
         ]
     },
@@ -2410,7 +2344,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Get today and format for day",
-        "func": "let date = new Date()\nmsg.params =[ \n    (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n    \nmsg.flow = \"D\"\n    \nreturn msg;",
+        "func": "let date = new Date()\nmsg.params =[ \n    (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n    (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) + \"/\" + \n    (date.getFullYear() - 2000 < 10 ? \"0\" : \"\") + (date.getFullYear() - 2000)]\n    \nmsg.startDate = new Date(date.valueOf())\nmsg.endDate = new Date(date.valueOf())\n\nmsg.flow = \"D\"\n    \nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2422,87 +2356,6 @@
         "wires": [
             [
                 "609641b241f2eb60"
-            ]
-        ]
-    },
-    {
-        "id": "7b7c4769cc17b876",
-        "type": "link call",
-        "z": "d6c329914ca9c596",
-        "name": "Calorie per minute calculator",
-        "links": [
-            "47e3b0882b8e5a83"
-        ],
-        "linkType": "static",
-        "timeout": "30",
-        "x": 700,
-        "y": 940,
-        "wires": [
-            [
-                "1279659aa345dc18",
-                "3b66a464c45f67e4"
-            ]
-        ]
-    },
-    {
-        "id": "c72c1f08ce41521c",
-        "type": "switch",
-        "z": "d6c329914ca9c596",
-        "name": "Month/Week switch",
-        "property": "flow",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "D",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "W",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "M",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 3,
-        "x": 1150,
-        "y": 940,
-        "wires": [
-            [
-                "8230ba53c5b608f9"
-            ],
-            [
-                "4edabed895ed0ee0"
-            ],
-            [
-                "3f59ba744b423683"
-            ]
-        ]
-    },
-    {
-        "id": "1279659aa345dc18",
-        "type": "function",
-        "z": "d6c329914ca9c596",
-        "name": "Sum up the calories",
-        "func": "if (msg.payload && msg.payload.calories){\n  msg.payload = Math.round(msg.payload.calories.reduce(function(acc, value) {\n    if(value == null || value == undefined)\n          return acc\n      else\n          return acc + value\n  }))\n}\nelse{\n  msg.payload = 0\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 940,
-        "y": 940,
-        "wires": [
-            [
-                "c72c1f08ce41521c",
-                "515f3ba934c5a6f2"
             ]
         ]
     },
@@ -2628,7 +2481,7 @@
         "type": "function",
         "z": "d6c329914ca9c596",
         "name": "Calculate average per day",
-        "func": "const TIME_FOR_INACTIVITY = 5;\n\nfunction getMonthNDay(date){\n    return (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) \n}\n\nfunction getSeconds(time){\n    let parts = time.split(\":\")\n    return parseInt(parts[0]) * 60 * 60 + parseInt(parts[1]) * 60 + parseInt(parts[2])\n}\n\nfunction compareFn(a, b) {\n  if (a < b) {\n    return -1;\n  } else if (a > b) {\n    return 1;\n  }\n  // a must be equal to b\n  return 0;\n}\n\nif(msg.payload.length == 0)\n    return msg\n\nlet days = new Map()\n\nfor (let day = msg.startDate; day.valueOf() <= msg.endDate.valueOf(); day.setDate(day.getDate() + 1)) {\n    days.set(getMonthNDay(day), [])\n}\n\nfor (let element of msg.payload) {\n    days.get(element.date.substring(0, 5)).push({time: element.time ,activity: element.activity})\n}\n\nlet per_day = []\n\nfor(let date of days.keys()){\n    if (days.get(date).legth == 0){\n        per_day.push({walking: 0, running: 0})\n        continue\n    }\n\n    //easy deep copy\n    let sorted_entries = JSON.parse(JSON.stringify(days.get(date)));\n    sorted_entries.sort(function(a,b){return getSeconds(a.time) - getSeconds(b.time)})\n    \n    let start = null\n    let last = days.get(date)[0]\n    let time_walking = 0\n    let time_running = 0\n\n    for(let entrie of sorted_entries){\n        if(start == null)\n            start = entrie\n        else if (entrie.activity != start.activity || getSeconds(entrie.time) - getSeconds(last.time) > TIME_FOR_INACTIVITY){\n            if (start.activity)\n                time_running += getSeconds(last.time) - getSeconds(start.time)\n            else\n                time_walking += getSeconds(last.time) - getSeconds(start.time)\n            start = entrie\n        }\n        last = entrie\n    }\n    per_day.push({ walking: Math.round(time_walking / 60), running: Math.round(time_running / 60) })\n}\n\nlet total_days = Array.from(days.keys()).length\nlet total_walking = per_day.reduce(function(acc, x){ return acc + x.walking }, 0);\nlet total_running = per_day.reduce(function (acc, x) { return acc + x.running }, 0);\n\nmsg.payload = {average_walking: Math.round(total_walking / total_days), average_running: Math.round(total_running / total_days)}\n\nreturn msg;",
+        "func": "const TIME_FOR_INACTIVITY = 5;\n\nfunction getMonthNDay(date){\n    return (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) \n}\n\nfunction getSeconds(time){\n    let parts = time.split(\":\")\n    return parseInt(parts[0]) * 60 * 60 + parseInt(parts[1]) * 60 + parseInt(parts[2])\n}\n\nif(msg.payload.length == 0)\n    return msg\n\nlet days = new Map()\n\nfor (let day = msg.startDate; day.valueOf() <= msg.endDate.valueOf(); day.setDate(day.getDate() + 1)) {\n    days.set(getMonthNDay(day), [])\n}\n\nfor (let element of msg.payload) {\n    days.get(element.date.substring(0, 5)).push({time: element.time ,activity: element.activity})\n}\n\nlet per_day = []\n\nfor(let date of days.keys()){\n    if (days.get(date).legth == 0){\n        per_day.push({walking: 0, running: 0})\n        continue\n    }\n\n    //easy deep copy\n    let sorted_entries = JSON.parse(JSON.stringify(days.get(date)));\n    sorted_entries.sort(function(a,b){return getSeconds(a.time) - getSeconds(b.time)})\n    \n    let start = null\n    let last = days.get(date)[0]\n    let time_walking = 0\n    let time_running = 0\n\n    for(let entrie of sorted_entries){\n        if(start == null)\n            start = entrie\n        else if (entrie.activity != start.activity || getSeconds(entrie.time) - getSeconds(last.time) > TIME_FOR_INACTIVITY){\n            if (start.activity)\n                time_running += getSeconds(last.time) - getSeconds(start.time)\n            else\n                time_walking += getSeconds(last.time) - getSeconds(start.time)\n            start = entrie\n        }\n        last = entrie\n    }\n    per_day.push({ walking: Math.round(time_walking / 60), running: Math.round(time_running / 60) })\n}\n\nlet total_days = Array.from(days.keys()).length\nlet total_walking = per_day.reduce(function(acc, x){ return acc + x.walking }, 0);\nlet total_running = per_day.reduce(function (acc, x) { return acc + x.running }, 0);\n\nmsg.payload = {average_walking: Math.round(total_walking / total_days), average_running: Math.round(total_running / total_days)}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2770,27 +2623,267 @@
         ]
     },
     {
-        "id": "3b66a464c45f67e4",
-        "type": "debug",
+        "id": "367ac71495bd23d6",
+        "type": "split",
         "z": "d6c329914ca9c596",
-        "name": "debug 8",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 980,
-        "y": 860,
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 850,
+        "y": 940,
+        "wires": [
+            [
+                "c994fafe17402b8b"
+            ]
+        ]
+    },
+    {
+        "id": "4e7b94a907df4e39",
+        "type": "inject",
+        "z": "d6c329914ca9c596",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 810,
+        "y": 520,
+        "wires": [
+            [
+                "46133a0156e5204f"
+            ]
+        ]
+    },
+    {
+        "id": "1d87a07fb4c2252e",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Split into days",
+        "func": "function getMonthNDay(date){\n    return (date.getDate() < 10 ? \"0\" : \"\") + date.getDate() + \"/\" +\n        (date.getMonth() + 1 < 10 ? \"0\" : \"\") + (date.getMonth() + 1) \n}\n\nlet days = new Map()\n\nfor (let day = new Date(msg.startDate.valueOf()); day.valueOf() <= msg.endDate.valueOf(); day.setDate(day.getDate() + 1)) {\n    days.set(getMonthNDay(day), [])\n}\n\nfor (let element of msg.payload) {\n    days.get(element.date.substring(0, 5)).push({time: element.time ,activity: element.activity})\n}\n\nmsg.payload = []\nfor(let date of days.keys()){\n    msg.payload.push({date: date, data: days.get(date)})\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 940,
+        "wires": [
+            [
+                "367ac71495bd23d6"
+            ]
+        ]
+    },
+    {
+        "id": "c72c1f08ce41521c",
+        "type": "switch",
+        "z": "d6c329914ca9c596",
+        "name": "Month/Week switch",
+        "property": "flow",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "D",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "W",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "M",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1970,
+        "y": 940,
+        "wires": [
+            [
+                "8230ba53c5b608f9"
+            ],
+            [
+                "4edabed895ed0ee0"
+            ],
+            [
+                "3f59ba744b423683"
+            ]
+        ]
+    },
+    {
+        "id": "8230ba53c5b608f9",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "67cf9908fe08f1e8",
+        "order": 1,
+        "width": 5,
+        "height": 1,
+        "name": "",
+        "label": "Today:",
+        "format": "{{msg.payload}} cal",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2150,
+        "y": 900,
         "wires": []
     },
     {
-        "id": "515f3ba934c5a6f2",
+        "id": "4edabed895ed0ee0",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "67cf9908fe08f1e8",
+        "order": 2,
+        "width": 5,
+        "height": 1,
+        "name": "",
+        "label": "This week:",
+        "format": "{{msg.payload}} cal",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2170,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "3f59ba744b423683",
+        "type": "ui_text",
+        "z": "d6c329914ca9c596",
+        "group": "67cf9908fe08f1e8",
+        "order": 3,
+        "width": 5,
+        "height": 1,
+        "name": "",
+        "label": "This month:",
+        "format": "{{msg.payload}} cal",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2170,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "7b7c4769cc17b876",
+        "type": "link call",
+        "z": "d6c329914ca9c596",
+        "name": "Calorie per minute calculator",
+        "links": [
+            "47e3b0882b8e5a83"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 1200,
+        "y": 940,
+        "wires": [
+            [
+                "1279659aa345dc18"
+            ]
+        ]
+    },
+    {
+        "id": "1279659aa345dc18",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Sum up the calories per day",
+        "func": "if(!msg.payload || msg.payload.length == 0)\n    msg.payload = 0\nelse\n    msg.payload = msg.payload.calories.reduce((acc, x) => acc + x, 0);\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1460,
+        "y": 940,
+        "wires": [
+            [
+                "010d9c155382dce9"
+            ]
+        ]
+    },
+    {
+        "id": "c994fafe17402b8b",
+        "type": "change",
+        "z": "d6c329914ca9c596",
+        "name": "Format msg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "payload.date",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 940,
+        "wires": [
+            [
+                "7b7c4769cc17b876"
+            ]
+        ]
+    },
+    {
+        "id": "010d9c155382dce9",
+        "type": "function",
+        "z": "d6c329914ca9c596",
+        "name": "Sum up the calories per period",
+        "func": "if(msg.flow == \"D\"){\n  msg.payload = Math.round(msg.payload)\n  return msg\n}else if(msg.flow == \"W\"){\n  let week = global.get(\"week_calories\")\n  node.warn(week);\n  if(!week){\n    week = {total: 0, days: 0}\n  }\n  week.total += msg.payload\n  week.days += 1\n  global.set(\"week_calories\", week)\n  if(week.days == 7){\n    msg.payload = Math.round(week.total)\n    global.set(\"week_calories\", null)\n    return msg\n  }\n}else if(msg.flow == \"M\"){\n  let month = global.get(\"month_calories\")\n  if(!month){\n    month = {total: 0, days: 0}\n  }\n  month.total += msg.payload\n  month.days += 1\n  global.set(\"month_calories\", month)\n  if(month.days == new Date(msg.endDate).getDate()){\n    msg.payload = Math.round(month.total)\n    global.set(\"month_calories\", null)\n    return msg\n  }\n}\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1730,
+        "y": 940,
+        "wires": [
+            [
+                "c72c1f08ce41521c",
+                "36b0f12c39c6939c"
+            ]
+        ]
+    },
+    {
+        "id": "36b0f12c39c6939c",
         "type": "debug",
         "z": "d6c329914ca9c596",
-        "name": "debug 10",
+        "name": "debug 8",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2799,56 +2892,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1160,
+        "x": 1960,
         "y": 860,
-        "wires": []
-    },
-    {
-        "id": "5c2eb1ce6d0e7e81",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 11",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 820,
-        "wires": []
-    },
-    {
-        "id": "aa66e566af9b617b",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 12",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "7beaa73657bbdeef",
-        "type": "debug",
-        "z": "d6c329914ca9c596",
-        "name": "debug 13",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 900,
         "wires": []
     },
     {
