@@ -44,7 +44,7 @@ def train():
   KNN.fit(inputs, outputs)
 
   #Saving the model
-  joblib.dump(KNN, 'model/KKN.dat.gz')
+  joblib.dump(KNN, 'model/KNN.dat.gz')
 
   return "ok", 200
 
@@ -62,7 +62,7 @@ def predict():
       data[var] = scaleData(data[var], train_data[:, var].min(), train_data[:, var].max())
 
     #Loading the model and predicting
-    model = joblib.load('model/KKN.dat.gz')
+    model = joblib.load('model/KNN.dat.gz')
     prediction = str(int(model.predict([data])))
 
     #Inserts the prediction into the raw data
