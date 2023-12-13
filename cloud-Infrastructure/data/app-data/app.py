@@ -51,7 +51,8 @@ def train():
 @app.route('/predict', methods=['POST'])
 def predict():
   #Check for model and data file
-  if os.path.exists(os.path.abspath("data/trainning.data")) and os.path.exists(os.path.abspath("model/KKN.dat.gz")):
+  #TODO: MENTION: bug where KKN -> KNN
+  if os.path.exists(os.path.abspath("data/trainning.data")) and os.path.exists(os.path.abspath("model/KNN.dat.gz")):
     train_data = np.array(pd.read_csv('data/trainning.data', delimiter=';').values[: , 3:], dtype = float)
     raw_data = request.data.decode("utf-8").split(";")
     #Processing the data
